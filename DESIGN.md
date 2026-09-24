@@ -17,13 +17,13 @@ React + TypeScript + Vite, GSAP ScrollTrigger for coordinated animation, Lenis f
 
 Extracted from supplied comps: ink navy #10161c, near-black #0b1015, warm ivory #f5f2ed, muted silver #b6bdc7, restrained blue #adc8fa. Display: Cormorant Garamond, 500 weight; body: Manrope, 400/500. Fonts are bundled locally.
 
-Maximum content width 1440px with fluid 5.4vw gutters. Display sizes use clamp; desktop hero approximately 90px and section titles 56px. Thin translucent separators, 14px image radii, restrained card surfaces, pill CTAs. Bright sky and warm photographic light contrast with quiet dark content sections. Layout and font hierarchy take precedence over extra decoration.
+Maximum content width 1440px with fluid 5.4vw gutters. Display sizes use clamp; desktop hero approximately 90px and section titles 56px. Thin translucent separators, 14px image radii, restrained card surfaces, pill CTAs. Bright sky and warm photographic light contrast with quiet dark content sections. Layout and font hierarchy take precedence over extra decoration. Dark is the default; a persisted light palette changes surfaces and readable foreground colors while preserving composition, content, illustrations, and imagery.
 
 ## Stage 3: visual identity and assets
 
 Reuse the four supplied comps as the already-approved individual section designs. Generate clean photographic assets from the hero and contact references through the built-in imagegen tool. Keep all final assets in public/images. A monogram, sunset photography, ivory serif headings and blue line icons form the identity. Do not invent a new brand moodboard.
 
-Content provenance: reference project names and stacks are design concepts until verified. Do not present sample employment dates as actual history. Keep unconfirmed links and resume state explicit. No fabricated achievements, live deployments or client work. The supplied résumé is the source for the four-branch ARCTIC context and university coursework. The portfolio download copy omits the résumé's phone number and home-city line.
+Content provenance: reference project names and stacks are design concepts until verified. Do not present sample employment dates as actual history. Keep unconfirmed links and resume state explicit. No fabricated achievements, live deployments or client work. The supplied résumé is the source for the four-branch ARCTIC context and university coursework. The portfolio serves the supplied résumé PDF byte-for-byte.
 
 ## Stage 4: motion choreography
 
