@@ -20,4 +20,10 @@ Environment: local Vite development server, Codex in-app browser using its docum
 - The email copy control changes to its success status on click. The current page generated no browser console errors after a fresh reload.
 - TypeScript production build, optimized local images, formatting, and `git diff --check` pass.
 
+## Résumé update
+
+- The résumé action points to `/documents/valkenburgh-margin-resume.pdf`; the local server returns HTTP 200 with `application/pdf`, and the portfolio buttons expose a download action.
+- Playwright checks at 390px and 320px reported no horizontal overflow. The updated biography and education timeline expose the résumé's four-branch ARCTIC context and relevant coursework.
+- The portfolio PDF is one page, searchable, and retains all three project repository links. A text extraction check found no phone number or home-city line; the supplied original remains outside the repository.
+
 The existing social profiles, contact details, project descriptions, and dated project checks are taken from `src/data/portfolio.json`; the checks have not been repeated as part of the site build. The final contact photograph also loads as a local asset. No remote services, analytics, or deployment were added.

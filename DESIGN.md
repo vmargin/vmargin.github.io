@@ -23,7 +23,7 @@ Maximum content width 1440px with fluid 5.4vw gutters. Display sizes use clamp; 
 
 Reuse the four supplied comps as the already-approved individual section designs. Generate clean photographic assets from the hero and contact references through the built-in imagegen tool. Keep all final assets in public/images. A monogram, sunset photography, ivory serif headings and blue line icons form the identity. Do not invent a new brand moodboard.
 
-Content provenance: reference project names and stacks are design concepts until verified. Do not present sample employment dates as actual history. Keep unconfirmed links and resume state explicit. No fabricated achievements, live deployments or client work.
+Content provenance: reference project names and stacks are design concepts until verified. Do not present sample employment dates as actual history. Keep unconfirmed links and resume state explicit. No fabricated achievements, live deployments or client work. The supplied résumé is the source for the four-branch ARCTIC context and university coursework. The portfolio download copy omits the résumé's phone number and home-city line.
 
 ## Stage 4: motion choreography
 
@@ -37,7 +37,7 @@ Data owns portfolio copy; section components own semantic structure; a single mo
 
 ## Stage 6: verification
 
-Build and strict typecheck. Inspect desktop and 390px/320px mobile layouts in the browser, navigation, project details, Escape and focus return, contact interactions, motion toggle, reduced motion, and runtime errors. Review image readability, spacing and overflow against reference comps. Record proof and limitations in README.md. Local Git checkpoints before implementation and after verified delivery.
+Build and strict typecheck. Inspect desktop and 390px/320px mobile layouts in the browser, navigation, project details, Escape and focus return, contact interactions, motion toggle, reduced motion, résumé download, and runtime errors. Review image readability, spacing and overflow against reference comps. Record proof and limitations in README.md. Local Git checkpoints before implementation and after verified delivery.
 
 ## Harness boundary
 

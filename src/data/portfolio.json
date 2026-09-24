@@ -11,7 +11,7 @@
     "email": "marginvalkenburgh@gmail.com",
     "github": "https://github.com/vmargin",
     "linkedin": "https://www.linkedin.com/in/vmargin/",
-    "resumeUrl": null,
+    "resumeUrl": "/documents/valkenburgh-margin-resume.pdf",
     "portraitUrl": null,
     "navigation": [
       {
@@ -34,9 +34,9 @@
   },
   "about": {
     "title": "About",
-    "intro": "I'm Valkenburgh Margin, a Computer Engineering graduate based in the Philippines. I build Java applications and full-stack web systems.",
+    "intro": "I'm Valkenburgh Margin, a Computer Engineering graduate in the Philippines with project experience developing Java desktop applications and full-stack web systems.",
     "paragraphs": [
-      "My recent projects focus on workflows that need clear rules: moving money between demo accounts, tracking service jobs, and organizing assets. I like connecting what happens on a screen to the data and operations behind it.",
+      "From CASH-G's paired transfer records to ARCTIC's booking-to-invoice workflow for a four-branch business, I focus on turning requirements into clear rules across the interface and data model.",
       "I'm looking for a junior software development role where I can contribute to application and backend work while continuing to develop my skills."
     ],
     "backgroundHeading": "Background",
@@ -152,7 +152,7 @@
       "demoUrl": null,
       "coverAssetId": "arctic-workflow",
       "galleryAssetIds": [],
-      "overview": "ARCTIC models the staff workflow of an air-conditioning service business: record a booking, assign a technician, track the visit, and handle the invoice and payment. My work centered on translating the business process into requirements and a relational data model, with AI assistance during implementation.",
+      "overview": "ARCTIC models the booking-to-invoice workflow of a four-branch air-conditioning service business: record a booking, assign a technician, track the visit, and handle payment. My work centered on requirements gathering, workflow definition, and the relational data model, with AI-assisted implementation.",
       "workflow": [
         "Staff create a booking for a customer and branch.",
         "The booking is confirmed and a technician is assigned.",

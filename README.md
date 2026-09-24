@@ -13,7 +13,7 @@ Vite serves the site at `http://127.0.0.1:5176`. Run `npm.cmd run build` to type
 
 ## Project structure
 
-- `src/data/portfolio.json` is the content source, copied from `sample-portfolio`. It retains project details, evidence limits, education, training, and verified links.
+- `src/data/portfolio.json` is the content source, copied from `sample-portfolio` and updated with facts from the supplied résumé. It retains project details, evidence limits, education, training, and verified links.
 - `src/App.tsx` composes the accessible one-page portfolio and owns navigation, project dialogs, contact actions, and the motion preference.
 - `src/ProjectVisual.tsx` draws small, explicitly labeled workflow illustrations for the project cards and dialog.
 - `src/usePortfolioMotion.ts` is the single owner of GSAP scroll and pointer interactions and Lenis lifecycle.
@@ -23,7 +23,7 @@ Vite serves the site at `http://127.0.0.1:5176`. Run `npm.cmd run build` to type
 
 ## Content boundaries
 
-Project descriptions preserve the evidence and limitations recorded in the source portfolio. They do not promise that deployments or historic test results are current. The little screens in the project cards are workflow illustrations, not application screenshots. The source has no résumé file, so résumé links start an email request instead of downloading a fabricated document.
+Project descriptions preserve the evidence and limitations recorded in the source portfolio. They do not promise that deployments or historic test results are current. The little screens in the project cards are workflow illustrations, not application screenshots. `public/documents/valkenburgh-margin-resume.pdf` is a clean portfolio download based on the supplied résumé. It omits the phone number and home-city line; the original PDF remains outside this repository.
 
 ## Accessibility and motion
 

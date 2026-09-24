@@ -74,17 +74,20 @@ function Action({
   secondary = false,
   icon = <ArrowRight size={17} />,
   className = "",
+  download = false,
 }: {
   href: string;
   children: ReactNode;
   secondary?: boolean;
   icon?: ReactNode;
   className?: string;
+  download?: boolean;
 }) {
   return (
     <a
       className={`button ${secondary ? "button-outline" : "button-primary"} ${className}`}
       href={href}
+      download={download || undefined}
       data-magnetic
     >
       <span>{children}</span>
@@ -521,13 +524,14 @@ export default function App() {
                 <br />A builder at heart.
               </p>
               <p>{about.intro}</p>
-              <p>
-                I like connecting what happens on a screen to the data and
-                operations behind it. Clear workflows, thoughtful interfaces,
-                and the details that make a system work.
-              </p>
+              <p>{about.paragraphs[0]}</p>
+              <p>{about.paragraphs[1]}</p>
               <div className="button-row">
-                <Action href={resumeHref} icon={<FileText size={17} />}>
+                <Action
+                  href={resumeHref}
+                  icon={<FileText size={17} />}
+                  download={!!site.resumeUrl}
+                >
                   {site.resumeUrl ? "Download Résumé" : "Request Résumé"}
                 </Action>
                 <Action href="#contact" secondary>
@@ -753,7 +757,8 @@ export default function App() {
                 </p>
                 <span className="milestone-detail">
                   <GraduationCap size={14} />
-                  The foundation for what comes next.
+                  Relevant coursework · OOP, data structures, relational
+                  databases, software engineering
                 </span>
               </article>
             </div>
@@ -841,6 +846,7 @@ export default function App() {
                   href={resumeHref}
                   secondary
                   icon={<FileText size={17} />}
+                  download={!!site.resumeUrl}
                 >
                   {site.resumeUrl ? "Download Résumé" : "Request Résumé"}
                 </Action>
