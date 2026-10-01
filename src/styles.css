@@ -520,6 +520,7 @@ p {
   background: #2a3540;
 }
 .hero-photo,
+.hero-person,
 .contact-photo {
   position: absolute;
   width: 100%;
@@ -534,6 +535,18 @@ p {
   object-position: 68% 57%;
   height: 112%;
   top: -6%;
+  opacity: 0;
+  transition: opacity 0.75s var(--ease);
+}
+.hero-photo.is-active {
+  opacity: 1;
+}
+.hero-person {
+  z-index: -1;
+  object-position: 68% 57%;
+  height: 112%;
+  top: -6%;
+  filter: brightness(0.72);
 }
 .hero-shade {
   position: absolute;
@@ -1779,7 +1792,8 @@ p {
   .hero-role {
     font-size: 36px;
   }
-  .hero-photo {
+  .hero-photo,
+  .hero-person {
     object-position: 60% 50%;
   }
   .project-grid {
@@ -1903,7 +1917,8 @@ p {
   .hero .button-row {
     gap: 12px;
   }
-  .hero-photo {
+  .hero-photo,
+  .hero-person {
     object-position: 64% center;
     top: 0;
     height: 100%;
@@ -2488,6 +2503,7 @@ p {
     transition: none !important;
   }
   .hero-photo,
+  .hero-person,
   .contact-photo {
     transform: none !important;
   }
