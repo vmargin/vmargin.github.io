@@ -1,9 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#10161c" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("v6-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch {
+        // The dark theme remains the default when storage is unavailable.
+      }
+    </script>
     <meta
       name="description"
       content="Valkenburgh Margin. Thoughtful digital experiences, from interface to infrastructure. A portfolio of ideas, design, and development."
