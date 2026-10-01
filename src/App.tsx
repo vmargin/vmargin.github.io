@@ -451,29 +451,12 @@ export default function App() {
       <main>
         <section className="hero" id="home" aria-labelledby="hero-title">
           <img
-            className={`hero-photo ${theme === "dark" ? "is-active" : ""}`}
+            className="hero-photo"
             src="/images/hero-cinematic.webp"
             alt=""
             fetchPriority="high"
-            aria-hidden="true"
-            width="1672"
-            height="941"
-          />
-          <img
-            className={`hero-photo ${theme === "light" ? "is-active" : ""}`}
-            src="/images/hero-sunrise-background.webp"
-            alt=""
-            aria-hidden="true"
-            width="1672"
-            height="941"
-          />
-          <img
-            className="hero-person"
-            src="/images/hero-person.webp"
-            alt=""
-            aria-hidden="true"
-            width="1672"
-            height="941"
+            width="1536"
+            height="1024"
           />
           <div className="hero-shade" />
           <div className="wrap hero-content">
