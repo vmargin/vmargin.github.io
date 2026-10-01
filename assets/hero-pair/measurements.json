@@ -1,0 +1,213 @@
+{
+  "selected": {
+    "person": {
+      "hair": {
+        "meanAbsoluteRGBDifference": 3.8425,
+        "max": 12,
+        "exactChannelFraction": 0.07
+      },
+      "face": {
+        "meanAbsoluteRGBDifference": 17.166666666666668,
+        "max": 41,
+        "exactChannelFraction": 0
+      },
+      "shirt": {
+        "meanAbsoluteRGBDifference": 3.256666666666667,
+        "max": 25,
+        "exactChannelFraction": 0.215
+      },
+      "arm": {
+        "meanAbsoluteRGBDifference": 11.942222222222222,
+        "max": 39,
+        "exactChannelFraction": 0.015555555555555555
+      },
+      "trousers": {
+        "meanAbsoluteRGBDifference": 2.6454166666666667,
+        "max": 8,
+        "exactChannelFraction": 0.03333333333333333
+      }
+    },
+    "samples": {
+      "light": {
+        "upperLeft": "#e2d1cf",
+        "upperMiddle": "#a9c9eb",
+        "upperRight": "#d5d7de",
+        "cloudBand": "#fdf1c8",
+        "warmBand": "#fec589",
+        "sun": "#fdeca1",
+        "grass": "#38321d"
+      },
+      "dark": {
+        "upperLeft": "#0e1321",
+        "upperMiddle": "#37364c",
+        "upperRight": "#352a38",
+        "cloudBand": "#fa903a",
+        "warmBand": "#742c1f",
+        "sun": "#fa5c0e",
+        "grass": "#1d1910"
+      },
+      "referenceLight": {
+        "upperLeft": "#b0cce8",
+        "upperMiddle": "#adccec",
+        "upperRight": "#d4dce9",
+        "cloudBand": "#fbebcc",
+        "warmBand": "#fcd899",
+        "sun": "#fcf7b0",
+        "grass": "#897735"
+      },
+      "referenceDark": {
+        "upperLeft": "#040b20",
+        "upperMiddle": "#213051",
+        "upperRight": "#101327",
+        "cloudBand": "#ed9456",
+        "warmBand": "#773030",
+        "sun": "#f5a357",
+        "grass": "#0d0902"
+      }
+    }
+  },
+  "initial": {
+    "samples": {
+      "generatedLight": {
+        "upperLeft": "#e2d1cf",
+        "upperMiddle": "#a9c9eb",
+        "upperRight": "#d5d7de",
+        "cloudBand": "#fdf1c8",
+        "warmBand": "#fec589",
+        "sun": "#fdeca1",
+        "grass": "#38321d"
+      },
+      "generatedDark": {
+        "upperLeft": "#101728",
+        "upperMiddle": "#4a465b",
+        "upperRight": "#41323d",
+        "cloudBand": "#fa9b4b",
+        "warmBand": "#7f3121",
+        "sun": "#f9640c",
+        "grass": "#18140b"
+      },
+      "videoLight": {
+        "upperLeft": "#b0cce8",
+        "upperMiddle": "#adccec",
+        "upperRight": "#d4dce9",
+        "cloudBand": "#fbebcc",
+        "warmBand": "#fcd899",
+        "sun": "#fcf7b0",
+        "grass": "#897735"
+      },
+      "videoDark": {
+        "upperLeft": "#040b20",
+        "upperMiddle": "#213051",
+        "upperRight": "#101327",
+        "cloudBand": "#ed9456",
+        "warmBand": "#773030",
+        "sun": "#f5a357",
+        "grass": "#0d0902"
+      }
+    },
+    "personInteriorDifferences": {
+      "hair": {
+        "meanAbsoluteRGBDifference": 11.209166666666667,
+        "max": 20,
+        "exactChannelFraction": 0
+      },
+      "face": {
+        "meanAbsoluteRGBDifference": 35.03231292517007,
+        "max": 57,
+        "exactChannelFraction": 0
+      },
+      "shirt": {
+        "meanAbsoluteRGBDifference": 13.682916666666667,
+        "max": 35,
+        "exactChannelFraction": 0
+      },
+      "arm": {
+        "meanAbsoluteRGBDifference": 24.10814814814815,
+        "max": 53,
+        "exactChannelFraction": 0.003703703703703704
+      },
+      "trousers": {
+        "meanAbsoluteRGBDifference": 7.6125,
+        "max": 12,
+        "exactChannelFraction": 0
+      }
+    }
+  },
+  "rejectedExposureAttempt": {
+    "person": {
+      "hair": {
+        "meanAbsoluteRGBDifference": 2.965,
+        "max": 15,
+        "meanLight": 18.89,
+        "meanDark": 19.546666666666667
+      },
+      "face": {
+        "meanAbsoluteRGBDifference": 18.465986394557824,
+        "max": 40,
+        "meanLight": 105.85544217687075,
+        "meanDark": 123.16836734693878
+      },
+      "shirt": {
+        "meanAbsoluteRGBDifference": 7.42875,
+        "max": 29,
+        "meanLight": 28.307083333333335,
+        "meanDark": 33.225
+      },
+      "arm": {
+        "meanAbsoluteRGBDifference": 24.814074074074075,
+        "max": 132,
+        "meanLight": 87.18444444444444,
+        "meanDark": 109.70518518518519
+      },
+      "trousers": {
+        "meanAbsoluteRGBDifference": 7.98375,
+        "max": 18,
+        "meanLight": 19.481666666666666,
+        "meanDark": 27.465416666666666
+      }
+    },
+    "samples": {
+      "light": {
+        "upperLeft": "#e2d1cf",
+        "upperMiddle": "#a9c9eb",
+        "upperRight": "#d5d7de",
+        "cloudBand": "#fdf1c8",
+        "warmBand": "#fec589",
+        "sun": "#fdeca1",
+        "grass": "#38321d"
+      },
+      "dark": {
+        "upperLeft": "#0e1321",
+        "upperMiddle": "#33344a",
+        "upperRight": "#332a36",
+        "cloudBand": "#fb8b32",
+        "warmBand": "#702819",
+        "sun": "#fa550b",
+        "grass": "#1c160d"
+      },
+      "referenceLight": {
+        "upperLeft": "#b0cce8",
+        "upperMiddle": "#adccec",
+        "upperRight": "#d4dce9",
+        "cloudBand": "#fbebcc",
+        "warmBand": "#fcd899",
+        "sun": "#fcf7b0",
+        "grass": "#897735"
+      },
+      "referenceDark": {
+        "upperLeft": "#040b20",
+        "upperMiddle": "#213051",
+        "upperRight": "#101327",
+        "cloudBand": "#ed9456",
+        "warmBand": "#773030",
+        "sun": "#f5a357",
+        "grass": "#0d0902"
+      }
+    }
+  },
+  "verification": {
+    "nativeDimensions": [1672, 941],
+    "applicationCodeChanged": false,
+    "method": "Playwright canvas crop, median15x15 color samples, native person interior patches, 200% portrait and50% blend screenshots"
+  }
+}
