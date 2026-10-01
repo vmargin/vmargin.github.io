@@ -57,6 +57,16 @@
   --hero-foreground: #f5f2ed;
   --hero-secondary: #d5d7db;
   --hero-shade:
+    radial-gradient(
+      ellipse 25% 27% at 52% 14%,
+      rgba(72, 104, 160, 0.45),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 25% 35% at 23% 16%,
+      rgba(0, 15, 29, 0.7),
+      transparent
+    ),
     linear-gradient(
       90deg,
       rgba(9, 17, 23, 0.77) 0%,
@@ -141,6 +151,11 @@ html[data-theme="light"] {
   --hero-foreground: #17202a;
   --hero-secondary: #303b47;
   --hero-shade:
+    radial-gradient(
+      ellipse 30% 35% at 25% 16%,
+      rgba(117, 208, 255, 0.25),
+      transparent
+    ),
     linear-gradient(
       90deg,
       rgba(245, 243, 239, 0.18) 0%,
@@ -148,12 +163,7 @@ html[data-theme="light"] {
       rgba(245, 243, 239, 0.025) 72%,
       rgba(245, 243, 239, 0)
     ),
-    linear-gradient(
-      0deg,
-      rgba(245, 243, 239, 0.08),
-      transparent 38%,
-      rgba(245, 243, 239, 0)
-    );
+    linear-gradient(0deg, rgba(111, 65, 10, 0.45), transparent 35%);
   --hero-shade-mobile: var(--hero-shade);
   --contact-shade:
     linear-gradient(
@@ -531,7 +541,7 @@ p {
   left: 0;
 }
 .hero-photo {
-  object-position: 68% 57%;
+  object-position: 68% 45%;
   height: 112%;
   top: -6%;
   opacity: 0;
@@ -540,18 +550,15 @@ p {
 .hero-photo.is-active {
   opacity: 1;
 }
-html[data-theme="dark"] .hero-photo.is-active {
-  filter: brightness(0.86) saturate(1.1);
-}
 .hero-person {
   z-index: -1;
-  width: min(54vw, 138svh);
+  width: 70vw;
   height: auto;
-  top: auto;
-  bottom: 0;
-  left: calc(62.5% - 34.4vw);
+  top: calc(44.6% - 11.4vw);
+  bottom: auto;
+  left: calc(62.5% - 43.75vw);
   object-position: center;
-  filter: brightness(0.72);
+  filter: brightness(0.9);
 }
 .hero-shade {
   position: absolute;
@@ -620,6 +627,14 @@ html[data-theme="dark"] .hero-photo.is-active {
 }
 .scroll-cue svg {
   animation: scroll-drift 2.8s ease-in-out 3;
+}
+html[data-theme="light"] .hero-bottom,
+html[data-theme="light"] .hero-bottom .location {
+  color: #fff;
+  text-shadow: 0 1px 3px #111820bb;
+}
+html[data-theme="light"] .hero-bottom .scroll-cue {
+  border-color: #ffffffb3;
 }
 .hero::after {
   position: absolute;
@@ -1828,11 +1843,11 @@ html[data-theme="dark"] .hero-photo.is-active {
     object-position: 60% 50%;
   }
   .hero-person {
-    width: min(94vw, 138svh);
+    width: 117.5vw;
     height: auto;
     top: auto;
-    bottom: 0;
-    left: 8.2vw;
+    bottom: -9.4vw;
+    left: -6.4vw;
   }
   .project-grid {
     gap: 14px;
@@ -1961,11 +1976,11 @@ html[data-theme="dark"] .hero-photo.is-active {
     height: 100%;
   }
   .hero-person {
-    width: min(150vw, 138svh);
+    width: 195vw;
     height: auto;
     top: auto;
-    bottom: 0;
-    left: -27.55vw;
+    bottom: -18vw;
+    left: -55.7vw;
   }
   .hero-shade {
     background: var(--hero-shade-mobile);
@@ -2468,6 +2483,17 @@ html[data-theme="dark"] .hero-photo.is-active {
   }
   .dialog-actions > .text-link {
     font-size: 11px;
+  }
+}
+@media (max-width: 530px) {
+  .hero-person {
+    /* Keep the face clear of the CTA row on narrow screens, then join the usual bottom crop. */
+    top: calc(100% - 91.8vw);
+    top: max(
+      calc(100% - 91.8vw),
+      calc(min(526px, calc(2044px - 323vw)) - 31.7vw)
+    );
+    bottom: auto;
   }
 }
 @media (max-width: 360px) {

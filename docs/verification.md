@@ -13,8 +13,8 @@ Environment: local Vite development server, Playwright 1.63 Chromium, October 1,
 
 - The home, projects, about, process, learning journey, and contact sections all render with their supplied title and hierarchy.
 - Separate sunrise and sunset hero plates and one transparent foreground portrait load as local assets. Switching themes crossfades the background plates while keeping the portrait's source, position, size, and filter unchanged. The generated dusk contact photo is lazy loaded.
-- At 1280×720, Playwright measured the hero at 504px high and the foreground portrait at approximately x=759–823, y=227–499 in both themes. The projects section begins directly below the hero, matching the supplied reference framing.
-- The desktop hero matches the reference's subject position, clear sunrise/dark sunset contrast, dark left-hand title treatment, editorial serif type, quiet header, and paired actions.
+- At 1280×720, Playwright measured the hero at 504px high. The enlarged foreground portrait starts near y=225 and is clipped at the hero edge, so its shoes are hidden in both themes. The projects section begins directly below the hero.
+- The desktop hero follows the reference's subject position and crop, blue sunrise versus navy/coral sunset, dark left-hand title treatment, editorial serif type, quiet header, and paired actions. The cloud edges and distant park visitors still differ from the video.
 - The three project workflow illustrations and case study cards fit the viewport without horizontal overflow.
 - The first and subsequent project dialogs open and show their matching title and details; dialog state locks body scroll. Escape closes the native dialog and restores focus to the CASH-G launch button.
 - Project hashes and the button links update the intended section. The project overview case study works without an external hosted demo.
@@ -36,3 +36,10 @@ Environment: local Vite development server, Playwright 1.63 Chromium, October 1,
 - The served résumé file is an exact copy of the supplied PDF. The portfolio does not rewrite or redact the document.
 
 The existing social profiles, contact details, project descriptions, and dated project checks are taken from `src/data/portfolio.json`; the checks have not been repeated as part of the site build. The final contact photograph also loads as a local asset. No remote services, analytics, or deployment were added.
+
+## October 1 video-reference refinement
+
+- Compared the supplied video near its light and dark frames with the live hero, including person bounds, hero edge, sky/grass samples, and sun position. The measurements and remaining visual differences are in `docs/hero-reference-analysis.md`.
+- Refined the separate sunrise and sunset plates from the supplied scene. The dark plate has deep navy clouds and a low coral sunset; the light plate has cool blue sky, pale warm horizon, and less green-looking grass. The live portrait remains a single unchanged image node above the shade in both themes.
+- Playwright checked the crop at 1280px, 768px, 390px, and 320px, plus the 400/401px and 530/531px responsive handoffs. Shoes stay clipped and there is no horizontal overflow. On narrow phones, the head remains below the action buttons.
+- Playwright confirmed both images loaded, theme selection persisted after reload, the animated crossfade completed when motion was enabled, the reduced-motion state showed no transition, and the page reported no console errors.
