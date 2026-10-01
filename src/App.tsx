@@ -452,7 +452,7 @@ export default function App() {
         <section className="hero" id="home" aria-labelledby="hero-title">
           <img
             className={`hero-photo ${theme === "dark" ? "is-active" : ""}`}
-            src="/images/hero-cinematic.webp"
+            src="/images/hero-sunset-background.webp"
             alt=""
             fetchPriority="high"
             aria-hidden="true"
@@ -469,7 +469,7 @@ export default function App() {
           />
           <img
             className="hero-person"
-            src="/images/hero-person.webp"
+            src="/images/hero-person-cutout.png"
             alt=""
             aria-hidden="true"
             width="1672"

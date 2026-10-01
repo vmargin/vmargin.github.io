@@ -25,7 +25,7 @@ Vite serves the site at `http://127.0.0.1:5176`. Run `npm.cmd run build` to type
 
 Project descriptions preserve the evidence and limitations recorded in the source portfolio. They do not promise that deployments or historic test results are current. The little screens in the project cards are workflow illustrations, not application screenshots. `public/documents/valkenburgh-margin-resume.pdf` is the supplied résumé PDF copied unchanged; its SHA-256 matches the supplied source file.
 
-The header's Sun/Moon control switches between dark and light palettes and remembers the choice in local storage. Page structure, copy, artwork, and card geometry remain the same; text and controls use contrasting colors in each palette.
+The header's Sun/Moon control switches between dark and light palettes and remembers the choice in local storage. The hero crossfades between a sunrise plate in light mode and a sunset plate in dark mode while the transparent foreground portrait keeps the same size and position. Page structure, copy, and project-card geometry stay the same; text and controls use contrasting colors in each palette.
 
 ## Accessibility and motion
 

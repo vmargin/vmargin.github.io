@@ -1,6 +1,6 @@
 # Portfolio v6 · verification record
 
-Environment: local Vite development server, Codex in-app browser using its documented Playwright API, September 25, 2026.
+Environment: local Vite development server, Playwright 1.63 Chromium, October 1, 2026.
 
 ## Theme and résumé verification
 
@@ -12,8 +12,9 @@ Environment: local Vite development server, Codex in-app browser using its docum
 ## Desktop
 
 - The home, projects, about, process, learning journey, and contact sections all render with their supplied title and hierarchy.
-- The hero and original personal photo load as local assets. The generated dusk contact photo is lazy loaded.
-- The desktop hero matches the reference's subject position, dark left-hand title treatment, editorial serif type, quiet header, and paired actions.
+- Separate sunrise and sunset hero plates and one transparent foreground portrait load as local assets. Switching themes crossfades the background plates while keeping the portrait's source, position, size, and filter unchanged. The generated dusk contact photo is lazy loaded.
+- At 1280×720, Playwright measured the hero at 504px high and the foreground portrait at approximately x=759–823, y=227–499 in both themes. The projects section begins directly below the hero, matching the supplied reference framing.
+- The desktop hero matches the reference's subject position, clear sunrise/dark sunset contrast, dark left-hand title treatment, editorial serif type, quiet header, and paired actions.
 - The three project workflow illustrations and case study cards fit the viewport without horizontal overflow.
 - The first and subsequent project dialogs open and show their matching title and details; dialog state locks body scroll. Escape closes the native dialog and restores focus to the CASH-G launch button.
 - Project hashes and the button links update the intended section. The project overview case study works without an external hosted demo.
@@ -22,10 +23,11 @@ Environment: local Vite development server, Codex in-app browser using its docum
 ## Responsive and interaction checks
 
 - At 390px and 320px widths, confirm the layout has no horizontal overflow. The mobile menu opens, exposes its expanded state and navigation links, closes after an anchor is selected, and returns focus to the toggle. Escape also closes the menu and returns focus. The responsive project grid stays within the 320px viewport.
-- Reduced motion toggles from the footer and changes `document.documentElement.dataset.motion` while preserving readable content and navigation. The system reduced-motion preference is wired in code but was not emulated separately in the browser.
+- Reduced motion toggles from the footer and changes `document.documentElement.dataset.motion` while preserving readable content and navigation. Playwright emulation of the system reduced-motion preference confirmed that hero photo transitions are disabled.
 - All three illustrations and project details load. Escape closes the native case-study dialog, unlocks body scrolling and restores focus to the originating project card. The contact anchor copy fits at 390px, and the generated dusk image loads.
 - The email copy control changes to its success status on click. The current page generated no browser console errors after a fresh reload.
-- TypeScript production build, optimized local images, formatting, and `git diff --check` pass.
+- Playwright verified both theme images load, the background crossfade overlaps during the transition, the portrait bounds do not move between themes, and the selected theme persists after reload.
+- The TypeScript/Vite production build and `git diff --check` pass. Changed files pass Prettier. The repository-wide format check still reports warnings in untouched `src/usePortfolioMotion.ts`, `DESIGN.md`, and `index.html`.
 
 ## Résumé update
 

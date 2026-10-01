@@ -102,7 +102,7 @@ html[data-theme="light"] {
   --text-secondary: #45515e;
   --text-quiet: #566372;
   --header-surface: rgba(245, 243, 239, 0.94);
-  --header-open-surface: rgba(245, 243, 239, 0.88);
+  --header-open-surface: rgba(245, 243, 239, 0.24);
   --header-edge: rgba(23, 32, 42, 0.14);
   --header-action-border: var(--line);
   --menu-control-bg: var(--control-surface);
@@ -132,7 +132,7 @@ html[data-theme="light"] {
   --dialog-overlay: rgba(255, 255, 255, 0.96);
   --dialog-secondary: #45515e;
   --dialog-quiet: #566372;
-  --hero-image-shade: linear-gradient(transparent, rgba(245, 243, 239, 0.84));
+  --hero-image-shade: linear-gradient(transparent, rgba(245, 243, 239, 0.18));
   --contact-rule: rgba(23, 32, 42, 0.2);
   --contact-muted: #45515e;
   --footer-muted: #566372;
@@ -143,16 +143,16 @@ html[data-theme="light"] {
   --hero-shade:
     linear-gradient(
       90deg,
-      rgba(245, 243, 239, 0.9) 0%,
-      rgba(245, 243, 239, 0.72) 35%,
-      rgba(245, 243, 239, 0.18) 72%,
-      rgba(245, 243, 239, 0.04)
+      rgba(245, 243, 239, 0.18) 0%,
+      rgba(245, 243, 239, 0.12) 35%,
+      rgba(245, 243, 239, 0.025) 72%,
+      rgba(245, 243, 239, 0)
     ),
     linear-gradient(
       0deg,
-      rgba(245, 243, 239, 0.48),
+      rgba(245, 243, 239, 0.08),
       transparent 38%,
-      rgba(245, 243, 239, 0.12)
+      rgba(245, 243, 239, 0)
     );
   --hero-shade-mobile: var(--hero-shade);
   --contact-shade:
@@ -407,7 +407,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 83px;
+  height: 60px;
   transition: height 0.4s var(--ease);
 }
 .site-header.is-scrolled {
@@ -416,11 +416,11 @@ p {
   border-color: var(--line);
 }
 .is-scrolled .header-inner {
-  height: 68px;
+  height: 56px;
 }
 .monogram {
   font-family: var(--serif);
-  font-size: 42px;
+  font-size: 36px;
   line-height: 1;
   font-weight: 500;
   display: inline-flex;
@@ -510,8 +510,7 @@ p {
 
 /* Cinematic opening, with live typography above the image. */
 .hero {
-  min-height: 690px;
-  height: min(820px, 91svh);
+  height: clamp(500px, 70svh, 820px);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -541,11 +540,17 @@ p {
 .hero-photo.is-active {
   opacity: 1;
 }
+html[data-theme="dark"] .hero-photo.is-active {
+  filter: brightness(0.86) saturate(1.1);
+}
 .hero-person {
   z-index: -1;
-  object-position: 68% 57%;
-  height: 112%;
-  top: -6%;
+  width: min(54vw, 138svh);
+  height: auto;
+  top: auto;
+  bottom: 0;
+  left: calc(62.5% - 34.4vw);
+  object-position: center;
   filter: brightness(0.72);
 }
 .hero-shade {
@@ -564,7 +569,7 @@ p {
   color: var(--hero-secondary);
 }
 .hero h1 {
-  font-size: clamp(62px, 6.4vw, 105px);
+  font-size: clamp(42px, 4.4vw, 72px);
   line-height: 1.04;
   letter-spacing: -0.033em;
   margin: 16px 0 3px;
@@ -572,19 +577,19 @@ p {
 }
 .hero-role {
   font-family: var(--serif);
-  font-size: clamp(32px, 3.4vw, 52px);
+  font-size: clamp(28px, 2.7vw, 40px);
   line-height: 1.25;
   margin-bottom: 18px;
 }
 .hero-description {
   font-family: var(--serif);
-  font-size: clamp(22px, 2vw, 29px);
+  font-size: clamp(16px, 1.4vw, 21px);
   line-height: 1.35;
   color: var(--hero-secondary);
   margin-bottom: 30px;
 }
 .hero .button {
-  min-width: 160px;
+  min-width: 136px;
 }
 .hero-bottom {
   position: absolute;
@@ -639,11 +644,38 @@ p {
 
 /* Work, deliberately presented as three equal editorial studies. */
 .projects-section {
-  padding-top: 44px;
+  padding-top: 17px;
   padding-bottom: 62px;
 }
 .projects-section h2 {
-  font-size: clamp(38px, 3.2vw, 50px);
+  font-size: clamp(32px, 2.75vw, 44px);
+}
+@media (min-width: 961px) {
+  .hero h1 {
+    margin-top: 8px;
+  }
+  .hero-role {
+    margin-bottom: 2px;
+  }
+  .hero-description {
+    margin-bottom: 10px;
+  }
+  .hero .button {
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 16px;
+    gap: 10px;
+    font-size: 11px;
+  }
+  .hero .button:first-child {
+    min-width: 136px;
+  }
+  .projects-section .eyebrow + h2 {
+    margin-top: 7px;
+  }
+  .projects-section .section-heading {
+    margin-bottom: 8px;
+  }
 }
 .project-grid {
   display: grid;
@@ -1792,9 +1824,15 @@ p {
   .hero-role {
     font-size: 36px;
   }
-  .hero-photo,
-  .hero-person {
+  .hero-photo {
     object-position: 60% 50%;
+  }
+  .hero-person {
+    width: min(94vw, 138svh);
+    height: auto;
+    top: auto;
+    bottom: 0;
+    left: 8.2vw;
   }
   .project-grid {
     gap: 14px;
@@ -1917,11 +1955,17 @@ p {
   .hero .button-row {
     gap: 12px;
   }
-  .hero-photo,
-  .hero-person {
+  .hero-photo {
     object-position: 64% center;
     top: 0;
     height: 100%;
+  }
+  .hero-person {
+    width: min(150vw, 138svh);
+    height: auto;
+    top: auto;
+    bottom: 0;
+    left: -27.55vw;
   }
   .hero-shade {
     background: var(--hero-shade-mobile);
