@@ -26,8 +26,6 @@ import {
   Search,
   Server,
   Sparkles,
-  Sun,
-  Moon,
   Users,
   X,
 } from "lucide-react";
@@ -37,8 +35,6 @@ import { usePortfolioMotion } from "./usePortfolioMotion";
 
 type Project = (typeof portfolio.projects)[number];
 const { site, about, projects } = portfolio;
-type ColorTheme = "dark" | "light";
-const themeStorageKey = "v6-theme";
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "Projects", href: "#projects" },
@@ -97,37 +93,6 @@ function Action({
       <span>{children}</span>
       {icon}
     </a>
-  );
-}
-
-function ThemeToggle({
-  theme,
-  onChange,
-}: {
-  theme: ColorTheme;
-  onChange: (theme: ColorTheme) => void;
-}) {
-  return (
-    <div className="theme-toggle" role="group" aria-label="Color theme">
-      <button
-        className="theme-toggle-option"
-        type="button"
-        aria-label="Light theme"
-        aria-pressed={theme === "light"}
-        onClick={() => onChange("light")}
-      >
-        <Sun size={16} aria-hidden="true" />
-      </button>
-      <button
-        className="theme-toggle-option"
-        type="button"
-        aria-label="Dark theme"
-        aria-pressed={theme === "dark"}
-        onClick={() => onChange("dark")}
-      >
-        <Moon size={16} aria-hidden="true" />
-      </button>
-    </div>
   );
 }
 
@@ -271,15 +236,6 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [selected, setSelected] = useState<Project | null>(null);
-  const [theme, setTheme] = useState<ColorTheme>(() => {
-    try {
-      return localStorage.getItem(themeStorageKey) === "light"
-        ? "light"
-        : "dark";
-    } catch {
-      return "dark";
-    }
-  });
   const [systemReduced, setSystemReduced] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
@@ -317,18 +273,6 @@ export default function App() {
       /* The preference remains available for this visit. */
     }
   }, [motionEnabled, motionPaused]);
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "light" ? "#f5f3ef" : "#10161c");
-    try {
-      localStorage.setItem(themeStorageKey, theme);
-    } catch {
-      /* The selected theme remains active for this visit. */
-    }
-  }, [theme]);
   useEffect(() => {
     const update = () => {
       setScrolled(window.scrollY > 40);
@@ -403,23 +347,20 @@ export default function App() {
               </a>
             ))}
           </nav>
-          <div className="header-actions">
-            <ThemeToggle theme={theme} onChange={setTheme} />
-            <a className="header-cta" href="#contact">
-              Let’s Work Together
-              <ArrowRight size={16} />
-            </a>
-            <button
-              ref={menuTrigger}
-              className="icon-button menu-toggle"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-navigation"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
+          <a className="header-cta" href="#contact">
+            Let’s Work Together
+            <ArrowRight size={16} />
+          </a>
+          <button
+            ref={menuTrigger}
+            className="icon-button menu-toggle"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X /> : <Menu />}
+          </button>
         </div>
         <nav
           id="mobile-navigation"

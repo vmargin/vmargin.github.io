@@ -1,13 +1,6 @@
 # Portfolio v6 · verification record
 
-Environment: local Vite development server, Codex in-app browser using its documented Playwright API, September 25, 2026.
-
-## Theme and résumé verification
-
-- The header Sun/Moon controls set the corresponding theme by mouse and keyboard, expose selection using `aria-pressed`, and persist it through reload under the `v6-theme` local-storage key. The saved theme is applied before React renders to avoid a flash of the default palette.
-- Dark and light themes preserve page structure, content, artwork, and card geometry. Surfaces and foreground text/icons adapt for contrast.
-- At 320px and 390px, both theme buttons and the mobile-menu button retain 44px hit targets, and neither theme introduces horizontal page overflow. The mobile menu still opens and closes with Escape.
-- The résumé route serves the supplied PDF without modification. Source and served copy both have SHA-256 `D723636EC5B1E2DE562038CA082A34D9439F45AB1C6FF3A0791DFC3ECD5C8326` and are 79,800 bytes.
+Environment: local Vite development server, Codex in-app browser using its documented Playwright API, September 24, 2026.
 
 ## Desktop
 
@@ -31,6 +24,6 @@ Environment: local Vite development server, Codex in-app browser using its docum
 
 - The résumé action points to `/documents/valkenburgh-margin-resume.pdf`; the local server returns HTTP 200 with `application/pdf`, and the portfolio buttons expose a download action.
 - Playwright checks at 390px and 320px reported no horizontal overflow. The updated biography and education timeline expose the résumé's four-branch ARCTIC context and relevant coursework.
-- The served résumé file is an exact copy of the supplied PDF. The portfolio does not rewrite or redact the document.
+- The portfolio PDF is one page, searchable, and retains all three project repository links. A text extraction check found no phone number or home-city line; the supplied original remains outside the repository.
 
 The existing social profiles, contact details, project descriptions, and dated project checks are taken from `src/data/portfolio.json`; the checks have not been repeated as part of the site build. The final contact photograph also loads as a local asset. No remote services, analytics, or deployment were added.
