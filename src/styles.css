@@ -56,33 +56,6 @@
   --blockquote-rule: #becbd7;
   --hero-foreground: #f5f2ed;
   --hero-secondary: #d5d7db;
-  --hero-shade:
-    radial-gradient(
-      ellipse 25% 27% at 52% 14%,
-      rgba(72, 104, 160, 0.45),
-      transparent
-    ),
-    radial-gradient(
-      ellipse 25% 35% at 23% 16%,
-      rgba(0, 15, 29, 0.7),
-      transparent
-    ),
-    linear-gradient(
-      90deg,
-      rgba(9, 17, 23, 0.77) 0%,
-      rgba(11, 18, 26, 0.56) 34%,
-      rgba(11, 18, 26, 0.12) 70%,
-      rgba(11, 18, 26, 0.03)
-    ),
-    linear-gradient(
-      0deg,
-      rgba(11, 17, 22, 0.45),
-      transparent 35%,
-      rgba(11, 17, 22, 0.12)
-    );
-  --hero-shade-mobile:
-    linear-gradient(90deg, #0b1624ca, #0b162462 70%, #0b16242a),
-    linear-gradient(0deg, #07101b88, transparent 40%);
   --contact-shade:
     linear-gradient(
       90deg,
@@ -150,21 +123,6 @@ html[data-theme="light"] {
   --blockquote-rule: #687685;
   --hero-foreground: #17202a;
   --hero-secondary: #303b47;
-  --hero-shade:
-    radial-gradient(
-      ellipse 30% 35% at 25% 16%,
-      rgba(117, 208, 255, 0.25),
-      transparent
-    ),
-    linear-gradient(
-      90deg,
-      rgba(245, 243, 239, 0.18) 0%,
-      rgba(245, 243, 239, 0.12) 35%,
-      rgba(245, 243, 239, 0.025) 72%,
-      rgba(245, 243, 239, 0)
-    ),
-    linear-gradient(0deg, rgba(111, 65, 10, 0.45), transparent 35%);
-  --hero-shade-mobile: var(--hero-shade);
   --contact-shade:
     linear-gradient(
       90deg,
@@ -529,7 +487,6 @@ p {
   background: #2a3540;
 }
 .hero-photo,
-.hero-person,
 .contact-photo {
   position: absolute;
   width: 100%;
@@ -544,29 +501,16 @@ p {
   object-position: 68% 45%;
   height: 112%;
   top: -6%;
+  z-index: 0;
   opacity: 0;
   transition: opacity 0.75s var(--ease);
 }
 .hero-photo.is-active {
   opacity: 1;
 }
-.hero-person {
-  z-index: -1;
-  width: 70vw;
-  height: auto;
-  top: calc(44.6% - 11.4vw);
-  bottom: auto;
-  left: calc(62.5% - 43.75vw);
-  object-position: center;
-  filter: brightness(0.9);
-}
-.hero-shade {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: var(--hero-shade);
-}
 .hero-content {
+  position: relative;
+  z-index: 1;
   padding-top: 50px;
   padding-bottom: 45px;
 }
@@ -600,6 +544,7 @@ p {
 }
 .hero-bottom {
   position: absolute;
+  z-index: 1;
   bottom: 30px;
   left: 0;
   right: 0;
@@ -1842,13 +1787,6 @@ html[data-theme="light"] .hero-bottom .scroll-cue {
   .hero-photo {
     object-position: 60% 50%;
   }
-  .hero-person {
-    width: 117.5vw;
-    height: auto;
-    top: auto;
-    bottom: -9.4vw;
-    left: -6.4vw;
-  }
   .project-grid {
     gap: 14px;
   }
@@ -1959,7 +1897,7 @@ html[data-theme="light"] .hero-bottom .scroll-cue {
   }
   .hero-description {
     font-size: 22px;
-    max-width: 300px;
+    max-width: min(250px, calc(100% - 90px));
   }
   .hero .button {
     min-width: 0;
@@ -1971,19 +1909,9 @@ html[data-theme="light"] .hero-bottom .scroll-cue {
     gap: 12px;
   }
   .hero-photo {
-    object-position: 64% center;
+    object-position: 52% center;
     top: 0;
     height: 100%;
-  }
-  .hero-person {
-    width: 195vw;
-    height: auto;
-    top: auto;
-    bottom: -18vw;
-    left: -55.7vw;
-  }
-  .hero-shade {
-    background: var(--hero-shade-mobile);
   }
   .hero-bottom {
     bottom: 23px;
@@ -2485,17 +2413,6 @@ html[data-theme="light"] .hero-bottom .scroll-cue {
     font-size: 11px;
   }
 }
-@media (max-width: 530px) {
-  .hero-person {
-    /* Keep the face clear of the CTA row on narrow screens, then join the usual bottom crop. */
-    top: calc(100% - 91.8vw);
-    top: max(
-      calc(100% - 91.8vw),
-      calc(min(526px, calc(2044px - 323vw)) - 31.7vw)
-    );
-    bottom: auto;
-  }
-}
 @media (max-width: 360px) {
   :root {
     --gutter: 20px;
@@ -2573,7 +2490,6 @@ html[data-theme="light"] .hero-bottom .scroll-cue {
     transition: none !important;
   }
   .hero-photo,
-  .hero-person,
   .contact-photo {
     transform: none !important;
   }

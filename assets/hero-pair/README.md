@@ -1,34 +1,33 @@
-# Full sunrise/sunset photo pair
+# Hero photo pair provenance and fit
 
-Created October 1, 2026, with built-in image_gen. This is an image-only trial in portfolio v6; the site still uses its existing backgrounds and shared portrait.
+## Current application pair
 
-## Selected files
+The October 2, 2026 photos supplied by the user are the selected hero artwork. Both are complete, opaque 1672 × 941 PNGs with the person embedded in the scene. The light source was already byte-identical to the file in `public/images`; the dark source replaced the October 1 generated candidate at the same filename. Neither source photo was edited, regenerated, filtered, or resized.
 
-- `../../public/images/hero-full-sunrise-v2.png`
-- `../../public/images/hero-full-sunset-v2.png`
+| Theme           | Supplied source                                                          | Application asset                        | SHA-256                                                            |
+| --------------- | ------------------------------------------------------------------------ | ---------------------------------------- | ------------------------------------------------------------------ |
+| Dark / sunset   | `C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_47 PM.png` | `public/images/hero-full-sunset-v2.png`  | `4FB63B34EDA51CE87D50688C92B2DEDC6B8A6D569FF76130F4596CE5E454EF5E` |
+| Light / sunrise | `C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_33 PM.png` | `public/images/hero-full-sunrise-v2.png` | `41DBBC8119F7EF0BD74F39A5D72C33F8F2CDA4E09F0258B78C64135799F91FEF` |
 
-Both opaque PNGs are native **1672 × 941** pixels and contain the foreground person. They were not upscaled. The tool returned this size despite the initial 3840 × 2160 prompt. The dark photograph was edited from the selected complete light scene.
+The figure shares the same pose and position across the pair. Its lighting is part of each photo, so the figure's brightness and skin tones differ between themes. Keeping the supplied photos untouched preserves their detail and framing.
 
-## Reference and crop
+## Reference and responsive fit
 
-The supplied original 4032 × 3024 photograph was the identity/detail reference. The video is the background target, sampled at 1 s and 4 s. Saved frames are in `reference/`; their hero crop is approximately x=143, y=64, width=994, height=389. The supplied screenshots show the corresponding 1672 × 654 hero.
+The video reference is `D:/Games/VALO CLIPS/Outplayed/Screen recorder/Screen recorder_10-01-2026_12-26-13-106/Screen recorder_10-01-2026_12-26-45-572.mp4`. The comparison frames remain in `reference/`; the captured hero is about 994 × 389 within the 1280 × 720 video frame. At a 1280 × 720 browser viewport, the portfolio hero is 1280 × 504, an almost identical aspect ratio. Both source photos fill the same `object-fit: cover` box at the same position. The crop displays approximately source rows 131–790, keeping the head near the video's y≈225 placement and clipping the feet below the hero edge.
 
-Playwright confirmed a 1280 × 504 desktop hero with a 1280 × 564.48 background element at y=-30.24, cover fit and 68% 45% object position. The displayed source slice is approximately y=131–790. The person's head begins near native y=428, displaying at y≈227; center is near 62–63% of width. Shoes stay beyond the visible crop.
+At tablet width, the photos use a 60% horizontal crop. On phones, they use 52% to preserve the face at the right of the copy; the paragraph narrows with the viewport to keep its last line clear of the embedded figure. Playwright at 768px, 390px, and 320px confirmed that the photos load and the page has no horizontal overflow.
 
-## Verification and limits
+Only the two complete photographs are in the hero. The theme transition remains a 0.75-second opacity crossfade; desktop parallax moves both photos together. No overlay, CSS filter, independent portrait, or extra image layer changes the supplied artwork. Reduced-motion handling remains active.
 
-Both PNGs decoded and loaded in Playwright with equal dimensions. `reference/pair-comparison.png` compares the actual desktop crop with the video. `reference/portrait-alignment.png` shows the person at 200% and in a 50% blend: pose and silhouette align without a conspicuous doubled outline at desktop size.
+## Six-stage design-engineering record
 
-Light follows pale blue/cream morning colors; dark follows navy/indigo and coral/orange sunset with city lights. No green upper-sky cast was observed.
+1. **Foundations:** Retain the existing React/Vite portfolio structure, hero content, section order, and responsive/accessibility requirements.
+2. **Aesthetic:** Match the video’s cool bright dawn and deep navy/coral dusk using the supplied pair as the visual authority.
+3. **Identity:** Lock the October 2 photos as final artwork; do not generate or alter either image.
+4. **Motion:** Keep the existing crossfade and parallax, with both photo layers sharing one motion target and respecting reduced motion.
+5. **Implementation:** Use two decorative image elements with one shared crop; remove the separate portrait and photo shade.
+6. **Audit:** Compare both themes in Playwright at desktop and phone sizes, check image geometry, controls, reduced-motion behavior, runtime output, and overflow.
 
-**This is a matched concept pair, not an exact reference copy or a pixel-identical person.** Dark skin remains slightly dimmer. Selected native interior-patch mean RGB differences are 3.8 for hair, 17.2 for face, 3.3 for shirt, 11.9 for arm and 2.6 for trousers on a 0–255 scale. These patches measure exposure/detail consistency, not identity. Hair, face, necklace and clothing details are generated rather than untouched pixels from the original.
+## Earlier October 1 image-generation trial
 
-Cloud shapes, sun placement, benches and hedge height differ from the reference. Grass microtexture remains visibly synthetic at full resolution. `measurements.json` records comparison data; samples landing on different scene objects cannot establish a literal color match.
-
-The final exposure-only attempt over-brightened skin and returned 1671 × 941. It was rejected; the earlier equal-sized pair with better alignment was retained.
-
-## Later integration
-
-Application source, existing artwork and resume PDF were untouched. Later integration requires replacing the three-image hero with two photographs. Mobile currently positions the portrait independently, so the future image crop rules require responsive adjustment and testing. This generation trial does not verify that future implementation.
-
-`prompts.json` records all prompts and selected paths. Source candidates remain in the tool's generated-images folder. Only the selected pair was added as new public hero assets. Reverting this asset-only commit preserves the previous hero implementation.
+This folder began as an image-generation experiment. Its prompts and comparison assets document that earlier work only; they do not describe the current application files. `prompts.json` preserves the old prompts and marks their selected files as historical. In `measurements.json`, `currentApplicationPair` contains the October 2 source hashes and current browser measurements; properties prefixed `october1` retain the old color and person-patch results. The October 1 portrait-alignment image and color samples must not be read as measurements of the new pair.

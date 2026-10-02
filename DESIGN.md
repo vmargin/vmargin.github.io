@@ -21,7 +21,7 @@ Maximum content width 1440px with fluid 5.4vw gutters. Display sizes use clamp; 
 
 ## Stage 3: visual identity and assets
 
-Reuse the four supplied comps as the already-approved individual section designs. Generate clean photographic assets from the hero and contact references through the built-in imagegen tool. Keep all final assets in public/images. A monogram, sunset photography, ivory serif headings and blue line icons form the identity. Do not invent a new brand moodboard.
+Reuse the four supplied comps as the already-approved individual section designs. For the hero, use the two complete October 2 photos supplied by the user as-is; do not generate or alter them. Keep all final assets in public/images. A monogram, sunset photography, ivory serif headings and blue line icons form the identity. Do not invent a new brand moodboard.
 
 Content provenance: reference project names and stacks are design concepts until verified. Do not present sample employment dates as actual history. Keep unconfirmed links and resume state explicit. No fabricated achievements, live deployments or client work. The supplied résumé is the source for the four-branch ARCTIC context and university coursework. The portfolio serves the supplied résumé PDF byte-for-byte.
 

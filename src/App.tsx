@@ -452,7 +452,7 @@ export default function App() {
         <section className="hero" id="home" aria-labelledby="hero-title">
           <img
             className={`hero-photo ${theme === "dark" ? "is-active" : ""}`}
-            src="/images/hero-sunset-background.webp"
+            src="/images/hero-full-sunset-v2.png"
             alt=""
             fetchPriority="high"
             aria-hidden="true"
@@ -461,21 +461,12 @@ export default function App() {
           />
           <img
             className={`hero-photo ${theme === "light" ? "is-active" : ""}`}
-            src="/images/hero-sunrise-background.webp"
+            src="/images/hero-full-sunrise-v2.png"
             alt=""
             aria-hidden="true"
             width="1672"
             height="941"
           />
-          <img
-            className="hero-person"
-            src="/images/hero-person-cutout.png"
-            alt=""
-            aria-hidden="true"
-            width="1672"
-            height="941"
-          />
-          <div className="hero-shade" />
           <div className="wrap hero-content">
             <div className="hero-reveal">
               <Eyebrow>Hello, I’m</Eyebrow>

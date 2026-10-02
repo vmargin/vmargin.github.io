@@ -1,29 +1,34 @@
-# Hero reference analysis
+# October 2 hero photo fit against the video
 
-Source: the supplied screen recording, sampled near 1 s (sunrise) and 4 s (sunset), and its 1280 × 720 comparison frames. This records the visual target for the October 1 refinement; the portfolio copy remains based on the supplied résumé.
+## Visual target
 
-| Feature   | Video reference                                                                                                                  | Previous v6 render                                                   | Direction                                                                                                         |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Hero edge | About y=500 in both modes                                                                                                        | y=504                                                                | Keep the existing hero height.                                                                                    |
-| Person    | Head about x=775–839, top y=225; body about 75–82 px wide; shoes cropped at hero edge                                            | Head near x=782–820, top y=228; body about 59 px wide; shoes visible | Scale the one transparent portrait around the head to about 70vw at 1280px, and let the hero clip its lower legs. |
-| Dark sky  | Near-black navy/indigo above a red/coral sunset; sampled top-left sky `#08121f`, upper-right sky `#161a2e`, coral band `#93453e` | Brown/gray clouds, turquoise patch and olive-gold horizon            | Replace the sunset plate with a deeper dusk edit, keeping the park scene and foreground portrait separate.        |
-| Light sky | Powder-blue upper sky with cream cloud edges and a pale peach-yellow horizon; sampled sky `#aec7e2` and `#b4d1ed`                | Orange-gold across most of the sky                                   | Replace the sunrise plate with a cooler dawn edit.                                                                |
+The screen recording remains the reference for framing and time-of-day contrast. Its page hero occupies approximately x=143–1137 and y=64–453 in a 1280 × 720 recording, or about 994 × 389. At a 1280 × 720 Playwright viewport, the v6 hero measures 1280 × 504, preserving nearly the same 2.54:1 frame. The supplied photographs are 1672 × 941 (1.78:1), so the wide hero necessarily crops vertically.
 
-The reference plates and previous generated plates have different cloud shapes, so a CSS color filter alone cannot make them pixel-identical. Preserve one portrait asset above the background shade, with the same crop and exposure in both themes; only the background plates crossfade.
+The recording shows a near-night navy/indigo sky with a coral sunset in dark mode and a cool, bright blue dawn with restrained peach light in the horizon in light mode. The two October 2 photos follow those distinct conditions while keeping the person near the same right-of-center position, looking upward, with feet below the hero boundary. The new pair is brighter and clearer than the video frame in places, which is inherent to the supplied source files and has not been graded with CSS.
 
-## Result
+## Fitted result
 
-The final hero keeps the same 504px desktop boundary. At a 1280px viewport the portrait image is 896px wide, and its alpha bounds place the head near y=225 and the body around x=754–834. The shoes fall below the clipped hero. The portrait source, geometry, and `brightness(0.9)` remain identical when switching themes. The sunrise and sunset plates are separate edits of the Antipolo scene; the light-mode ground receives a warm shade, while the top-left sky stays cool blue.
+| Check      | Video reference                                  | Playwright render, 1280 × 720                              | Result                                                                            |
+| ---------- | ------------------------------------------------ | ---------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Hero frame | About 994 × 389 inside the recording             | 1280 × 504                                                 | Matching wide composition; page layout unchanged                                  |
+| Person     | Head near x=775–839, y≈225 in the captured frame | Head around x=790–835, y≈228                               | Near the same position and scale; lower legs/feet stay clipped                    |
+| Dark sky   | Deep navy/indigo above the coral sunset          | Supplied dark photo; no shade, filter, or color overlay    | Deep dusk remains, though some clouds are brighter and more orange than the video |
+| Light sky  | Bright powder blue with pale warm horizon        | Supplied light photo; no shade, filter, or color overlay   | Cool dawn remains; cloud placement and local warmth differ from the video         |
+| Theme swap | Person appears fixed as the environment changes  | Two same-sized complete photos crossfade in one shared box | Same figure pose and placement; the source lighting differs                       |
 
-Representative 11×11 median samples from the reference and final Playwright screenshots, using the same normalized viewport location:
+At desktop, each `<img>` measures 1280 × 564.47 at y=-30.23 with `object-fit: cover` and `object-position: 68% 45%`. The visible source slice is approximately y=131–790, matching the video’s head height and clipping the feet below the 504px hero boundary. Both theme layers report the same box and have no CSS filter. The old cutout portrait and hero shade are absent.
 
-| Mode and location                | Reference | Final render |
-| -------------------------------- | --------- | ------------ |
-| Dark upper-left sky (300, 80)    | `#08121f` | `#081120`    |
-| Dark upper-middle sky (650, 80)  | `#2e3c5b` | `#263758`    |
-| Dark coral band (1000, 250)      | `#93453e` | `#983e2c`    |
-| Light upper-left sky (300, 80)   | `#aec7e2` | `#b1c7df`    |
-| Light upper-middle sky (650, 80) | `#b4d1ed` | `#a9caec`    |
-| Light grass (500, 460)           | `#927c40` | `#91834a`    |
+At 768 × 900, the photo uses `object-position: 60% 50%` and the figure stays clear of the wrapped title and body copy. At mobile sizes, it uses `object-position: 52% 50%`; the paragraph narrows to leave the embedded figure's face clear. Playwright checks at 768 × 900, 390 × 844, and 320 × 780 confirmed that the photo is loaded and `document.documentElement.scrollWidth` equals the viewport width. The scene remains intentionally cropped more tightly on phones than in the desktop video reference.
 
-The source screenshot contains UI and a different cloud arrangement, so the resulting clean photographic plates still differ in cloud edges, sun glow, and some distant park visitors. The important mode contrast, subject identity/crop, and light/dark placement now follow the video without baking its UI into the site.
+## Design-engineering pipeline decisions
+
+1. **Foundations:** Preserve the current portfolio architecture, copy, page flow, theme control, and accessible/reduced-motion behavior.
+2. **Aesthetic:** Use the supplied video to evaluate sunrise/sunset contrast and the two new photos as the final image authority.
+3. **Identity:** Keep both user files byte-for-byte. They are complete photos containing the same figure and pose.
+4. **Motion:** Crossfade the two full images and move them together for desktop parallax. Reduced-motion preferences continue to suppress movement and transitions.
+5. **Implementation:** Replace the two background plates plus separate portrait with two full-photo layers; remove the hero color overlay and retain one responsive crop per breakpoint.
+6. **Audit:** Compare dark and light browser renders with the reference, check desktop/mobile composition and overflow, and verify both sources load without filters.
+
+The people are part of the supplied photos, so their lighting is baked in; their pixels are not identical between themes. Making the person pixel-identical would require altering the photos or reintroducing a separate portrait layer, neither of which is part of this integration. Cloud shapes, exact sun glow, and small park details also differ from the recording because the user-supplied photos are now locked as the artwork.
+
+Source frames: `assets/hero-pair/reference/video-light.png` and `assets/hero-pair/reference/video-dark.png`. Exact image hashes and current browser measurements are in `assets/hero-pair/measurements.json`.

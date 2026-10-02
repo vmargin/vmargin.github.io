@@ -96,7 +96,7 @@ export function usePortfolioMotion(
       media.add(
         "(min-width: 768px) and (hover: hover) and (pointer: fine)",
         () => {
-          gsap.to(".hero-photo, .hero-person", {
+          gsap.to(".hero-photo", {
             yPercent: 12,
             ease: "none",
             scrollTrigger: {

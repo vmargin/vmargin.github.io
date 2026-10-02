@@ -32,8 +32,24 @@
       "prompt": "Precise EXPOSURE-ONLY correction on image1 darkphotograph. Keep entire1672x941scene andallgeometry unchanged.\nImage2is exact foreground-man brightness/detail/color source. The man's exposedskin in image1 is still16% dimmer than image2. Increase ONLY his face/ear/neck and exposedforearm brightness by about19% and match the skin colors of image2 exactly. Darkhair andblackshirt already close, leave them unchanged. Nochange tofacefeatures, contours, hair, shirtprint, watch, arms, bodypositionorscale.\nThis is a fixedperson acrosslight/darkphotos, sameposeanddetail. Use originalfacepixels/detailofimage2; no newportrait. Neutral soft filllighting on skin ONLY. NOhalo aroundhim. All sky/clouds/sun/grass/park/backgroundpixels and exposure untouched. No globally brighteningtheimage. Output ONE1672x941full-bleed photograph, no UItextwatermark."
     }
   ],
-  "selected": {
+  "recordStatus": "Historical record of the October 1, 2026 generated-photo trial; prompt text and results are retained as history.",
+  "previousGeneratedSelection": {
     "light": "public/images/hero-full-sunrise-v2.png",
-    "dark": "public/images/hero-full-sunset-v2.png"
+    "dark": "public/images/hero-full-sunset-v2.png",
+    "note": "These paths were reused for the October 2 user-supplied photos and no longer contain the generated images described by the prompts."
+  },
+  "currentApplicationPair": {
+    "dark": {
+      "source": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_47 PM.png",
+      "applicationAsset": "public/images/hero-full-sunset-v2.png",
+      "sha256": "4FB63B34EDA51CE87D50688C92B2DEDC6B8A6D569FF76130F4596CE5E454EF5E"
+    },
+    "light": {
+      "source": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_33 PM.png",
+      "applicationAsset": "public/images/hero-full-sunrise-v2.png",
+      "sha256": "41DBBC8119F7EF0BD74F39A5D72C33F8F2CDA4E09F0258B78C64135799F91FEF"
+    },
+    "edited": false,
+    "generated": false
   }
 }

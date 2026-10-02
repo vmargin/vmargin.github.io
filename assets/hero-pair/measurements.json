@@ -1,5 +1,94 @@
 {
-  "selected": {
+  "recordScope": "currentApplicationPair records the October 2 user-supplied assets and current rendering; properties prefixed october1 preserve historical generated-photo measurements.",
+  "currentApplicationPair": {
+    "recordedAt": "2026-10-02",
+    "sourceImages": [
+      {
+        "theme": "dark sunset",
+        "attachment": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_47 PM.png",
+        "applicationAsset": "public/images/hero-full-sunset-v2.png",
+        "dimensions": [1672, 941],
+        "bytes": 1980600,
+        "sha256": "4FB63B34EDA51CE87D50688C92B2DEDC6B8A6D569FF76130F4596CE5E454EF5E"
+      },
+      {
+        "theme": "light sunrise",
+        "attachment": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_33 PM.png",
+        "applicationAsset": "public/images/hero-full-sunrise-v2.png",
+        "dimensions": [1672, 941],
+        "bytes": 2115895,
+        "sha256": "41DBBC8119F7EF0BD74F39A5D72C33F8F2CDA4E09F0258B78C64135799F91FEF"
+      }
+    ],
+    "videoReference": {
+      "frameSize": [1280, 720],
+      "heroRect": [143, 64, 994, 389],
+      "capturedHeroRatio": 2.555
+    },
+    "playwright": {
+      "viewport": [1280, 720],
+      "heroRect": [0, 0, 1280, 504],
+      "photoBox": [0, -30.234375, 1280, 564.46875],
+      "objectFit": "cover",
+      "desktopObjectPosition": "68% 45%",
+      "mobileObjectPosition": "52% 50%",
+      "imageLayers": 2,
+      "separatePortraitLayers": 0,
+      "shadeLayers": 0,
+      "photoFilter": "none",
+      "responsive": [
+        {
+          "viewport": [768, 900],
+          "theme": "light",
+          "heroHeight": 738,
+          "objectPosition": "60% 50%",
+          "titleBox": [41.484375, 231.609375, 620, 127.78125],
+          "descriptionBox": [41.484375, 425.390625, 685.046875, 43.1875],
+          "horizontalOverflow": false
+        },
+        {
+          "viewport": [390, 844],
+          "heroHeight": 742.71875,
+          "descriptionBox": [24, 355.265625, 250, 118.75],
+          "horizontalOverflow": false
+        },
+        {
+          "viewport": [320, 780],
+          "heroHeight": 686.390625,
+          "descriptionBox": [20, 345.734375, 190, 113.375],
+          "horizontalOverflow": false
+        }
+      ],
+      "themeTransition": {
+        "durationSeconds": 0.75,
+        "sampledAfterMilliseconds": 160,
+        "photoOpacitiesDarkToLight": [0.236793, 0.763207],
+        "photoBoxesEqual": true,
+        "settledOpacities": [0, 1]
+      },
+      "reducedMotion": {
+        "emulatedPreference": "reduce",
+        "documentMotion": "reduced",
+        "transition": "none",
+        "photoOpacities": [1, 0]
+      },
+      "themePersistence": {
+        "selectedTheme": "dark",
+        "storedValue": "dark",
+        "bothImagesDecodedAfterReload": true
+      },
+      "console": {
+        "errors": 0,
+        "warnings": 0
+      }
+    },
+    "notes": [
+      "Both supplied complete photos are used without pixel edits.",
+      "The same person pose and composition appear in both; person brightness and skin tones differ because lighting is baked into each photograph.",
+      "The 1672x941 source is vertically cropped to fit the wide desktop hero; the visible slice is approximately source rows 131-790."
+    ]
+  },
+  "october1GeneratedSelected": {
     "person": {
       "hair": {
         "meanAbsoluteRGBDifference": 3.8425,
@@ -66,7 +155,7 @@
       }
     }
   },
-  "initial": {
+  "october1GeneratedInitial": {
     "samples": {
       "generatedLight": {
         "upperLeft": "#e2d1cf",
@@ -133,7 +222,7 @@
       }
     }
   },
-  "rejectedExposureAttempt": {
+  "october1RejectedExposureAttempt": {
     "person": {
       "hair": {
         "meanAbsoluteRGBDifference": 2.965,
@@ -205,7 +294,7 @@
       }
     }
   },
-  "verification": {
+  "october1Verification": {
     "nativeDimensions": [1672, 941],
     "applicationCodeChanged": false,
     "method": "Playwright canvas crop, median15x15 color samples, native person interior patches, 200% portrait and50% blend screenshots"
