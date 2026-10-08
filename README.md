@@ -1,42 +1,34 @@
 # Valkenburgh Margin · Portfolio v6
 
-A responsive developer portfolio shaped by the supplied visual references, using verified content and imagery from [sample-portfolio](https://github.com/vmargin) as its content source.
+A static React and TypeScript portfolio for junior software development roles, with evidence-led project pages for CASH-G, ARCTIC, and AssetHub.
 
-## Start the site
+## Run locally
 
 ```powershell
 npm.cmd install
 npm.cmd run dev
 ```
 
-Vite serves the site at `http://127.0.0.1:5176`. Run `npm.cmd run build` to typecheck and create the production bundle in `dist/`; run `npm.cmd run preview` to preview that bundle locally.
+Vite serves the home page at `http://127.0.0.1:5176`. `npm.cmd run build` typechecks the application, creates the production bundle, and generates direct project routes under `dist/projects/`.
 
-## Project structure
+## Content and project evidence
 
-- `src/data/portfolio.json` is the content source, copied from `sample-portfolio` and updated with facts from the supplied résumé. It retains project details, evidence limits, education, training, and verified links.
-- `src/App.tsx` composes the accessible one-page portfolio and owns navigation, project dialogs, contact actions, color theme, and the motion preference.
-- `src/ProjectVisual.tsx` draws small, explicitly labeled workflow illustrations for the project cards and dialog.
-- `src/usePortfolioMotion.ts` is the single owner of GSAP scroll and pointer interactions and Lenis lifecycle.
-- `src/styles.css` defines the page, responsive layout, states, and reduced-motion behavior; `src/project-visuals.css` styles the code-rendered illustrations.
-- `assets/source/` keeps the original portrait outside the deployable site. `public/images/` contains only optimized, local assets. To regenerate them, pass the hero, contact and portrait source paths to `node scripts/prepare-images.mjs`.
-- `DESIGN.md` records decisions from the six design-engineering stages.
+- `src/data/portfolio.json` is the source for project descriptions, roles, stacks, screenshots, system paths, verification notes, and education/training.
+- The home page introduces the developer and links to the three projects. Each project has a direct, reloadable case-study page with real application captures, a workflow, an architecture view, engineering decisions, role boundaries, source links, and evidence limits.
+- CASH-G is presented as two separate applications: a Java Swing/JDBC desktop v1 and a Spring Boot/Thymeleaf web v2. The portfolio screenshots show only Web v2 and its local synthetic-data demo.
+- ARCTIC captures show a local synthetic-data workspace. The hosted application link opens its sign-in page; this portfolio does not claim that a hosted authenticated workflow was tested.
+- AssetHub copy distinguishes the earlier version built solo from the 2026 AI-assisted rebuild and feature expansion.
+- No employment history, customers, adoption, business impact, or live production workflow is invented. Verification records and their limits are linked on each case-study page.
+- `docs/evidence-sources.md` records where the images came from and what they show.
 
-## Content boundaries
+## Design and accessibility
 
-Project descriptions preserve the evidence and limitations recorded in the source portfolio. They do not promise that deployments or historic test results are current. The little screens in the project cards are workflow illustrations, not application screenshots. `public/documents/valkenburgh-margin-resume.pdf` is the supplied résumé PDF copied unchanged; its SHA-256 matches the supplied source file.
+The portfolio keeps its established photographic hero, editorial type, and dark/light themes. Project pages use the same design tokens, fit narrow screens, expose full-size screenshots through ordinary links, and retain keyboard-readable section order. The theme choice persists locally; animation continues to respect reduced-motion settings.
 
-The header's Sun/Moon control switches between dark and light palettes and remembers the choice in local storage. The hero crossfades between a sunrise plate in light mode and a sunset plate in dark mode while the transparent foreground portrait keeps the same size and position. Page structure, copy, and project-card geometry stay the same; text and controls use contrasting colors in each palette.
-
-## Accessibility and motion
-
-Semantic section links work without an animation library. The project details use the browser's native modal dialog for focus containment and Escape behavior, with focus returned to the originating project. The compact mobile navigation has labeled controls and works with the keyboard. Copy-email errors have visible text and a live status.
-
-Scroll reveals, the image mask, parallax, timeline drawing, pointer magnetism, and desktop scroll smoothing respect `prefers-reduced-motion` and the visitor's motion control. Pointer movement is limited to devices with a fine pointer and hover. Most text is visible before any animation starts.
-
-## Rollback
-
-The first v6 Git checkpoint is `3bdb5df` (`chore: initialize isolated portfolio v6`). The completed, verified build is committed as the next checkpoint; use `git revert HEAD` to roll that checkpoint back while keeping it in history.
+The content source and route generator keep page titles, descriptions, canonical URLs, social preview metadata, and structured data specific to each project route.
 
 ## Verification
 
-The strict TypeScript/Vite production build passes. The browser verification checklist is in `docs/verification.md`; visible page and responsive checks use Playwright in the Codex browser. Deployment and live services are out of scope.
+See [`docs/verification.md`](docs/verification.md) for the latest build, browser checks, and limits. The project image derivatives are in `public/images/projects/`; user-supplied hero originals remain in `assets/source/hero-pair/`.
+
+The existing hosted Site identity and static output directory are recorded in `.openai/hosting.json`.

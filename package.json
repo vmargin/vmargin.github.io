@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5176 --strictPort",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/generate-project-pages.mjs",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/*.mjs\" \"docs/*.md\" README.md DESIGN.md index.html package.json tsconfig.json vite.config.ts",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/*.mjs\" \"docs/*.md\" README.md DESIGN.md index.html package.json tsconfig.json vite.config.ts",
     "typecheck": "tsc -b",

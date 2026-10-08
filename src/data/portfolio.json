@@ -2,50 +2,36 @@
   "site": {
     "displayName": "Valkenburgh Margin",
     "brandMark": "VM",
-    "role": "Software Developer",
+    "role": "Junior Software Developer · Java & Backend",
     "location": "Philippines",
     "availability": "Open to junior software development roles",
-    "title": "Valkenburgh Margin — Software Developer",
-    "description": "Java applications and full-stack web projects by Valkenburgh Margin. Explore banking, service-management, and asset-tracking case studies.",
-    "canonicalOrigin": null,
+    "title": "Valkenburgh Margin — Junior Software Developer",
+    "description": "Junior software developer in the Philippines building Java applications and database-backed web systems. Explore project walkthroughs, public source, and verification.",
+    "canonicalOrigin": "https://vm.marginvalkenburgh.chatgpt.site",
     "email": "marginvalkenburgh@gmail.com",
     "github": "https://github.com/vmargin",
     "linkedin": "https://www.linkedin.com/in/vmargin/",
     "resumeUrl": "/documents/valkenburgh-margin-resume.pdf",
     "portraitUrl": null,
     "navigation": [
-      {
-        "label": "Work",
-        "href": "#work"
-      },
-      {
-        "label": "About",
-        "href": "#about"
-      },
-      {
-        "label": "Stack",
-        "href": "#stack"
-      },
-      {
-        "label": "Contact",
-        "href": "#contact"
-      }
+      { "label": "Work", "href": "#projects" },
+      { "label": "About", "href": "#about" },
+      { "label": "Stack", "href": "#stack" },
+      { "label": "Contact", "href": "#contact" }
     ]
   },
   "about": {
     "title": "About",
-    "intro": "I'm Valkenburgh Margin, a Computer Engineering graduate in the Philippines with project experience developing Java desktop applications and full-stack web systems.",
+    "intro": "I'm Valkenburgh Margin, a Computer Engineering graduate in the Philippines focused on Java application and backend development.",
     "paragraphs": [
-      "From CASH-G's paired transfer records to ARCTIC's booking-to-invoice workflow for a four-branch business, I focus on turning requirements into clear rules across the interface and data model.",
-      "I'm looking for a junior software development role where I can contribute to application and backend work while continuing to develop my skills."
+      "My projects include a Java banking simulator, a four-branch service operations workspace, and AssetHub, a multi-tenant equipment manager. I document the workflows, technical decisions, and verification behind each one.",
+      "I’m looking for a junior software development role where I can contribute to Java and backend work while continuing to grow as an engineer."
     ],
-    "backgroundHeading": "Background",
     "education": {
       "qualification": "BS Computer Engineering",
       "institution": "Polytechnic University of the Philippines",
       "year": "2020"
     },
-    "trainingHeading": "Training",
     "training": [
       {
         "id": "java-training",
@@ -65,7 +51,6 @@
         "provider": "AWS Training & Certification",
         "statusText": "Completed September 5, 2026",
         "detail": "Course completion in AWS Cloud Quest. This is a completion certificate, not the AWS Certified Cloud Practitioner exam credential.",
-        "credentialAssetId": "aws-cloud-quest-certificate",
         "credentialUrl": "/documents/aws-cloud-quest-completion.pdf",
         "relatedLink": null
       }
@@ -74,275 +59,372 @@
   "projects": [
     {
       "id": "cash-g",
-      "title": "CASH-G Banking App",
-      "type": "Java desktop application",
+      "title": "CASH-G — Java Banking Simulator",
+      "type": "Educational banking application",
       "period": "2026",
       "featured": true,
-      "summary": "A banking simulator for account registration, cash-in, transfers, and transaction history, built with Java, Swing, JDBC, and PostgreSQL.",
-      "stack": [
-        "Java",
-        "Swing",
-        "JDBC",
-        "PostgreSQL",
-        "JUnit"
-      ],
-      "statusText": "Desktop application · Source available",
-      "href": "/projects/cash-g",
+      "summary": "An educational banking simulator with a Java desktop v1 and a separate Spring Boot web v2. The screenshots show the web version.",
+      "roleSummary": "Role: Java application development; AI support for requirements, tooling, and review.",
+      "stack": ["Java", "Swing", "JDBC", "Spring Boot", "Thymeleaf", "PostgreSQL", "H2"],
+      "statusText": "Desktop v1 + Web v2 · Public source",
+      "href": "/projects/cash-g/",
       "sourceUrl": "https://github.com/vmargin/banking-app",
-      "demoUrl": null,
-      "coverAssetId": "cash-g-dashboard",
-      "galleryAssetIds": [
-        "cash-g-transfer-review",
-        "cash-g-history"
+      "applicationUrl": null,
+      "cover": "/images/projects/cash-g-web-v2-dashboard.webp",
+      "gallery": [
+        {
+          "src": "/images/projects/cash-g-web-v2-dashboard.webp",
+          "alt": "CASH-G Web v2 dashboard with synthetic PHP and USD practice accounts, recent activity, and savings and card summaries.",
+          "caption": "Web v2 dashboard · Local H2 demo with synthetic practice accounts · Captured October 8, 2026."
+        },
+        {
+          "src": "/images/projects/cash-g-web-v2-transfer-review.webp",
+          "alt": "CASH-G Web v2 transfer review screen showing a synthetic recipient and amount before confirmation.",
+          "caption": "Web v2 transfer review · A synthetic recipient and amount appear before confirmation · Captured October 8, 2026."
+        },
+        {
+          "src": "/images/projects/cash-g-web-v2-transfer-receipt.webp",
+          "alt": "CASH-G Web v2 receipt for a completed synthetic practice transfer.",
+          "caption": "Web v2 transfer receipt · Synthetic local result, with no real account or payment network · Captured October 8, 2026."
+        }
       ],
-      "overview": "CASH-G brings the main actions of a small banking simulator into one desktop application: create an account, sign in, add funds, transfer to another account, and review the resulting history. It was developed as a Java training project using synthetic account data.",
+      "overview": "CASH-G is an educational banking simulator built in two distinct versions. Desktop v1 uses Java Swing, JDBC, and PostgreSQL. Web v2 is a separate Spring Boot and Thymeleaf application with a local H2 practice demo. The repositories retain earlier names—JCash for the desktop repository and Cash - G for the web repository—while this portfolio uses CASH-G consistently.",
+      "architecture": {
+        "summary": "These versions share a project history, not an interface or one deployment path.",
+        "groups": [
+          {
+            "title": "Desktop v1",
+            "steps": ["Java Swing", "Java services", "JDBC repositories", "PostgreSQL"]
+          },
+          {
+            "title": "Web v2 · Local practice demo",
+            "steps": ["Browser", "Spring Boot + Thymeleaf", "Java services + JDBC", "H2"]
+          }
+        ]
+      },
+      "accessModel": null,
       "workflow": [
-        "Register an account and sign in with a mobile number and PIN.",
-        "View the balance, then choose cash-in, transfer, or history.",
-        "For a transfer, enter a recipient and amount and review the request.",
-        "Persist the balance changes and transaction records together.",
-        "Return to the account overview and inspect the transaction history."
+        "Desktop v1 supports account registration and sign-in, cash-in, transfers, and per-user transaction history.",
+        "Web v2 presents multiple synthetic practice accounts and a review step before a transfer.",
+        "The local web demo also includes requests, fictional billers, savings goals, cards, activity, and statement export.",
+        "The screenshots on this page show the web v2 interface only; an authentic desktop v1 screenshot was not available for this portfolio update."
       ],
       "decisions": [
         {
-          "title": "One transaction for both sides of a transfer",
-          "body": "The JDBC repository debits the sender, credits the recipient, and writes both transaction records before committing. If an operation fails, the repository rolls the transaction back. The goal is to avoid recording only one side of a transfer."
+          "title": "Keep both sides of a transfer together",
+          "body": "The Java persistence layer records the sender debit, recipient credit, and paired ledger entries in a bounded database transaction. Its documented behavior rolls the operation back when a step fails."
         },
         {
-          "title": "Validate the request before persistence",
-          "body": "The transfer service rejects missing recipients, self-transfers, non-positive amounts, and amounts with more than two decimal places. Balance checks also exist in the database update, where the actual stored balance matters."
+          "title": "Represent money deliberately",
+          "body": "Java monetary values use BigDecimal and database numeric columns. The web version keeps the review step on the server before confirmation."
         },
         {
-          "title": "Keep money and responsibilities explicit",
-          "body": "Money uses BigDecimal in Java and numeric columns in PostgreSQL. Swing screens handle interaction, services express the rules, and JDBC repositories own database operations. This separation makes individual rules easier to inspect and test."
+          "title": "Separate interface, rules, and persistence",
+          "body": "Swing or web controllers handle interaction, Java services own product rules, and JDBC repositories perform database work. The version-specific code and tests are linked below."
         }
       ],
-      "role": "Java application development across the interface, service logic, persistence, and tests. Project documentation records AI assistance for requirements, tooling, issue structure, and review.",
-      "implementationNotes": [
-        "Mobile/PIN login, registration, balance, cash-in, transfer review, and per-user history.",
-        "Role-aware administration and prepared-statement persistence.",
-        "JUnit checks for models, services, and selected interface formatting."
+      "sourceEvidence": [
+        {
+          "label": "Java transfer service",
+          "href": "https://github.com/vmargin/banking-app/blob/main/src/main/java/com/vmargin/banking/service/TransferService.java",
+          "detail": "Input checks and the service boundary for desktop v1."
+        },
+        {
+          "label": "JDBC transfer transaction",
+          "href": "https://github.com/vmargin/banking-app/blob/main/src/main/java/com/vmargin/banking/repository/JdbcTransferRepository.java",
+          "detail": "Database transaction that commits or rolls back the persisted transfer."
+        },
+        {
+          "label": "Transfer persistence test",
+          "href": "https://github.com/vmargin/banking-app/blob/main/src/test/java/com/vmargin/banking/repository/JdbcTransferRepositoryTest.java",
+          "detail": "Checks sender debit, recipient credit, and both history entries."
+        }
       ],
-      "currentStatus": "The desktop source and dated application captures are available. A focused check on September 17, 2026 passed 26 tests; one database-connection check was skipped. Live database transfer behavior was not reverified in that run. This is an educational simulator using synthetic data, not software for real financial accounts.",
-      "evolution": {
-        "heading": "From desktop to web",
-        "body": "A separate version introduces Spring Boot and Thymeleaf while retaining the Java services and JDBC model. The current local web-controller suite passes 11 tests, including transfer-review behavior. Some local changes are not yet in the public repository, so the web version remains work in progress.",
-        "sourceUrl": "https://github.com/vmargin/banking-app-v2",
-        "statusText": "Web evolution · In progress"
-      },
+      "role": "For desktop v1, I developed the Java interface, service logic, persistence, and tests; the project README records AI help with requirements, tooling, issue structure, and review. Web v2 is a separate evolution, with its own implementation and local demo.",
+      "versions": [
+        {
+          "title": "Desktop v1 · JCash repository",
+          "summary": "Java Swing, JDBC, and PostgreSQL. Its README records 32 tests with 0 failures; 6 database tests are skipped when the local database is unavailable.",
+          "sourceUrl": "https://github.com/vmargin/banking-app"
+        },
+        {
+          "title": "Web v2 · Cash - G repository",
+          "summary": "Spring Boot, Thymeleaf, JDBC, and a local H2 synthetic-data demo. This is the version shown in the screenshots.",
+          "sourceUrl": "https://github.com/vmargin/banking-app-v2"
+        }
+      ],
+      "verificationTitle": "Published project evidence",
+      "verificationSummary": "The September 17 portfolio check recorded 26 tests with one database check skipped. The current desktop README records 32 tests with six database tests skipped. These are distinct runs and are not reconciled here. The Web v2 repository documents its separate H2 demo and checks. This portfolio update did not rerun either suite.",
+      "verificationUrl": "https://github.com/vmargin/banking-app#status",
+      "portfolioCheck": "The three Web v2 screenshots were captured from the local H2 demo on October 8, 2026, using synthetic data. They show the web version and do not independently prove database atomicity or live database behavior.",
+      "applicationNote": null,
+      "limitations": [
+        "CASH-G is a learning simulator, not a bank or payment service; use synthetic information only.",
+        "No authentic desktop v1 application screenshot was available for this update."
+      ],
       "nextProjectId": "arctic"
     },
     {
       "id": "arctic",
-      "title": "ARCTIC — Aircon Service Manager",
-      "type": "Service-operations project",
+      "title": "ARCTIC — Service Operations",
+      "type": "Service-operations workspace",
       "period": "2026",
       "featured": true,
-      "summary": "A service-management application that connects bookings, technician assignments, invoices, and payments across organization and branch boundaries.",
-      "stack": [
-        "TypeScript",
-        "React",
-        "Express",
-        "Prisma",
-        "PostgreSQL"
-      ],
-      "statusText": "Source available · Hosted demo unavailable",
-      "href": "/projects/arctic",
+      "summary": "A service workspace for requests, dispatch, work orders, equipment, inventory, and billing across four branches.",
+      "roleSummary": "Role: requirements, workflows, data architecture, and deployment · AI-assisted implementation.",
+      "stack": ["TypeScript", "React", "Express", "Prisma", "PostgreSQL"],
+      "statusText": "Public source · Local workflow captures",
+      "href": "/projects/arctic/",
       "sourceUrl": "https://github.com/vmargin/aircon-service",
-      "demoUrl": null,
-      "coverAssetId": "arctic-workflow",
-      "galleryAssetIds": [],
-      "overview": "ARCTIC models the booking-to-invoice workflow of a four-branch air-conditioning service business: record a booking, assign a technician, track the visit, and handle payment. My work centered on requirements gathering, workflow definition, and the relational data model, with AI-assisted implementation.",
+      "applicationUrl": "https://aircon-service.vercel.app/",
+      "cover": "/images/projects/arctic-dashboard-local.webp",
+      "gallery": [
+        {
+          "src": "/images/projects/arctic-dashboard-local.webp",
+          "alt": "ARCTIC local demo dashboard with the day’s service jobs, dispatch, maintenance, inventory, and invoice summaries.",
+          "caption": "Dashboard · Local seeded demo with synthetic service records · Captured October 8, 2026."
+        },
+        {
+          "src": "/images/projects/arctic-service-jobs-local.webp",
+          "alt": "ARCTIC service jobs table showing synthetic customers, branch locations, technicians, schedules, job states, and billing status.",
+          "caption": "Service jobs · Branch-aware schedule and billing states in synthetic data · Captured October 8, 2026."
+        },
+        {
+          "src": "/images/projects/arctic-invoices-local.webp",
+          "alt": "ARCTIC billing table with synthetic invoices, paid and unpaid amounts, outstanding balances, and branch labels.",
+          "caption": "Invoices and payments · Synthetic collection records in the local demo · Captured October 8, 2026."
+        }
+      ],
+      "overview": "ARCTIC models service operations for a four-branch air-conditioning company. It connects customer requests and dispatch to service jobs, equipment and parts, invoices, receipts, and branch-filtered reporting.",
+      "architecture": {
+        "summary": "The interface supports branch workflows; the API applies organization and branch checks before data access.",
+        "groups": [
+          {
+            "title": "Application request path",
+            "steps": ["React + TypeScript", "Express API + scope checks", "Prisma", "PostgreSQL"]
+          }
+        ]
+      },
+      "accessModel": {
+        "summary": "These are the application's two account roles. A technician is an assignee, not a third sign-in role; technician and booking must share a branch.",
+        "roles": [
+          {
+            "name": "ADMIN",
+            "scope": "Organization-wide view across branches."
+          },
+          {
+            "name": "BRANCH_LEADER",
+            "scope": "Reads and writes stay within the user's assigned branch."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Branch authorization helpers",
+            "href": "https://github.com/vmargin/aircon-service/blob/master/backend/src/lib/tenancy.ts"
+          },
+          {
+            "label": "API integration checks",
+            "href": "https://github.com/vmargin/aircon-service/blob/master/backend/tests/api.integration.test.ts"
+          }
+        ]
+      },
       "workflow": [
-        "Staff create a booking for a customer and branch.",
-        "The booking is confirmed and a technician is assigned.",
-        "The job moves on site and then to completion, or is cancelled while still open.",
-        "An invoice records the amount and payment status.",
-        "Managers review jobs, collections, and recorded staff actions."
+        "Staff record service requests for a customer, site, branch, and unit.",
+        "A job is scheduled and assigned to a technician in its branch.",
+        "The work order records inspection outcomes before completion.",
+        "An invoice follows completed work; collections and receipts are recorded separately.",
+        "Managers review jobs, stock, maintenance, and balances by branch."
       ],
       "decisions": [
         {
-          "title": "Make booking progression explicit",
-          "body": "A shared transition map allows PENDING, CONFIRMED, ON_SITE, and COMPLETED in order. Open jobs can be cancelled. Completed and cancelled jobs are terminal, preventing an ordinary status edit from silently reopening work."
+          "title": "Make job progression explicit",
+          "body": "A shared transition map permits the documented job states in order. Completed and cancelled jobs are terminal through the ordinary status flow, so a normal edit cannot silently reopen work."
         },
         {
-          "title": "Model organization and branch scope",
-          "body": "The data model separates organizations and branches. Reusable helpers constrain booking and technician queries and check related branch, customer, and technician records before writes. ADMIN and BRANCH_LEADER have different intended scopes."
+          "title": "Enforce organization and branch boundaries",
+          "body": "Server-side queries and writes check the organization, branch, and related records. The workflow does not rely on the interface alone to hide another branch’s data."
         },
         {
-          "title": "Separate payment collection from reversal",
-          "body": "Invoice amounts use Decimal(12,2), and each booking has at most one invoice. Payment can move from unpaid to partial or paid; a paid invoice cannot be reset through the normal status transition. A refund would require a separate workflow."
+          "title": "Keep payment history auditable",
+          "body": "Amounts use fixed-precision decimal fields. Payment moves through unpaid, partial, and paid states; a refund requires its own recorded workflow rather than resetting a paid invoice."
         }
       ],
-      "role": "Requirements gathering, workflow definition, data-architecture decisions, and deployment work. Implementation was AI-assisted.",
-      "implementationNotes": [
-        "React interface with TypeScript, Tailwind CSS, and TanStack Query.",
-        "Express API, Zod validation, Prisma, PostgreSQL, and audit-log records.",
-        "Booking and payment rules live in shared helpers rather than being repeated in each screen."
+      "sourceEvidence": [
+        {
+          "label": "Branch access rules",
+          "href": "https://github.com/vmargin/aircon-service/blob/master/backend/src/lib/tenancy.ts",
+          "detail": "Server helpers used for organization, branch, unit, customer, and technician scope."
+        },
+        {
+          "label": "Booking status tests",
+          "href": "https://github.com/vmargin/aircon-service/blob/master/backend/tests/bookingStatus.test.ts",
+          "detail": "Focused checks for the service-job lifecycle."
+        }
       ],
-      "currentStatus": "The source is available, and all 15 existing unit tests passed on September 17, 2026. The hosted login returned a server error during the same review, so this page provides a case study and repository rather than a working demo link. Production adoption and business-impact figures are not claimed.",
-      "evolution": null,
-      "nextProjectId": "asset-manager"
+      "role": "I handled requirements gathering, workflow definition, data-architecture decisions, and deployment work. Implementation was AI-assisted.",
+      "versions": [],
+      "verificationTitle": "Published verification · October 6, 2026",
+      "verificationSummary": "The published record reports 29 unit tests passed, 12 database tests skipped in that mode, and 41 integration tests passed against an isolated PostgreSQL database. It also documents the production migration and smoke checks; no production user account was used.",
+      "verificationUrl": "https://github.com/vmargin/aircon-service/blob/master/projects/arctic/context/engineering-loop/verification.md",
+      "portfolioCheck": "On October 8, the local synthetic demo was opened through its demo-workspace control. I captured the dashboard, service-jobs list, and invoices view without editing records. The separate public check confirmed sign-in and health only; no hosted authenticated workflow was exercised.",
+      "applicationNote": "The public application opens at its sign-in page. This portfolio update did not verify an authenticated hosted session.",
+      "limitations": [
+        "The four-branch company is a modeled scenario; no production adoption or business-impact figures are claimed.",
+        "The local gallery uses synthetic demo records."
+      ],
+      "nextProjectId": "assethub"
     },
     {
-      "id": "asset-manager",
-      "title": "Multi-Tenant Asset Manager",
-      "type": "Full-stack inventory project",
-      "period": "2026",
+      "id": "assethub",
+      "title": "AssetHub — Multi-Tenant Asset Manager",
+      "type": "Equipment lifecycle workspace",
+      "period": "Earlier version · Rebuilt 2026",
       "featured": true,
-      "summary": "A React and Express inventory application with organization-scoped asset listing, updates, and deletion backed by PostgreSQL.",
-      "stack": [
-        "JavaScript",
-        "React",
-        "Express",
-        "Prisma",
-        "PostgreSQL"
-      ],
-      "statusText": "Source available · Hosted demo unavailable",
-      "href": "/projects/asset-manager",
+      "summary": "A multi-tenant equipment workspace for checkout, returns, location transfers, maintenance, audits, and retained lifecycle history.",
+      "roleSummary": "Role: solo-built original version; AI-assisted 2026 rebuild and feature expansion.",
+      "stack": ["JavaScript", "React", "Express", "Prisma", "PostgreSQL"],
+      "statusText": "Public source · Published verification",
+      "href": "/projects/assethub/",
       "sourceUrl": "https://github.com/vmargin/multi-tenant-asset-manager",
-      "demoUrl": null,
-      "coverAssetId": "asset-manager-boundary",
-      "galleryAssetIds": [],
-      "overview": "This project explores a common inventory problem: multiple organizations use the same application, but their assets belong to different data scopes. The React interface connects to an Express API and a PostgreSQL database modeled through Prisma.",
+      "applicationUrl": "https://multi-tenant-asset-manager.vercel.app/",
+      "cover": "/images/projects/assethub-register-light.webp",
+      "gallery": [
+        {
+          "src": "/images/projects/assethub-register-light.webp",
+          "alt": "AssetHub equipment register showing synthetic workspace equipment, locations, custodians, and lifecycle states.",
+          "caption": "Asset register · A published AssetHub screenshot of the workspace inventory."
+        },
+        {
+          "src": "/images/projects/assethub-checkout-light.webp",
+          "alt": "AssetHub checkout drawer for a synthetic MacBook asset, with custodian, checkout date, expected return, and notes fields.",
+          "caption": "Checkout · Synthetic custodian and return details are recorded beside the asset history."
+        },
+        {
+          "src": "/images/projects/assethub-dashboard-light.webp",
+          "alt": "AssetHub dashboard showing a synthetic workspace overview and current asset operations.",
+          "caption": "Workspace dashboard · Published light-theme capture with synthetic workspace data."
+        }
+      ],
+      "overview": "AssetHub is a multi-tenant equipment workspace. It tracks equipment custody and location across organization workspaces, with checkout and return, location transfers, maintenance, audits, invitations, permissions, and retirement that preserves history.",
+      "architecture": {
+        "summary": "Workspace membership and role checks happen on the server before tenant-scoped records are read or changed.",
+        "groups": [
+          {
+            "title": "Workspace request path",
+            "steps": ["React client", "Express API + membership checks", "Prisma", "PostgreSQL + activity history"]
+          }
+        ]
+      },
+      "accessModel": {
+        "summary": "Authentication identifies the user; an active membership is checked for the selected organization on protected requests. Choosing an organization alone does not grant access.",
+        "roles": [
+          {
+            "name": "OWNER",
+            "scope": "Manages organization settings and people."
+          },
+          {
+            "name": "MANAGER",
+            "scope": "Manages inventory, locations, categories, maintenance, and audits."
+          },
+          {
+            "name": "MEMBER",
+            "scope": "Views workspace assets and reports issues."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Tenant architecture",
+            "href": "https://github.com/vmargin/multi-tenant-asset-manager/blob/main/docs/overhaul/architecture.md"
+          },
+          {
+            "label": "Membership checks in the API",
+            "href": "https://github.com/vmargin/multi-tenant-asset-manager/blob/main/backend/src/middleware/auth.js"
+          }
+        ]
+      },
       "workflow": [
-        "Sign in to establish the user's organization context.",
-        "List assets associated with that organization.",
-        "Create an asset with a name, serial number, category, and status.",
-        "Update or remove an asset through an organization-scoped write."
+        "Workspace members add equipment with its location and identifying details.",
+        "A checkout records the custodian and expected return.",
+        "Returned equipment, location changes, and maintenance remain in its history.",
+        "Location audits compare a fixed snapshot and reject stale updates.",
+        "Retired assets remain recorded rather than disappearing from the workspace."
       ],
       "decisions": [
         {
-          "title": "Constrain both reads and writes",
-          "body": "Asset listing includes the organization identifier in its query. Update and delete operations match both the asset ID and organization ID, rather than relying on the interface to hide other organizations' records."
+          "title": "Scope every workspace operation",
+          "body": "Organization membership is checked on server requests, and tenant-specific relationships constrain records. Reads and writes use workspace scope rather than relying on client-side filtering."
         },
         {
-          "title": "Keep the relational model small",
-          "body": "Organizations, users, assets, and categories are separate Prisma models with explicit relationships. UUID identifiers, migrations, and seed data support a repeatable development setup."
+          "title": "Protect concurrent custody changes",
+          "body": "A database constraint allows only one open checkout per asset. Asset transitions and activity history are committed together."
         },
         {
-          "title": "Use a direct web architecture",
-          "body": "A React client calls an Express API that accesses PostgreSQL through Prisma. The small scope makes the authentication, request, query, and response path easy to follow."
+          "title": "Preserve history through the lifecycle",
+          "body": "Assets retire instead of being deleted. Version checks reject stale audit updates so a saved audit does not silently overwrite newer state."
         }
       ],
-      "role": "Personal full-stack project covering the inventory interface, API, relational model, and deployment setup.",
-      "implementationNotes": [
-        "React and Vite frontend; Node.js and Express backend.",
-        "JWT authentication and bcrypt password hashing are present in the source.",
-        "Asset operations use organization constraints; comprehensive security guarantees are not implied."
+      "sourceEvidence": [
+        {
+          "label": "Organization membership middleware",
+          "href": "https://github.com/vmargin/multi-tenant-asset-manager/blob/main/backend/src/middleware/auth.js",
+          "detail": "Resolves an active membership before protected workspace operations."
+        },
+        {
+          "label": "Tenant and lifecycle integration tests",
+          "href": "https://github.com/vmargin/multi-tenant-asset-manager/blob/main/backend/test/api.integration.test.js",
+          "detail": "Includes cross-tenant, member-permission, concurrent-checkout, and lifecycle checks."
+        }
       ],
-      "currentStatus": "The source is available. The hosted login returned a server error on September 17, 2026, so no working demo is advertised. Further authorization hardening and end-to-end verification remain follow-up work.",
-      "evolution": null,
+      "role": "I built an earlier multi-tenant asset manager on my own. In 2026, I rebuilt and expanded it with AI assistance—refining the interface, fixing issues, and adding lifecycle and workspace features. This page describes the current rebuild.",
+      "versions": [],
+      "verificationTitle": "Published verification · October 7, 2026",
+      "verificationSummary": "The published record includes tenant and permission checks, concurrent checkout, return and maintenance transitions, versioned audits, isolated demo workspaces, browser checks, and deployment verification. Its fixtures are synthetic; the record does not authenticate as an original user.",
+      "verificationUrl": "https://github.com/vmargin/multi-tenant-asset-manager/blob/main/docs/overhaul/verification.md",
+      "portfolioCheck": "On October 8, the independent public check confirmed the sign-in page and health response only; no authenticated hosted session was created. The gallery uses genuine screenshots published in the project repository.",
+      "applicationNote": "The hosted application opens at sign-in. The published verification record covers authenticated flows; this portfolio update did not repeat them.",
+      "limitations": [
+        "AssetHub is an educational portfolio project; no customer adoption or business outcome is claimed.",
+        "Invitations are copyable links; the application does not send email."
+      ],
       "nextProjectId": "cash-g"
     }
   ],
   "stack": [
     {
-      "title": "Languages",
-      "items": [
-        "Java",
-        "TypeScript",
-        "JavaScript",
-        "SQL",
-        "HTML",
-        "CSS"
-      ],
-      "context": "Java banking logic and JavaScript/TypeScript web applications.",
-      "projectIds": [
-        "cash-g",
-        "arctic",
-        "asset-manager"
-      ]
+      "title": "CASH-G · Desktop v1",
+      "items": ["Java", "Swing", "JDBC", "PostgreSQL", "JUnit"],
+      "context": "The learner-authored Java desktop application, backed by JDBC and PostgreSQL.",
+      "projectId": "cash-g"
     },
     {
-      "title": "Application development",
-      "items": [
-        "Swing",
-        "JDBC",
-        "React",
-        "Node.js",
-        "Express"
-      ],
-      "context": "Desktop interfaces, API routes, and relational persistence.",
-      "projectIds": [
-        "cash-g",
-        "arctic",
-        "asset-manager"
-      ]
+      "title": "CASH-G · Web v2",
+      "items": ["Java", "Spring Boot", "Thymeleaf", "JDBC", "H2"],
+      "context": "A separate server-rendered web version with a synthetic local H2 demo.",
+      "projectId": "cash-g"
     },
     {
-      "title": "Data",
-      "items": [
-        "PostgreSQL",
-        "Prisma"
-      ],
-      "context": "Account records, service operations, and inventory models.",
-      "projectIds": [
-        "cash-g",
-        "arctic",
-        "asset-manager"
-      ]
+      "title": "ARCTIC",
+      "items": ["TypeScript", "React", "Express", "Prisma", "PostgreSQL"],
+      "context": "Service operations, branch-scoped workflows, and relational persistence.",
+      "projectId": "arctic"
     },
     {
-      "title": "Verification and delivery",
-      "items": [
-        "JUnit",
-        "Jest",
-        "Maven",
-        "Git",
-        "GitHub",
-        "Vite"
-      ],
-      "context": "Test suites, builds, and source history in the selected projects.",
-      "projectIds": [
-        "cash-g",
-        "arctic",
-        "asset-manager"
-      ]
-    },
-    {
-      "title": "Project tooling",
-      "items": [
-        "Tailwind CSS",
-        "TanStack Query",
-        "Docker",
-        "Vercel",
-        "Supabase"
-      ],
-      "context": "Interface styling, data fetching, and local or hosted project setup.",
-      "projectIds": [
-        "arctic",
-        "asset-manager"
-      ]
-    },
-    {
-      "title": "Current web work",
-      "items": [
-        "Spring Boot",
-        "Thymeleaf"
-      ],
-      "context": "The in-progress web evolution of CASH-G.",
-      "projectIds": [
-        "cash-g"
-      ]
+      "title": "AssetHub",
+      "items": ["JavaScript", "React", "Express", "Prisma", "PostgreSQL"],
+      "context": "A multi-tenant equipment lifecycle workspace.",
+      "projectId": "assethub"
     }
   ],
   "contact": {
-    "heading": "Let's talk about your team.",
-    "text": "I'm interested in junior software development opportunities involving Java, backend systems, and full-stack web applications.",
+    "heading": "Open to junior software development opportunities",
+    "text": "Java applications, backend systems, and database-backed web products.",
     "emailLabel": "Email me",
     "copyLabel": "Copy email",
     "copySuccess": "Email copied",
     "copyFailure": "Copy unavailable. Select the email address or open your mail app.",
     "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/vmargin"
-      },
-      {
-        "label": "LinkedIn",
-        "href": "https://www.linkedin.com/in/vmargin/"
-      }
+      { "label": "GitHub", "href": "https://github.com/vmargin" },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/vmargin/" }
     ]
   }
 }

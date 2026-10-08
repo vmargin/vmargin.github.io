@@ -56,43 +56,6 @@ export function usePortfolioMotion(
           once: true,
         },
       });
-      gsap.fromTo(
-        ".process-progress",
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".process-steps",
-            start: "top 85%",
-            end: "bottom 48%",
-            scrub: 0.6,
-          },
-        },
-      );
-      gsap.fromTo(
-        ".timeline-progress",
-        { scaleY: 0 },
-        {
-          scaleY: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".timeline",
-            start: "top 85%",
-            end: "bottom 65%",
-            scrub: 0.5,
-          },
-        },
-      );
-      gsap.utils
-        .toArray<HTMLElement>(".process-step, .milestone")
-        .forEach((el) => {
-          ScrollTrigger.create({
-            trigger: el,
-            start: "top 78%",
-            toggleClass: "is-active",
-          });
-        });
       media.add(
         "(min-width: 768px) and (hover: hover) and (pointer: fine)",
         () => {

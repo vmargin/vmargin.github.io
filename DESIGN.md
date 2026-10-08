@@ -1,44 +1,31 @@
-# Portfolio v6: cinematic, personal, considered
+# Portfolio v6 · evidence before decoration
 
-## Scope and design authority
+## Purpose and surface
 
-This is an independent repository at `C:/Users/margi/Desktop/lockedIn/portfolio v6`.
-The four supplied section comps define the visual direction. The supplied motion brief defines the motion budget. Other portfolio repositories are outside the write scope. No deployment or remote creation is requested.
+This is a personal portfolio for junior software-development roles. Its main surface is an experience: identify the developer, understand the work, inspect evidence, and reach out. Project pages shift to a reading surface, where a recruiter or interviewer can scan a workflow and then inspect implementation details.
 
-## Stage 1: foundations
+The established photographic hero, editorial serif display type, Manrope body type, dark/light palettes, and generous spacing remain the visual identity. The audit improves the project's evidence and reading path without introducing a new brand direction or unrelated interactions.
 
-Surface mode: Experience, with a clear contact path. Root router: design-engineering. Primary execution route: visual-comp-image-to-code-converter. Supporting foundation: design-system-architecture-spec.
+## Page progression
 
-Single-page reading order: Home, Projects, About and strengths, Process, Learning journey, Contact. Native section links must work independently of decorative animation. Native dialogs own focus containment, Escape and project-detail reading. Mobile navigation is an inline disclosure. All targets are at least 44px. Meaningful information stays visible by default; motion progressively enhances it.
+The home page moves from identity and role to three selected projects, an about section, technologies shown in project context, verified education and training, and contact. Each project card uses an actual product capture as its preview and offers a direct case-study route. The short modal remains an optional preview rather than the only way to access project information.
 
-React + TypeScript + Vite, GSAP ScrollTrigger for coordinated animation, Lenis for optional desktop smoothing. CSS owns hover and focus feedback. No backend is needed for a portfolio with contact links.
+Each case-study page follows the same order: project scope and role, real screenshots, system shape, user workflow, engineering decisions, version history where needed, and verification with limitations. Its architecture view uses an ordered list so the flow remains understandable to assistive technology and on narrow screens.
 
-## Stage 2: aesthetic specification
+## Content boundaries
 
-Extracted from supplied comps: ink navy #10161c, near-black #0b1015, warm ivory #f5f2ed, muted silver #b6bdc7, restrained blue #adc8fa. Display: Cormorant Garamond, 500 weight; body: Manrope, 400/500. Fonts are bundled locally.
+- CASH-G desktop v1 and Spring Boot Web v2 are described separately. The Web v2 gallery uses its local H2 practice demo and synthetic data; it does not stand in for Swing v1.
+- ARCTIC is a modeled four-branch service operation. Its portfolio captures use synthetic local records; a public sign-in page is not presented as proof of a hosted workflow.
+- AssetHub distinguishes the earlier solo-built application from its AI-assisted 2026 rebuild. The current page describes the rebuild and does not claim unverified authorship of every implementation detail.
+- Tests, deployment checks, and product claims name their source and date. This portfolio update does not treat an old result as a newly run check.
+- No client, adoption, outcome metric, or professional employment claim is added without evidence.
 
-Maximum content width 1440px with fluid 5.4vw gutters. Display sizes use clamp; desktop hero approximately 90px and section titles 56px. Thin translucent separators, 14px image radii, restrained card surfaces, pill CTAs. Bright sky and warm photographic light contrast with quiet dark content sections. Layout and font hierarchy take precedence over extra decoration. Dark is the default; a persisted light palette changes surfaces and readable foreground colors while preserving composition, content, illustrations, and imagery.
+## Interaction and accessibility
 
-## Stage 3: visual identity and assets
+React and TypeScript own the portfolio surface. `portfolio.json` owns the content; the case-study component renders it, and a small build script creates static deep links with route-specific metadata. Native links, buttons, and ordered lists provide the default interactions. The screenshot gallery opens the underlying image in a new tab.
 
-Reuse the four supplied comps as the already-approved individual section designs. For the hero, use the two complete October 2 photos supplied by the user as-is; do not generate or alter them. Keep all final assets in public/images. A monogram, sunset photography, ivory serif headings and blue line icons form the identity. Do not invent a new brand moodboard.
+The existing dark/light choice persists in local storage. Focus indicators, semantic headings, descriptive screenshot alternatives, native modal behavior, and `prefers-reduced-motion` remain part of the implementation. Project pages and their architecture lists must stay readable at 320px without horizontal overflow.
 
-Content provenance: reference project names and stacks are design concepts until verified. Do not present sample employment dates as actual history. Keep unconfirmed links and resume state explicit. No fabricated achievements, live deployments or client work. The supplied résumé is the source for the four-branch ARCTIC context and university coursework. The portfolio serves the supplied résumé PDF byte-for-byte.
+## Verification
 
-## Stage 4: motion choreography
-
-Hero: 0.11s text stagger, 0.9s power3.out masked rise; capped background parallax. Header: compact translucent surface after scrolling. Projects: stagger, 6px lift, slow image zoom, sibling dimming, and interruptible magnetism on primary CTAs. About: horizontal image mask reveal. Process: progressive connecting line and step activation. Journey: line growth and sequential milestones. Contact: parallax and staggered links.
-
-Global timing: 180ms feedback, 400ms interface transition, 900ms editorial reveal. No bounce, neon, scroll locking between sections or endless floating. Preserve the normal cursor. Pointer enhancements only under hover:hover and pointer:fine. Reduced motion removes parallax, mask travel, stagger, smoothing and magnetic motion, with content fully visible. A visitor-facing motion toggle provides an additional override. Cleanup every observer, event handler, animation and ticker subscription.
-
-## Stage 5: implementation
-
-Data owns portfolio copy; section components own semantic structure; a single motion hook owns scroll effects and lifecycle. Native HTML/CSS renders the small concept interfaces. Project details include concept status and meaningful descriptions, not nonfunctional live-demo buttons. Contact interactions never report a message as sent.
-
-## Stage 6: verification
-
-Build and strict typecheck. Inspect desktop and 390px/320px mobile layouts in the browser, navigation, project details, Escape and focus return, contact interactions, motion toggle, reduced motion, résumé download, and runtime errors. Review image readability, spacing and overflow against reference comps. Record proof and limitations in README.md. Local Git checkpoints before implementation and after verified delivery.
-
-## Harness boundary
-
-Sauron v1.2.0 `init --dry-run` executed in v6. It proposes 23 runtime adapter files. The installed design skills are read directly; global configuration and unrelated runtime adapters are not needed for this implementation.
+Run the TypeScript check and production build, then inspect the home page and all three direct case-study routes in Playwright. Verify image loads, page metadata, theme persistence, dialog Escape and focus return, and 320px/390px layouts. The current results and any untested production workflow are recorded in [`docs/verification.md`](docs/verification.md).
