@@ -5,7 +5,7 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/** One owner for decorative motion; semantic navigation never depends on it. */
+/** Decorative motion has one owner. Every reading/navigation path also works without it. */
 export function usePortfolioMotion(
   root: RefObject<HTMLDivElement | null>,
   enabled: boolean,
@@ -15,52 +15,70 @@ export function usePortfolioMotion(
     if (!root.current || !enabled) return;
     const scope = root.current;
     const media = gsap.matchMedia();
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-reveal", {
-        y: 34,
-        opacity: 0,
-        duration: 1.1,
-        stagger: 0.11,
-        ease: "power3.out",
-        clearProps: "all",
+    const context = gsap.context(() => {
+      const intro = gsap.timeline({
+        defaults: { ease: "power3.out", clearProps: "transform,opacity" },
       });
+      intro
+        .from(
+          ".hero-photo",
+          { scale: 1.06, duration: 1.5, clearProps: "scale" },
+          0,
+        )
+        .from(
+          ".hero-reveal",
+          { y: 26, opacity: 0, duration: 0.85, stagger: 0.075 },
+          0.1,
+        );
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.from(el, {
-          y: 28,
+          y: 30,
           opacity: 0,
-          duration: 0.85,
+          duration: 0.75,
           ease: "power3.out",
-          clearProps: "all",
-          scrollTrigger: { trigger: el, start: "top 93%", once: true },
+          clearProps: "transform,opacity",
+          scrollTrigger: { trigger: el, start: "top 94%", once: true },
         });
       });
       gsap.utils.toArray<HTMLElement>("[data-stagger]").forEach((group) => {
         gsap.from(group.children, {
-          y: 25,
+          y: 18,
           opacity: 0,
-          duration: 0.8,
-          stagger: 0.12,
+          duration: 0.65,
+          stagger: 0.07,
           ease: "power3.out",
-          clearProps: "all",
-          scrollTrigger: { trigger: group, start: "top 92%", once: true },
+          clearProps: "transform,opacity",
+          scrollTrigger: { trigger: group, start: "top 94%", once: true },
         });
       });
       gsap.from(".about-image", {
-        clipPath: "inset(0 100% 0 0 round 14px)",
-        duration: 1.35,
+        clipPath: "inset(0 100% 0 0 round 18px)",
+        duration: 1.1,
         ease: "power3.inOut",
         clearProps: "clipPath",
         scrollTrigger: {
           trigger: ".about-image",
-          start: "top 90%",
+          start: "top 92%",
+          once: true,
+        },
+      });
+      gsap.from(".footer-signature", {
+        y: 32,
+        opacity: 0,
+        duration: 0.85,
+        ease: "power3.out",
+        clearProps: "transform,opacity",
+        scrollTrigger: {
+          trigger: ".footer-signature",
+          start: "top 96%",
           once: true,
         },
       });
       media.add(
-        "(min-width: 768px) and (hover: hover) and (pointer: fine)",
+        "(min-width: 1024px) and (hover: hover) and (pointer: fine)",
         () => {
           gsap.to(".hero-photo", {
-            yPercent: 12,
+            yPercent: 6,
             ease: "none",
             scrollTrigger: {
               trigger: "#home",
@@ -71,9 +89,9 @@ export function usePortfolioMotion(
           });
           gsap.fromTo(
             ".contact-photo",
-            { yPercent: -7 },
+            { yPercent: -5 },
             {
-              yPercent: 7,
+              yPercent: 5,
               ease: "none",
               scrollTrigger: {
                 trigger: "#contact",
@@ -83,50 +101,29 @@ export function usePortfolioMotion(
               },
             },
           );
-          const cleanups: (() => void)[] = [];
-          scope
-            .querySelectorAll<HTMLElement>("[data-magnetic]")
-            .forEach((el) => {
-              const xTo = gsap.quickTo(el, "x", {
-                duration: 0.4,
-                ease: "power3.out",
-              });
-              const yTo = gsap.quickTo(el, "y", {
-                duration: 0.4,
-                ease: "power3.out",
-              });
-              const move = (e: PointerEvent) => {
-                const bounds = el.getBoundingClientRect();
-                xTo((e.clientX - bounds.left - bounds.width / 2) * 0.11);
-                yTo((e.clientY - bounds.top - bounds.height / 2) * 0.15);
-              };
-              const reset = () => {
-                xTo(0);
-                yTo(0);
-              };
-              el.addEventListener("pointermove", move);
-              el.addEventListener("pointerleave", reset);
-              el.addEventListener("blur", reset);
-              cleanups.push(() => {
-                el.removeEventListener("pointermove", move);
-                el.removeEventListener("pointerleave", reset);
-                el.removeEventListener("blur", reset);
-                xTo.tween.kill();
-                yTo.tween.kill();
-                gsap.set(el, { clearProps: "transform" });
-              });
-            });
-          return () => cleanups.forEach((cleanup) => cleanup());
         },
       );
     }, scope);
-    const refresh = () => ScrollTrigger.refresh();
+    let disposed = false;
+    let frame = 0;
+    const refresh = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        if (!disposed) ScrollTrigger.refresh();
+      });
+    };
+    // Font/image decoding and toolkit filters change section positions.
+    const resize = new ResizeObserver(refresh);
+    resize.observe(scope);
     document.fonts.ready.then(refresh);
-    window.addEventListener("load", refresh);
+    scope.addEventListener("load", refresh, true);
     return () => {
-      window.removeEventListener("load", refresh);
+      disposed = true;
+      resize.disconnect();
+      cancelAnimationFrame(frame);
+      scope.removeEventListener("load", refresh, true);
       media.revert();
-      ctx.revert();
+      context.revert();
     };
   }, [root, enabled]);
 

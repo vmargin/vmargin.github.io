@@ -7,6 +7,7 @@ import {
   Check,
   Copy,
   FileText,
+  GraduationCap,
   Github,
   Linkedin,
   Mail,
@@ -22,6 +23,7 @@ import portfolio from "./data/portfolio.json";
 import { ProjectCaseStudy } from "./ProjectCaseStudy";
 import { usePortfolioMotion } from "./usePortfolioMotion";
 import { Toolkit } from "./components/Toolkit";
+import { Button } from "./components/ui/button";
 
 type Project = (typeof portfolio.projects)[number];
 const { site, about, projects, contact } = portfolio;
@@ -71,15 +73,16 @@ function Action({
   download?: boolean;
 }) {
   return (
-    <a
+    <Button
+      asChild
+      variant={secondary ? "outline" : "default"}
       className={`button ${secondary ? "button-outline" : "button-primary"} ${className}`}
-      href={href}
-      download={download || undefined}
-      data-magnetic
     >
-      <span>{children}</span>
-      {icon}
-    </a>
+      <a href={href} download={download || undefined}>
+        <span>{children}</span>
+        {icon}
+      </a>
+    </Button>
   );
 }
 
@@ -276,20 +279,26 @@ function PortfolioHome() {
     }
   }, [theme]);
   useEffect(() => {
-    const update = () => {
-      setScrolled(window.scrollY > 40);
-      const cutoff = window.innerHeight * 0.4;
-      let current = "home";
-      for (const item of navItems) {
-        const el = document.querySelector(item.href);
-        if (el && el.getBoundingClientRect().top <= cutoff)
-          current = item.href.slice(1);
-      }
-      setActiveSection(current);
+    const headerObserver = new IntersectionObserver(([entry]) =>
+      setScrolled(!entry.isIntersecting),
+    );
+    const sentinel = root.current?.querySelector(".header-sentinel");
+    if (sentinel) headerObserver.observe(sentinel);
+    const sections = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        }
+      },
+      { rootMargin: "-15% 0px -65% 0px", threshold: 0 },
+    );
+    root.current
+      ?.querySelectorAll("#home, #projects, #about, #stack, #contact")
+      .forEach((section) => sections.observe(section));
+    return () => {
+      headerObserver.disconnect();
+      sections.disconnect();
     };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
   }, []);
   useEffect(() => {
     const onEscape = (e: KeyboardEvent) => {
@@ -322,6 +331,7 @@ function PortfolioHome() {
 
   return (
     <div ref={root} className="portfolio">
+      <div className="header-sentinel" aria-hidden="true" />
       <a className="skip-link" href="#projects">
         Skip to projects
       </a>
@@ -332,7 +342,7 @@ function PortfolioHome() {
           <a
             className="monogram"
             href="#home"
-            aria-label="Valkenburgh Margin, home"
+            aria-label="VM Valkenburgh Margin, home"
           >
             V<span>M</span>
           </a>
@@ -409,12 +419,14 @@ function PortfolioHome() {
             width="1672"
             height="941"
           />
+          <div className="hero-scrim" aria-hidden="true" />
           <div className="wrap hero-content">
             <div className="hero-reveal">
               <Eyebrow>Hello, I’m</Eyebrow>
             </div>
             <h1 id="hero-title" className="hero-reveal">
-              Valkenburgh <span>Margin</span>
+              <span className="hero-name-first">Valkenburgh</span>{" "}
+              <span className="hero-name-last">Margin</span>
             </h1>
             <p className="hero-role hero-reveal">{site.role}</p>
             <p className="hero-description hero-reveal">
@@ -438,6 +450,10 @@ function PortfolioHome() {
               <MapPin size={16} />
               {site.location}
             </span>
+            <span className="hero-availability">
+              <span className="status-dot" aria-hidden="true" />
+              {site.availability}
+            </span>
             <a className="scroll-cue" href="#projects">
               <span>Scroll to explore</span>
               <ArrowDown size={18} />
@@ -452,13 +468,14 @@ function PortfolioHome() {
         >
           <div className="section-heading" data-reveal>
             <div>
-              <Eyebrow>Featured work</Eyebrow>
-              <h2 id="projects-title">Selected projects.</h2>
+              <h2 id="projects-title">
+                Selected <em>projects.</em>
+              </h2>
+              <p>
+                Three application case studies with real screens, clear roles,
+                and dated project evidence.
+              </p>
             </div>
-            <p>
-              Three application case studies with real screens, clear roles, and
-              dated project evidence.
-            </p>
             <a
               className="text-link"
               href={site.github}
@@ -469,9 +486,13 @@ function PortfolioHome() {
               <ArrowUpRight size={17} />
             </a>
           </div>
-          <div className="project-grid" data-stagger>
+          <div className="project-grid">
             {projects.map((project, index) => (
-              <article className="project-card" key={project.id}>
+              <article
+                className={`project-card ${index === 0 ? "project-featured" : ""}`}
+                key={project.id}
+                data-reveal
+              >
                 <a className="project-open" href={project.href}>
                   <div className="project-image-wrap">
                     <img
@@ -484,9 +505,11 @@ function PortfolioHome() {
                     <span className="project-open-icon" aria-hidden="true">
                       <ArrowUpRight size={20} />
                     </span>
-                    <span className="project-number">0{index + 1}</span>
                   </div>
                   <div className="project-copy">
+                    <span className="project-number" aria-hidden="true">
+                      0{index + 1}
+                    </span>
                     <div className="project-meta">
                       <span className="project-type">
                         {projectTypes[project.id]}
@@ -540,7 +563,6 @@ function PortfolioHome() {
         >
           <div className="about-intro">
             <div className="about-copy" data-reveal>
-              <Eyebrow>About me</Eyebrow>
               <h2 id="about-title">About</h2>
               <p>{about.intro}</p>
               <p>{about.paragraphs[0]}</p>
@@ -589,8 +611,11 @@ function PortfolioHome() {
             </p>
           </div>
           <div className="background-grid">
-            <article className="background-card">
-              <span className="background-date">{about.education.year}</span>
+            <article className="background-card education-card" data-reveal>
+              <span className="background-date">
+                <GraduationCap size={20} aria-hidden="true" />
+                {about.education.year}
+              </span>
               <h3>{about.education.qualification}</h3>
               <p>{about.education.institution}</p>
               <span className="background-detail">Bachelor’s degree</span>
@@ -604,7 +629,7 @@ function PortfolioHome() {
               </div>
             </article>
             {about.training.map((item) => (
-              <article className="background-card" key={item.id}>
+              <article className="background-card" key={item.id} data-reveal>
                 <span className="background-date">{item.statusText}</span>
                 <h3>{item.title}</h3>
                 <p>{item.provider}</p>
@@ -643,7 +668,6 @@ function PortfolioHome() {
           <div className="contact-shade" />
           <div className="wrap contact-content">
             <div data-reveal>
-              <Eyebrow>Contact</Eyebrow>
               <h2 id="contact-title">{contact.heading}</h2>
               <p className="contact-description">{contact.text}</p>
               <div className="button-row">
@@ -719,6 +743,9 @@ function PortfolioHome() {
       </main>
 
       <footer className="site-footer wrap">
+        <div className="footer-signature" aria-hidden="true">
+          Valkenburgh <em>Margin.</em>
+        </div>
         <div className="footer-main">
           <a className="footer-brand" href="#home">
             <span className="monogram">
@@ -768,8 +795,8 @@ function PortfolioHome() {
               systemReduced
                 ? "Reduced motion follows your system preference"
                 : motionPaused
-                  ? "Enable animations"
-                  : "Pause animations"
+                  ? "Motion paused. Enable animations"
+                  : "Motion on. Pause animations"
             }
           >
             {motionEnabled ? <Pause size={12} /> : <Play size={12} />}

@@ -8,6 +8,7 @@ import {
   Sun,
 } from "lucide-react";
 import portfolio from "./data/portfolio.json";
+import "./case-study.css";
 
 type Project = (typeof portfolio.projects)[number];
 type Theme = "dark" | "light";
@@ -118,7 +119,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           <a
             className="monogram"
             href="/"
-            aria-label="Valkenburgh Margin, home"
+            aria-label="VM Valkenburgh Margin, home"
           >
             V<span>M</span>
           </a>

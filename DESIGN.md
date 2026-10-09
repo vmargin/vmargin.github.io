@@ -1,31 +1,34 @@
-# Portfolio v6 · evidence before decoration
+# Portfolio v6 · a photographic case-study portfolio
 
-## Purpose and surface
+## Direction
 
-This is a personal portfolio for junior software-development roles. Its main surface is an experience: identify the developer, understand the work, inspect evidence, and reach out. Project pages shift to a reading surface, where a recruiter or interviewer can scan a workflow and then inspect implementation details.
-
-The established photographic hero, editorial serif display type, Manrope body type, dark/light palettes, and generous spacing remain the visual identity. The audit improves the project's evidence and reading path without introducing a new brand direction or unrelated interactions.
+The home page introduces a junior Java and backend developer through personal sunrise and Antipolo photographs, then moves into three evidence-led case studies, a project-backed toolkit, coursework and training, and contact. The visual language pairs Cormorant Garamond display type with Manrope, a restrained blue accent and persisted dark/light themes.
 
 ## Page progression
 
-The home page moves from identity and role to three selected projects, an about section, technologies shown in project context, verified education and training, and contact. Each project card uses an actual product capture as its preview and offers a direct case-study route. The short modal remains an optional preview rather than the only way to access project information.
+A framed photographic hero establishes identity, role and the primary project action. The three-card project grid gives CASH-G a larger first feature, then shows ARCTIC and AssetHub as supporting studies. The about section balances the approved introduction with a genuine personal photograph. The toolkit groups 31 items by discipline, with optional category tabs. Education puts four historically published computer-engineering coursework topics beside completed training. The closing photo and contact links retain the existing application paths.
 
-Each case-study page follows the same order: project scope and role, real screenshots, system shape, user workflow, engineering decisions, version history where needed, and verification with limitations. Its architecture view uses an ordered list so the flow remains understandable to assistive technology and on narrow screens.
+Each case-study route remains a reading surface: contribution, real screenshots, system shape, workflow, engineering decisions, source/test evidence and verification limits. Architecture remains an ordered list for screen readers and narrow screens. Routes, anchors, case-study text, source links and per-project metadata stay intact.
 
-## Content boundaries
+## Design and motion
 
-- CASH-G desktop v1 and Spring Boot Web v2 are described separately. The Web v2 gallery uses its local H2 practice demo and synthetic data; it does not stand in for Swing v1.
-- ARCTIC is a modeled four-branch service operation. Its portfolio captures use synthetic local records; a public sign-in page is not presented as proof of a hosted workflow.
-- AssetHub distinguishes the earlier solo-built application from its AI-assisted 2026 rebuild. The current page describes the rebuild and does not claim unverified authorship of every implementation detail.
-- Tests, deployment checks, and product claims name their source and date. This portfolio update does not treat an old result as a newly run check.
-- No client, adoption, outcome metric, or professional employment claim is added without evidence.
+Dark and light palettes share one token system. The user-supplied sunrise/sunset WebP pair and existing portraits remain the only editorial photos; case-study cards and galleries use their actual product captures. shadcn/ui Tabs, Button and Badge provide accessible interaction patterns and are themed with the portfolio's own tokens. Radix powers tab semantics and keyboard behavior. Tailwind v4 provides shadcn utility styles without its global reset, so the established stylesheet owns layout and typography.
 
-## Interaction and accessibility
+GSAP and ScrollTrigger orchestrate the hero entrance, one-time section reveals and restrained desktop image parallax. CSS handles button, link, image and focus feedback. Lenis remains gated to fine pointers. Motion can be paused, and system reduced-motion preferences disable it. Navigation stays usable without animation.
 
-React and TypeScript own the portfolio surface. `portfolio.json` owns the content; the case-study component renders it, and a small build script creates static deep links with route-specific metadata. Native links, buttons, and ordered lists provide the default interactions. The screenshot gallery opens the underlying image in a new tab.
+## Content and evidence boundaries
 
-The existing dark/light choice persists in local storage. Focus indicators, semantic headings, descriptive screenshot alternatives, native modal behavior, and `prefers-reduced-motion` remain part of the implementation. Project pages and their architecture lists must stay readable at 320px without horizontal overflow.
+- CASH-G desktop v1 and Spring Boot Web v2 are separate applications. The homepage preview depicts Web v2 and its local synthetic-data practice demo.
+- ARCTIC captures show isolated local synthetic records. A public sign-in route is not presented as a verified hosted workflow.
+- AssetHub copy attributes the earlier asset manager to the developer alone and describes the 2026 rebuild and expansion as AI-assisted.
+- Coursework is restored from an earlier published portfolio version. The course names were not transcript-verified; they are broad historical portfolio topics.
+- The toolkit includes project technologies, even for AI-assisted implementation; it does not score proficiency or claim unaided mastery.
+- Tests, deployment checks and project claims retain their existing dates, sources and limits. No clients, adoption, business impact, professional employment or unavailable demo are implied.
+
+## Image handling
+
+Both hero assets are already optimized WebP. The page requests the selected theme image. Originals stay in `assets/source/hero-pair/`. AssetHub marks, sourced from the Devicon project, are stored locally; product UI previews use the retained genuine screenshots.
 
 ## Verification
 
-Run the TypeScript check and production build, then inspect the home page and all three direct case-study routes in Playwright. Verify image loads, page metadata, theme persistence, dialog Escape and focus return, and 320px/390px layouts. The current results and any untested production workflow are recorded in [`docs/verification.md`](docs/verification.md).
+See [`docs/verification.md`](docs/verification.md) for fresh production-build, formatting, responsive, theme, route and browser-interaction checks. All three case studies remain static, deep-linkable pages with route-specific titles, canonical/social metadata and structured data.

@@ -12,6 +12,7 @@ import {
 import portfolio from "../data/portfolio.json";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import { Badge } from "./ui/badge";
+import "./Toolkit.css";
 
 const categories: Record<string, LucideIcon> = {
   languages: Braces,

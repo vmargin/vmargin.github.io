@@ -1,26 +1,25 @@
 # Portfolio v6 · verification record
 
-This record covers the evidence-first portfolio update on October 8, 2026. It separates checks performed on the portfolio from older or project-owned evidence.
+This record distinguishes evidence for the portfolio from older checks owned by its projects.
 
-## Portfolio checks
+## October 9 visual and content update
 
-The October 8 update was built and checked against the local production preview before publication.
-
-- `npm.cmd run build`, `npm.cmd run format:check`, `git diff --check`, and JSON parsing of `src/data/portfolio.json` passed.
-- Playwright opened the home page and all three direct case-study routes. Each page returned its own title and canonical URL. The home page also returned the role-specific description and absolute Open Graph URLs.
-- The home page and case studies fit 320 px and 390 px viewports without horizontal overflow. The 320 px quick-preview dialog measured 280 px wide with matching scroll width. Mobile case-study summary text rendered at 17 px and image captions at 15 px.
-- All nine case-study gallery images loaded. The seven linked code and test files returned HTTP 200 through the GitHub API.
-- Light and dark themes persisted after reload and selected the matching hero image. A fresh preview tab recorded no console warnings or errors.
-- The native quick-preview dialog stayed within its modal focus boundary during Tab and Shift+Tab checks, closed with Escape, and returned focus to its opener. The mobile menu also closed with Escape and restored focus to its trigger.
-- A rendered contrast sample of 89 text elements on the AssetHub case-study page found no solid-background text pair below 4.5:1 in either theme. Text over the hero and contact photographs uses overlays and was visually reviewed; this was not a complete assistive-technology audit.
-- New local review screenshots were saved under the task's `outputs/evidence` folder; they are review artifacts, not files shipped with the Site.
+- The approved starting commit is `cac5d1d`; the local restore tag `checkpoint/approved-content-2026-10-09` points to it. Coursework/toolkit content was committed separately before the visual redesign.
+- `npm.cmd run format:check`, `npm.cmd run typecheck`, `npm.cmd run build`, `npm.cmd audit`, and `git diff --check` pass. The dependency audit reports zero known vulnerabilities.
+- The current homepage preserves all three project data objects byte-for-byte after JSON parsing. It adds four previously published coursework topics and 31 toolkit entries across six categories. The shadcn/Radix filters render all 31 items and filter to the selected category.
+- Production Playwright checks cover the homepage at 320px and 390px in light and dark themes, with no horizontal overflow or broken images. The selected hero asset changes with the persistent color theme. The hero photographs remain WebP at 168,466 and 135,966 bytes.
+- All three case-study routes load their own route titles and canonical URLs. CASH-G, ARCTIC and AssetHub each fit 1440px, 390px and 320px widths in both themes with no horizontal overflow (18 combinations).
+- The previous, extended route loop exceeded the Playwright connector time limit. The completed bounded rerun returned all 18 case/page configurations without overflow. This is not a test of authenticated project workflows.
+- Portfolio interactions verified: category filters, theme persistence, the quick-preview dialog closing on Escape and returning focus, mobile navigation closing on Escape and returning focus, and a system reduced-motion preference.
+- A settled Playwright accessibility sweep passed on the homepage and all three case-study routes in light and dark themes (8 route/theme combinations): no unnamed visible controls (45 on the homepage and 22 per case study), missing image alt attributes, duplicate IDs, broken ARIA references, skipped heading levels, or contrast failures for text on solid-color backgrounds. Text over image and gradient backgrounds is excluded from the numerical contrast check and was visually reviewed in the settled captures.
+- Final screenshots were taken after scrolling through every reveal-on-scroll section so the complete page is visible. The review set is in the Codex task outputs, outside the Site source: `homepage-desktop-light.webp`, `homepage-desktop-dark.webp`, `homepage-mobile-light.webp`, `homepage-mobile-top.webp`, `toolkit-mobile.webp`, `coursework-mobile.webp`, and one desktop light capture for each case study (`cash-g-desktop-light.webp`, `arctic-desktop-light.webp`, `assethub-desktop-light.webp`).
 
 ## Project evidence limits
 
-- CASH-G's published desktop README records 32 tests with 0 failures and notes that 6 database tests may be skipped when the local database is unavailable. The Web v2 repository documents its separate version and local H2 demo. Neither project suite was rerun for this portfolio update.
-- ARCTIC's linked October 6 verification record reports the test and deployment checks it performed. On October 8, this portfolio update captured three views in an isolated local synthetic-data workspace. The public check confirmed sign-in and health responses only; no hosted authenticated workflow was exercised.
-- AssetHub's linked October 7 record covers the project checks named on its case-study page. On October 8, the public check confirmed sign-in and health responses only; no authenticated hosted session was created as part of this portfolio update.
+- CASH-G's published desktop README records 32 tests with 0 failures and notes that 6 database tests may be skipped when the local database is unavailable. The Web v2 repository documents a separate version and local H2 demo. Neither project suite was rerun for this portfolio update.
+- ARCTIC's linked October 6 verification record reports its project checks. Its portfolio captures use a local synthetic-data workspace; this check does not exercise a hosted authenticated workflow.
+- AssetHub's linked October 7 verification record covers the project checks named on its case-study page. This check does not create an authenticated hosted session.
 
 ## Earlier portfolio baselines
 
-The October 1 and October 2 entries in the Git history and hero reference analysis document earlier visual checks for the existing hero, themes, and motion. They are historical evidence and do not verify the new project cards, case-study routes, galleries, or project-specific metadata.
+Earlier entries in the Git history and hero reference analysis are historical evidence and do not independently reverify the current production UI or the workflows in the individual projects.
