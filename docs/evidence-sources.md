@@ -11,3 +11,9 @@ The case-study galleries use actual product captures, not reconstructed interfac
 The portfolio update did not rerun the CASH-G or ARCTIC application test suites. Their case-study pages link to the dated project verification records and state what those records do and do not establish. The October 8 public checks for ARCTIC and AssetHub confirmed sign-in and health responses only; no authenticated production walkthrough was performed.
 
 The two supplied hero photographs remain byte-for-byte in `assets/source/hero-pair/`. The page loads the selected theme's optimized WebP from `public/images/projects/`.
+
+## Coursework and toolkit, October 9, 2026
+
+The four degree-coursework topics are restored from the previously published portfolio at `8034349:src/App.tsx`: OOP, data structures, relational databases, and software engineering. These are broad study topics from the existing public record, not transcript-verified course titles or claims of current proficiency.
+
+The toolkit inventory is based on the current CASH-G Maven manifests, ARCTIC frontend/backend package manifests, AssetHub frontend/backend package manifests, deployment configuration and the portfolio's own manifest. It describes technologies used across the work, including AI-assisted projects. It does not assign proficiency levels. Git/GitHub, Docker and Vercel have repository evidence; additional IDEs or tools are not inferred merely from installation on this machine.

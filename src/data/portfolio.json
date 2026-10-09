@@ -30,7 +30,13 @@
     "education": {
       "qualification": "BS Computer Engineering",
       "institution": "Polytechnic University of the Philippines",
-      "year": "2020"
+      "year": "2020",
+      "coursework": [
+        "Object-oriented programming",
+        "Data structures",
+        "Relational databases",
+        "Software engineering"
+      ]
     },
     "training": [
       {
@@ -391,28 +397,40 @@
   ],
   "stack": [
     {
-      "title": "CASH-G · Desktop v1",
-      "items": ["Java", "Swing", "JDBC", "PostgreSQL", "JUnit"],
-      "context": "The learner-authored Java desktop application, backed by JDBC and PostgreSQL.",
-      "projectId": "cash-g"
+      "id": "languages",
+      "title": "Languages",
+      "context": "Application logic, queries, and the web.",
+      "items": ["Java", "TypeScript", "JavaScript", "SQL", "HTML", "CSS"]
     },
     {
-      "title": "CASH-G · Web v2",
-      "items": ["Java", "Spring Boot", "Thymeleaf", "JDBC", "H2"],
-      "context": "A separate server-rendered web version with a synthetic local H2 demo.",
-      "projectId": "cash-g"
+      "id": "backend",
+      "title": "Backend & desktop",
+      "context": "Java applications and server-side workflows.",
+      "items": ["Spring Boot", "Node.js", "Express", "Swing", "Thymeleaf", "Zod"]
     },
     {
-      "title": "ARCTIC",
-      "items": ["TypeScript", "React", "Express", "Prisma", "PostgreSQL"],
-      "context": "Service operations, branch-scoped workflows, and relational persistence.",
-      "projectId": "arctic"
+      "id": "frontend",
+      "title": "Frontend",
+      "context": "Interfaces, styling, and interaction.",
+      "items": ["React", "Tailwind CSS", "TanStack Query", "shadcn/ui", "GSAP"]
     },
     {
-      "title": "AssetHub",
-      "items": ["JavaScript", "React", "Express", "Prisma", "PostgreSQL"],
-      "context": "A multi-tenant equipment lifecycle workspace.",
-      "projectId": "assethub"
+      "id": "data",
+      "title": "Data & persistence",
+      "context": "Relational models and database access.",
+      "items": ["PostgreSQL", "Prisma", "JDBC", "H2"]
+    },
+    {
+      "id": "testing",
+      "title": "Testing & build",
+      "context": "Checks, dependencies, and production builds.",
+      "items": ["JUnit", "Jest", "Node.js Test Runner", "Maven", "Vite", "npm"]
+    },
+    {
+      "id": "delivery",
+      "title": "Tools & delivery",
+      "context": "Version control, local environments, and hosting.",
+      "items": ["Git", "GitHub", "Docker", "Vercel"]
     }
   ],
   "contact": {

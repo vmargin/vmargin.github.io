@@ -21,9 +21,10 @@ import {
 import portfolio from "./data/portfolio.json";
 import { ProjectCaseStudy } from "./ProjectCaseStudy";
 import { usePortfolioMotion } from "./usePortfolioMotion";
+import { Toolkit } from "./components/Toolkit";
 
 type Project = (typeof portfolio.projects)[number];
-const { site, about, projects, stack, contact } = portfolio;
+const { site, about, projects, contact } = portfolio;
 type ColorTheme = "dark" | "light";
 const themeStorageKey = "v6-theme";
 const navItems = [
@@ -574,35 +575,9 @@ function PortfolioHome() {
               </figcaption>
             </figure>
           </div>
-          <div className="tech-section" id="stack">
-            <div className="tech-heading">
-              <Eyebrow>Technologies in context</Eyebrow>
-              <p>Shown in the projects that use them.</p>
-            </div>
-            <div className="stack-projects" data-stagger>
-              {stack.map((group) => {
-                const project = projects.find(
-                  (item) => item.id === group.projectId,
-                );
-                if (!project) return null;
-                return (
-                  <article className="stack-project" key={group.title}>
-                    <a href={project.href}>
-                      <span>{group.title}</span>
-                      <ArrowUpRight size={16} />
-                    </a>
-                    <p>{group.context}</p>
-                    <div className="tags">
-                      {group.items.map((item) => (
-                        <span key={item}>{item}</span>
-                      ))}
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>{" "}
         </section>
+
+        <Toolkit />
 
         <section className="background-section section wrap" id="background">
           <div className="background-heading">
@@ -619,6 +594,14 @@ function PortfolioHome() {
               <h3>{about.education.qualification}</h3>
               <p>{about.education.institution}</p>
               <span className="background-detail">Bachelor’s degree</span>
+              <div className="education-coursework">
+                <h4>Relevant coursework</h4>
+                <ul>
+                  {about.education.coursework.map((course) => (
+                    <li key={course}>{course}</li>
+                  ))}
+                </ul>
+              </div>
             </article>
             {about.training.map((item) => (
               <article className="background-card" key={item.id}>
