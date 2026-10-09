@@ -62,18 +62,6 @@ export function usePortfolioMotion(
           once: true,
         },
       });
-      gsap.from(".footer-signature", {
-        y: 32,
-        opacity: 0,
-        duration: 0.85,
-        ease: "power3.out",
-        clearProps: "transform,opacity",
-        scrollTrigger: {
-          trigger: ".footer-signature",
-          start: "top 96%",
-          once: true,
-        },
-      });
       media.add(
         "(min-width: 1024px) and (hover: hover) and (pointer: fine)",
         () => {

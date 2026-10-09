@@ -743,9 +743,6 @@ function PortfolioHome() {
       </main>
 
       <footer className="site-footer wrap">
-        <div className="footer-signature" aria-hidden="true">
-          Valkenburgh <em>Margin.</em>
-        </div>
         <div className="footer-main">
           <a className="footer-brand" href="#home">
             <span className="monogram">

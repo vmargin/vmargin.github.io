@@ -183,7 +183,7 @@ h2 em {
   margin-inline: auto;
 }
 .section {
-  padding-block: clamp(72px, 8vw, 124px);
+  padding-block: clamp(44px, 5.5vw, 76px);
 }
 .eyebrow {
   display: flex;
@@ -210,7 +210,7 @@ h2 em {
   align-items: end;
   justify-content: space-between;
   gap: 40px;
-  margin-bottom: 42px;
+  margin-bottom: 32px;
 }
 .section-heading > div > p {
   color: var(--muted);
@@ -563,12 +563,12 @@ h2 em {
 
 /* A leading Java case study followed by two supporting application studies. */
 .projects-section {
-  padding-top: 92px;
+  padding-top: clamp(44px, 5.5vw, 76px);
 }
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  gap: 24px;
   align-items: start;
 }
 .project-card {
@@ -732,7 +732,7 @@ h2 em {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin-top: 28px;
+  margin-top: 22px;
   font-size: 12px;
   font-weight: 600;
   color: var(--accent);
@@ -762,7 +762,7 @@ h2 em {
   gap: 12px;
   color: var(--muted);
   font-size: 11px;
-  padding-top: 28px;
+  padding-top: 20px;
   text-align: center;
 }
 .projects-footnote .status-dot {
@@ -776,17 +776,17 @@ h2 em {
 .about-intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(40px, 7vw, 110px);
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 .about-copy h2 {
   font-size: clamp(65px, 8vw, 110px);
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 .about-copy p {
   color: var(--text-secondary);
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .about-copy p:first-of-type {
   color: var(--paper);
@@ -794,11 +794,11 @@ h2 em {
   line-height: 1.75;
 }
 .about-copy .button-row {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 .about-image {
   position: relative;
-  margin: 18px 0 32px;
+  margin: 12px 0 20px;
 }
 .about-image::before {
   content: "";
@@ -819,7 +819,7 @@ h2 em {
   transition: transform 500ms var(--ease);
 }
 .about-image figcaption {
-  padding-top: 20px;
+  padding-top: 14px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -839,28 +839,28 @@ h2 em {
 }
 .background-heading {
   max-width: 700px;
-  margin-bottom: 42px;
+  margin-bottom: 28px;
 }
 .background-heading > p:not(.eyebrow) {
   color: var(--muted);
-  margin-top: 20px;
+  margin-top: 14px;
   font-size: 15px;
   max-width: 480px;
 }
 .background-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 20px;
+  gap: 16px;
 }
 .background-card {
-  padding: 32px;
+  padding: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--card-subtle);
 }
 .background-card.education-card {
   grid-row: span 2;
-  padding: clamp(32px, 4.5vw, 60px);
+  padding: clamp(28px, 3.2vw, 44px);
   background: linear-gradient(
     140deg,
     color-mix(in srgb, var(--accent) 12%, var(--surface)),
@@ -875,7 +875,7 @@ h2 em {
   gap: 12px;
   font-size: 11px;
   color: var(--accent);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .education-card .background-date {
   font-family: var(--serif);
@@ -913,7 +913,7 @@ h2 em {
 }
 .education-coursework {
   margin-top: auto;
-  padding-top: 44px;
+  padding-top: 32px;
 }
 .education-coursework h4 {
   font-family: inherit;
@@ -966,7 +966,7 @@ h2 em {
   background: var(--contact-scrim);
 }
 .contact-content {
-  padding-block: clamp(72px, 7vw, 110px) 40px;
+  padding-block: clamp(58px, 6vw, 88px) 32px;
 }
 .contact-section h2 {
   max-width: 1050px;
@@ -977,7 +977,7 @@ h2 em {
 .contact-description {
   font-size: 15px;
   color: var(--text-secondary);
-  margin-top: 28px;
+  margin-top: 22px;
 }
 .contact-content .button-row {
   margin-top: 30px;
@@ -985,9 +985,9 @@ h2 em {
 .contact-links {
   display: grid;
   grid-template-columns: 1.35fr 1fr 1fr;
-  gap: 40px;
-  margin-top: 80px;
-  padding-top: 34px;
+  gap: 32px;
+  margin-top: 52px;
+  padding-top: 26px;
   border-top: 1px solid var(--line);
 }
 .contact-block {
@@ -1030,35 +1030,20 @@ h2 em {
   padding: 0;
 }
 .copy-feedback {
-  min-height: 22px;
+  min-height: 18px;
   color: var(--text-secondary);
   font-size: 11px;
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .site-footer {
-  padding-top: 60px;
-}
-.footer-signature {
-  font-family: var(--serif);
-  font-size: clamp(52px, 10.5vw, 162px);
-  line-height: 1.16;
-  padding-bottom: 36px;
-  text-align: center;
-  letter-spacing: -0.045em;
-  border-bottom: 1px solid var(--line);
-  color: color-mix(in srgb, var(--paper) 72%, var(--ink));
-  white-space: nowrap;
-}
-.footer-signature em {
-  font-weight: 400;
-  color: var(--accent);
+  padding-top: 32px;
 }
 .footer-main {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  padding-block: 40px;
+  padding-block: 30px;
 }
 .footer-brand {
   display: flex;
@@ -1394,7 +1379,7 @@ h2 em {
   }
   .section-heading {
     display: block;
-    margin-bottom: 28px;
+    margin-bottom: 22px;
   }
   .section-heading > .text-link {
     margin-top: 22px;
@@ -1404,7 +1389,7 @@ h2 em {
   }
   .project-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 18px;
   }
   .project-featured {
     grid-column: auto;
@@ -1416,14 +1401,14 @@ h2 em {
   }
   .project-copy,
   .project-featured .project-copy {
-    padding: 26px;
+    padding: 20px;
   }
   .project-copy h3 {
     font-size: 44px;
   }
   .project-number {
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .project-copy p {
     font-size: 14px;
@@ -1439,29 +1424,31 @@ h2 em {
   }
   .about-intro {
     grid-template-columns: 1fr;
-    gap: 38px;
+    gap: 26px;
   }
   .about-copy h2 {
     font-size: 76px;
+    margin-bottom: 20px;
   }
   .about-copy p {
     font-size: 15px;
   }
   .about-image {
-    margin: 18px 0 0 12px;
+    margin: 14px 0 0 12px;
   }
   .about-image > img {
     aspect-ratio: 1;
   }
   .background-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .background-card.education-card {
     grid-row: auto;
-    padding: 30px;
+    padding: 24px;
   }
   .background-card {
-    padding: 28px;
+    padding: 24px;
   }
   .education-card h3 {
     font-size: 44px;
@@ -1470,7 +1457,7 @@ h2 em {
     overflow-wrap: anywhere;
   }
   .education-coursework {
-    padding-top: 30px;
+    padding-top: 24px;
   }
   .contact-section {
     margin-inline: 10px;
@@ -1478,7 +1465,7 @@ h2 em {
   }
   .contact-content {
     width: calc(100% - 40px);
-    padding-block: 60px 22px;
+    padding-block: 50px 18px;
   }
   .contact-section h2 {
     font-size: clamp(48px, 10.8vw, 76px);
@@ -1489,12 +1476,12 @@ h2 em {
   }
   .contact-links {
     grid-template-columns: 1fr;
-    gap: 28px;
-    margin-top: 54px;
-    padding-top: 28px;
+    gap: 18px;
+    margin-top: 34px;
+    padding-top: 20px;
   }
   .contact-block {
-    padding-bottom: 22px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--line);
   }
   .contact-block:last-child {
@@ -1506,14 +1493,9 @@ h2 em {
   .contact-value {
     font-size: 15px;
   }
-  .footer-signature {
-    white-space: normal;
-    font-size: 16vw;
-    text-align: left;
-  }
   .footer-main {
     gap: 24px;
-    padding-block: 26px;
+    padding-block: 20px;
   }
   .footer-brand {
     width: 100%;
@@ -1591,7 +1573,7 @@ h2 em {
   }
   .background-card.education-card,
   .background-card {
-    padding: 24px;
+    padding: 20px;
   }
   .background-card h3,
   .education-card h3 {
@@ -1599,7 +1581,7 @@ h2 em {
   }
   .project-copy,
   .project-featured .project-copy {
-    padding: 24px;
+    padding: 20px;
   }
 }
 @media (prefers-reduced-transparency: reduce) {
