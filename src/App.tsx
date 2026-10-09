@@ -429,9 +429,13 @@ function PortfolioHome() {
               <span className="hero-name-last">Margin</span>
             </h1>
             <p className="hero-role hero-reveal">{site.role}</p>
+            <p className="hero-availability hero-reveal">
+              <span className="status-dot" aria-hidden="true" />
+              {site.availability}
+            </p>
             <p className="hero-description hero-reveal">
-              Java applications and backend systems, explained through real
-              project screens, source, and verification.
+              Real desktop and web projects, with source code, decisions, and
+              verification you can review.
             </p>
             <div className="button-row hero-reveal">
               <Action href="#projects">View Projects</Action>
@@ -449,10 +453,6 @@ function PortfolioHome() {
             <span className="location">
               <MapPin size={16} />
               {site.location}
-            </span>
-            <span className="hero-availability">
-              <span className="status-dot" aria-hidden="true" />
-              {site.availability}
             </span>
             <a className="scroll-cue" href="#projects">
               <span>Scroll to explore</span>

@@ -2,11 +2,11 @@
   "site": {
     "displayName": "Valkenburgh Margin",
     "brandMark": "VM",
-    "role": "Junior Software Developer · Java & Backend",
+    "role": "Software Developer / Web Developer",
     "location": "Philippines",
-    "availability": "Open to junior software development roles",
-    "title": "Valkenburgh Margin — Junior Software Developer",
-    "description": "Junior software developer in the Philippines building Java applications and database-backed web systems. Explore project walkthroughs, public source, and verification.",
+    "availability": "Open to software development roles",
+    "title": "Valkenburgh Margin | Software Developer / Web Developer",
+    "description": "Software Developer and Web Developer in the Philippines, building desktop and web applications. Explore project walkthroughs, public source, and verification.",
     "canonicalOrigin": "https://vm.marginvalkenburgh.chatgpt.site",
     "email": "marginvalkenburgh@gmail.com",
     "github": "https://github.com/vmargin",
@@ -22,10 +22,10 @@
   },
   "about": {
     "title": "About",
-    "intro": "I'm Valkenburgh Margin, a Computer Engineering graduate in the Philippines focused on Java application and backend development.",
+    "intro": "I'm Valkenburgh Margin, a Computer Engineering graduate in the Philippines focused on building desktop and web applications.",
     "paragraphs": [
       "My projects include a Java banking simulator, a four-branch service operations workspace, and AssetHub, a multi-tenant equipment manager. I document the workflows, technical decisions, and verification behind each one.",
-      "I’m looking for a junior software development role where I can contribute to Java and backend work while continuing to grow as an engineer."
+      "I’m looking for software developer and web developer roles where I can contribute to useful applications and keep growing as an engineer."
     ],
     "education": {
       "qualification": "BS Computer Engineering",
@@ -434,8 +434,8 @@
     }
   ],
   "contact": {
-    "heading": "Open to junior software development opportunities",
-    "text": "Java applications, backend systems, and database-backed web products.",
+    "heading": "Let’s connect.",
+    "text": "Reach out to ask about a project or discuss a role.",
     "emailLabel": "Email me",
     "copyLabel": "Copy email",
     "copySuccess": "Email copied",

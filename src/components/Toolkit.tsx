@@ -21,26 +21,35 @@ const categories: Record<string, LucideIcon> = {
   delivery: Workflow,
 };
 const logos: Record<string, string> = {
-  Java: "java",
-  TypeScript: "typescript",
-  JavaScript: "javascript",
-  HTML: "html5",
-  CSS: "css3",
-  "Spring Boot": "spring",
-  "Node.js": "nodejs",
-  Express: "express",
-  React: "react",
-  "Tailwind CSS": "tailwindcss",
-  PostgreSQL: "postgresql",
-  Prisma: "prisma-mark",
-  JUnit: "junit",
-  Jest: "jest",
-  Maven: "maven",
-  Vite: "vitejs",
-  Git: "git",
-  GitHub: "github",
-  Docker: "docker",
-  Vercel: "vercel",
+  Java: "java.svg",
+  TypeScript: "typescript.svg",
+  JavaScript: "javascript.svg",
+  HTML: "html5.svg",
+  CSS: "css3.svg",
+  "Spring Boot": "spring.svg",
+  "Node.js": "nodejs.svg",
+  Express: "express.svg",
+  Swing: "java.svg",
+  Thymeleaf: "thymeleaf.svg",
+  Zod: "zod.webp",
+  React: "react.svg",
+  "Tailwind CSS": "tailwindcss.svg",
+  "TanStack Query": "tanstack.webp",
+  "shadcn/ui": "shadcnui.svg",
+  GSAP: "gsap.svg",
+  PostgreSQL: "postgresql.svg",
+  Prisma: "prisma-mark.svg",
+  JDBC: "java.svg",
+  JUnit: "junit.svg",
+  Jest: "jest.svg",
+  "Node.js Test Runner": "nodejs.svg",
+  Maven: "maven.svg",
+  Vite: "vitejs.svg",
+  npm: "npm.svg",
+  Git: "git.svg",
+  GitHub: "github.svg",
+  Docker: "docker.svg",
+  Vercel: "vercel.svg",
 };
 
 export function Toolkit() {
@@ -91,7 +100,7 @@ export function Toolkit() {
                             <span className="tech-mark" aria-hidden="true">
                               {logos[item] ? (
                                 <img
-                                  src={`/images/stack/${logos[item]}.svg`}
+                                  src={`/images/stack/${logos[item]}`}
                                   alt=""
                                   width="22"
                                   height="22"

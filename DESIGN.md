@@ -2,7 +2,7 @@
 
 ## Direction
 
-The home page introduces a junior Java and backend developer through personal sunrise and Antipolo photographs, then moves into three evidence-led case studies, a project-backed toolkit, coursework and training, and contact. The visual language pairs Cormorant Garamond display type with Manrope, a restrained blue accent and persisted dark/light themes.
+The home page introduces a software developer and web developer through personal sunrise and Antipolo photographs, then moves into three evidence-led case studies, a project-backed toolkit, coursework and training, and contact. The visual language pairs Cormorant Garamond display type with Manrope, a restrained blue accent and persisted dark/light themes. In light mode, the photography stays unobstructed and the contact text remains legible against the image. Toolkit and education cards share one quiet surface, while the mobile toolkit uses full-width category cards with more room between technology marks.
 
 ## Page progression
 

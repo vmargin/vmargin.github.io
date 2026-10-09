@@ -80,18 +80,8 @@ html[data-theme="light"] {
   --journey-surface: #edf0f2;
   --hero-foreground: #142a44;
   --hero-secondary: #2c455f;
-  --hero-scrim:
-    linear-gradient(
-      90deg,
-      #f5f3eff0,
-      #f5f3efd9 24%,
-      #f5f3ef84 48%,
-      transparent 76%
-    ),
-    linear-gradient(0deg, #f5f3efbf, transparent 20%);
-  --contact-scrim:
-    linear-gradient(90deg, #f5f3eff2, #f5f3efd6 56%, #f5f3ef4d),
-    linear-gradient(0deg, #f5f3efbd, transparent);
+  --hero-scrim: none;
+  --contact-scrim: none;
 }
 * {
   box-sizing: border-box;
@@ -514,7 +504,7 @@ h2 em {
   line-height: 1.8;
   color: var(--hero-secondary);
   max-width: 445px;
-  margin: 18px 0 26px;
+  margin: 12px 0 26px;
 }
 .hero-bottom {
   position: absolute;
@@ -534,11 +524,14 @@ h2 em {
   font-size: 11px;
 }
 .hero-availability {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
+  max-width: 100%;
+  margin-top: 8px;
+  color: var(--hero-secondary);
   font-size: 11px;
-  color: var(--hero-foreground);
+  line-height: 1.5;
 }
 .status-dot {
   display: inline-block;
@@ -861,11 +854,6 @@ h2 em {
 .background-card.education-card {
   grid-row: span 2;
   padding: clamp(28px, 3.2vw, 44px);
-  background: linear-gradient(
-    140deg,
-    color-mix(in srgb, var(--accent) 12%, var(--surface)),
-    var(--surface)
-  );
   display: flex;
   flex-direction: column;
 }
@@ -947,6 +935,29 @@ h2 em {
   border-radius: 22px;
   color: var(--paper);
   background: var(--surface);
+}
+html[data-theme="light"] .hero-bottom {
+  color: #f5f2ed;
+  text-shadow: 0 1px 3px #071220b3;
+}
+html[data-theme="light"] .contact-section {
+  color: #f5f2ed;
+}
+html[data-theme="light"] .contact-section .contact-description,
+html[data-theme="light"] .contact-section .contact-block > p {
+  color: #e0e7ed;
+}
+html[data-theme="light"] .contact-section .contact-label > svg {
+  color: #adc8fa;
+}
+html[data-theme="light"] .contact-section .button-primary {
+  background: #f5f2ed;
+  color: #172d47;
+}
+html[data-theme="light"] .contact-section .button-outline {
+  border-color: #f5f2edb8;
+  background: #10161c80;
+  color: #f5f2ed;
 }
 .contact-photo {
   position: absolute;
@@ -1350,15 +1361,6 @@ h2 em {
     gap: 10px;
     min-height: 48px;
   }
-  .hero-scrim {
-    background:
-      linear-gradient(
-        90deg,
-        color-mix(in srgb, var(--ink) 89%, transparent),
-        color-mix(in srgb, var(--ink) 56%, transparent)
-      ),
-      linear-gradient(0deg, var(--ink), transparent 55%);
-  }
   .hero-photo {
     object-position: 63% center;
   }
@@ -1367,12 +1369,6 @@ h2 em {
     width: calc(100% - 40px);
     flex-wrap: wrap;
     gap: 8px;
-  }
-  .hero-availability {
-    order: 3;
-    width: 100%;
-    font-size: 10px;
-    margin-top: 8px;
   }
   .scroll-cue {
     gap: 8px;

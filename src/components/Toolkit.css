@@ -64,13 +64,6 @@
     border-color 200ms ease,
     background 200ms ease;
 }
-.toolkit-group:nth-child(3n + 1) {
-  background: linear-gradient(
-    145deg,
-    color-mix(in srgb, var(--accent) 6%, var(--surface)),
-    var(--surface)
-  );
-}
 .toolkit-group-heading {
   display: flex;
   align-items: center;
@@ -152,11 +145,11 @@ html[data-theme="light"] .tech-mark img {
 }
 @media (max-width: 539px) {
   .toolkit-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .toolkit-group {
-    padding: 16px;
+    padding: 20px;
   }
   .toolkit-group-heading {
     gap: 8px;
@@ -168,12 +161,12 @@ html[data-theme="light"] .tech-mark img {
     font-size: 12px;
   }
   .toolkit-items {
-    grid-template-columns: 1fr;
-    gap: 9px;
-    margin-top: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 20px;
+    margin-top: 16px;
   }
   .toolkit-items li {
-    gap: 7px;
+    gap: 9px;
     font-size: 12px;
   }
   .tech-mark {
@@ -190,8 +183,8 @@ html[data-theme="light"] .tech-mark img {
     padding: 18px;
   }
   .toolkit-items {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 8px;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
   }
   .toolkit-items li {
     font-size: 12px;
