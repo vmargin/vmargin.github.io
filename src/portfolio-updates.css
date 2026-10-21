@@ -251,7 +251,7 @@ html[data-theme="light"] .project-cover {
   background: #20252b;
 }
 .about-portrait-frame[data-portrait="white"] {
-  background: #f2efe9;
+  background: #d8d0c4;
 }
 .about-portrait-photo {
   position: absolute;
@@ -356,17 +356,12 @@ html[data-theme="light"] .project-cover {
 .background-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.background-card.education-card {
-  grid-row: auto;
-}
-.background-date,
-.education-card .background-date {
+.background-date {
   font-family: inherit;
   font-size: var(--type-meta);
   line-height: 1.6;
 }
-.background-card h3,
-.education-card h3 {
+.background-card h3 {
   font-size: clamp(30px, 3vw, 42px);
 }
 .background-card > p {
@@ -378,7 +373,7 @@ html[data-theme="light"] .project-cover {
   font-size: var(--type-meta);
   line-height: 1.7;
 }
-.background-card > a,
+.background-footer > a,
 .education-coursework li {
   font-size: var(--type-meta);
 }

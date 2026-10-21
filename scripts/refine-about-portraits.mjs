@@ -36,6 +36,7 @@ function backdropMask(pixels, light) {
   return mask;
 }
 
+let darkBackdrop;
 for (const light of [false, true]) {
   const source = light
     ? "about-portrait-white-original.png"
@@ -48,14 +49,29 @@ for (const light of [false, true]) {
     .removeAlpha()
     .raw()
     .toBuffer();
-  const mask = await sharp(backdropMask(pixels, light), {
+  const backdrop = backdropMask(pixels, light);
+  if (!light) {
+    darkBackdrop = await sharp(backdrop, {
+      raw: { width, height, channels: 1 },
+    })
+      .blur(4)
+      .extractChannel(0)
+      .raw()
+      .toBuffer();
+  } else {
+    // The matching dark portrait's silhouette protects bright sweater fibers.
+    for (let index = 0; index < backdrop.length; index++) {
+      if (darkBackdrop[index] <= 1) backdrop[index] = 0;
+    }
+  }
+  const mask = await sharp(backdrop, {
     raw: { width, height, channels: 1 },
   })
     .blur(0.7)
     .extractChannel(0)
     .raw()
     .toBuffer();
-  const background = light ? [242, 239, 233] : [32, 37, 43];
+  const background = light ? [216, 208, 196] : [32, 37, 43];
   const output = Buffer.alloc(pixels.length);
   for (let index = 0; index < width * height; index++) {
     const offset = index * 3;
@@ -68,7 +84,7 @@ for (const light of [false, true]) {
     for (let channel = 0; channel < 3; channel++) {
       let value = rgb[channel];
       if (light) {
-        value -= sweater * neutral * Math.max(0, value - 160) * 0.12;
+        value -= sweater * neutral * Math.max(0, value - 150) * 0.24;
       } else {
         value += sweater * neutral * 10 * (1 - smoothstep(15, 75, luminance));
         if (orange) value = (value * 0.9 + luminance * 0.1) * 0.98;
@@ -83,6 +99,6 @@ for (const light of [false, true]) {
     .webp({ quality: 94, effort: 6 })
     .toFile(`public/images/portraits/${destination}`);
   console.log(
-    `Refine ${destination} with ${light ? "#F2EFE9" : "#20252B"} backdrop`,
+    `Refine ${destination} with ${light ? "#D8D0C4" : "#20252B"} backdrop`,
   );
 }

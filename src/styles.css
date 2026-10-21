@@ -846,38 +846,26 @@ h2 em {
   gap: 16px;
 }
 .background-card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+  row-gap: 0;
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--card-subtle);
 }
-.background-card.education-card {
-  grid-row: span 2;
-  padding: clamp(28px, 3.2vw, 44px);
-  display: flex;
-  flex-direction: column;
-}
 .background-date {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
   font-size: 11px;
   color: var(--accent);
   margin-bottom: 18px;
-}
-.education-card .background-date {
-  font-family: var(--serif);
-  font-size: 38px;
 }
 .background-card h3 {
   font-size: 30px;
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 10px;
-}
-.education-card h3 {
-  font-size: clamp(40px, 4.5vw, 60px);
-  max-width: 400px;
 }
 .background-card > p {
   font-size: 14px;
@@ -890,18 +878,23 @@ h2 em {
   margin-top: 16px;
   line-height: 1.8;
 }
-.background-card > a {
+.background-footer {
+  align-self: start;
+  margin-top: 12px;
+}
+.background-footer > a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: var(--accent);
   font-size: 12px;
   min-height: 44px;
-  margin-top: 12px;
 }
-.education-coursework {
-  margin-top: auto;
-  padding-top: 32px;
+.education-qualification {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: var(--type-meta);
 }
 .education-coursework h4 {
   font-family: inherit;
@@ -1439,21 +1432,11 @@ html[data-theme="light"] .contact-section .button-outline {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  .background-card.education-card {
-    grid-row: auto;
-    padding: 24px;
-  }
   .background-card {
     padding: 24px;
   }
-  .education-card h3 {
-    font-size: 44px;
-  }
   .background-card h3 {
     overflow-wrap: anywhere;
-  }
-  .education-coursework {
-    padding-top: 24px;
   }
   .contact-section {
     margin-inline: 10px;
@@ -1567,12 +1550,10 @@ html[data-theme="light"] .contact-section .button-outline {
   .button-row > .button {
     padding-inline: 18px;
   }
-  .background-card.education-card,
   .background-card {
     padding: 20px;
   }
-  .background-card h3,
-  .education-card h3 {
+  .background-card h3 {
     font-size: 36px;
   }
   .project-copy,

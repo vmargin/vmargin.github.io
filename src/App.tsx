@@ -7,7 +7,6 @@ import {
   Check,
   Copy,
   FileText,
-  GraduationCap,
   Github,
   Linkedin,
   Mail,
@@ -536,14 +535,19 @@ export default function PortfolioHome() {
           <div className="background-grid">
             <article className="background-card education-card" data-reveal>
               <span className="background-date">
-                <GraduationCap size={20} aria-hidden="true" />
                 Graduated {about.education.year}
               </span>
               <h3>{about.education.qualification}</h3>
-              <p>{about.education.institution}</p>
-              <span className="background-detail">Bachelor’s degree</span>
-              <p>{about.education.description}</p>
-              <div className="education-coursework">
+              <p>
+                {about.education.institution}
+                <span className="education-qualification">
+                  Bachelor’s degree
+                </span>
+              </p>
+              <div className="background-detail">
+                <p>{about.education.description}</p>
+              </div>
+              <div className="background-footer education-coursework">
                 <h4>Relevant coursework</h4>
                 <ul>
                   {about.education.coursework.map((course) => (
@@ -557,21 +561,29 @@ export default function PortfolioHome() {
                 <span className="background-date">{item.statusText}</span>
                 <h3>{item.title}</h3>
                 <p>{item.provider}</p>
-                <span className="background-detail">{item.detail}</span>
-                {item.relatedLink && (
-                  <a
-                    href={item.relatedLink.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {item.relatedLink.label} <ArrowUpRight size={14} />
-                  </a>
-                )}
-                {item.credentialUrl && (
-                  <a href={item.credentialUrl} target="_blank" rel="noreferrer">
-                    View course completion <ArrowUpRight size={14} />
-                  </a>
-                )}
+                <div className="background-detail">
+                  <p>{item.detail}</p>
+                </div>
+                <div className="background-footer">
+                  {item.relatedLink && (
+                    <a
+                      href={item.relatedLink.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {item.relatedLink.label} <ArrowUpRight size={14} />
+                    </a>
+                  )}
+                  {item.credentialUrl && (
+                    <a
+                      href={item.credentialUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View course completion <ArrowUpRight size={14} />
+                    </a>
+                  )}
+                </div>
               </article>
             ))}
           </div>
