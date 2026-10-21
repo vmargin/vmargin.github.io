@@ -24,11 +24,14 @@ async function raysState(button) {
   return button.locator("img").evaluate((image) => {
     const style = getComputedStyle(image);
     const matrix = new DOMMatrix(style.transform);
+    const properties = style.transitionProperty.split(", ");
+    const durations = style.transitionDuration.split(", ");
+    const transformIndex = properties.indexOf("transform");
     return {
       angle: (Math.atan2(matrix.b, matrix.a) * 180) / Math.PI,
       scale: Math.hypot(matrix.a, matrix.b),
-      duration: style.transitionDuration,
-      property: style.transitionProperty,
+      duration: durations[transformIndex] ?? durations[0],
+      property: properties[transformIndex] ?? properties[0],
     };
   });
 }

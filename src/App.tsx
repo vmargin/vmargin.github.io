@@ -542,6 +542,7 @@ export default function PortfolioHome() {
               <h3>{about.education.qualification}</h3>
               <p>{about.education.institution}</p>
               <span className="background-detail">Bachelor’s degree</span>
+              <p>{about.education.description}</p>
               <div className="education-coursework">
                 <h4>Relevant coursework</h4>
                 <ul>

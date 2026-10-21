@@ -3,8 +3,8 @@
     "displayName": "Valkenburgh Margin",
     "brandMark": "VM",
     "role": "Software Developer",
-    "location": "Based in Antipolo, Rizal",
-    "availability": "Open to junior software developer roles",
+    "location": "Based in Antipolo, Rizal, Philippines.",
+    "availability": "Open to software developer roles",
     "title": "Valkenburgh Margin | Software Developer",
     "description": "Valkenburgh Margin (Valk), a software developer in the Philippines building desktop and full-stack web applications for practical workflows.",
     "canonicalOrigin": "https://vm.marginvalkenburgh.chatgpt.site",
@@ -100,6 +100,7 @@
       "qualification": "BS Computer Engineering",
       "institution": "Polytechnic University of the Philippines",
       "year": "2020",
+      "description": "This is where I developed the engineering mindset and skill set I bring to building software.",
       "coursework": [
         "Object-oriented programming",
         "Data structures",
@@ -635,7 +636,7 @@
   ],
   "contact": {
     "heading": "Let’s connect.",
-    "text": "Have a junior software developer role or a question about my work? I'd like to hear from you.",
+    "text": "Have a software developer role or a question about my work? I’d like to hear from you.",
     "emailLabel": "Email me",
     "copyLabel": "Copy email",
     "copySuccess": "Email copied",

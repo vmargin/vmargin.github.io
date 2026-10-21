@@ -133,6 +133,7 @@ const schema = z.object({
       qualification: text,
       institution: text,
       year: text,
+      description: text,
       coursework: z.array(text),
     }),
     training: z.array(

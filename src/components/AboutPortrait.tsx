@@ -11,22 +11,31 @@ export function AboutPortrait({
   onThemeChange: (theme: Theme) => void;
 }) {
   const portraitColor = theme === "light" ? "black" : "white";
-  const portrait = portfolio.about.portraits[portraitColor];
   const bulb = portfolio.about.bulb;
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const [keyboardFocus, setKeyboardFocus] = useState(false);
   return (
     <figure className="about-image">
       <div className="about-portrait-frame" data-portrait={portraitColor}>
-        <img
-          className="about-portrait-photo"
-          src={portrait.src}
-          width={portrait.width}
-          height={portrait.height}
-          alt={portrait.alt}
-          loading="lazy"
-          decoding="async"
-        />
+        {(["black", "white"] as const).map((color) => {
+          const portrait = portfolio.about.portraits[color];
+          const active = color === portraitColor;
+          return (
+            <img
+              key={color}
+              className="about-portrait-photo"
+              data-portrait={color}
+              data-active={active}
+              src={portrait.src}
+              width={portrait.width}
+              height={portrait.height}
+              alt={active ? portrait.alt : ""}
+              aria-hidden={!active}
+              loading="lazy"
+              decoding="async"
+            />
+          );
+        })}
         <Tooltip.Provider delayDuration={0}>
           <Tooltip.Root
             open={tooltipOpen || keyboardFocus}

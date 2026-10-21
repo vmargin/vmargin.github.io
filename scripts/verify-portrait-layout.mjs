@@ -28,7 +28,12 @@ async function verifyMapping(page, theme) {
   const frame = page.locator(".about-portrait-frame");
   await frame.scrollIntoViewIfNeeded();
   await expect(frame).toHaveAttribute("data-portrait", portrait);
-  await expect(frame.locator(".about-portrait-photo")).toHaveAttribute(
+  await expect(
+    frame.locator('.about-portrait-photo[data-portrait="white"]'),
+  ).toHaveCSS("opacity", theme === "dark" ? "1" : "0");
+  await expect(
+    frame.locator('.about-portrait-photo[data-active="true"]'),
+  ).toHaveAttribute(
     "src",
     portrait === "black"
       ? "/images/portraits/about-portrait.webp"
@@ -55,7 +60,7 @@ async function verifyMapping(page, theme) {
     theme === "light" ? "brightness(0) invert(1)" : "brightness(0)",
   );
   await frame
-    .locator(".about-portrait-photo")
+    .locator('.about-portrait-photo[data-active="true"]')
     .evaluate((image) => image.decode());
   await expect(
     page.getByRole("button", {

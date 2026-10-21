@@ -41,7 +41,7 @@ try {
       );
       await expect(page.locator(".hero-description")).toHaveText(description);
       await expect(page.locator(".hero .location")).toHaveText(
-        "Based in Antipolo, Rizal",
+        "Based in Antipolo, Rizal, Philippines.",
       );
       await expect(
         page

@@ -244,22 +244,33 @@ html[data-theme="light"] .project-cover {
 }
 .about-portrait-frame {
   position: relative;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: #09090b;
+  background: #20252b;
 }
 .about-portrait-frame[data-portrait="white"] {
-  background: #fafafa;
+  background: #f2efe9;
 }
 .about-portrait-photo {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center;
   filter: none;
+  opacity: 0;
+  transition: opacity 350ms ease-in-out;
+}
+.about-portrait-photo[data-active="true"] {
+  opacity: 1;
+}
+.about-portrait-photo[data-portrait="black"] {
+  opacity: 1;
 }
 .portrait-theme-toggle {
   position: absolute;
@@ -275,6 +286,7 @@ html[data-theme="light"] .project-cover {
   background: transparent;
   color: #fafafa;
   cursor: pointer;
+  transition: color 0ms 175ms;
 }
 .portrait-theme-toggle img {
   display: block;
@@ -282,7 +294,9 @@ html[data-theme="light"] .project-cover {
   height: 22px;
   filter: brightness(0) invert(1);
   transform: rotate(0deg) scale(1);
-  transition: transform 250ms var(--ease);
+  transition:
+    transform 250ms var(--ease),
+    filter 0ms 175ms;
 }
 .about-portrait-frame[data-portrait="white"] .portrait-theme-toggle {
   color: #09090b;
@@ -347,6 +361,7 @@ html[data-theme="light"] .project-cover {
 }
 .background-date,
 .education-card .background-date {
+  font-family: inherit;
   font-size: var(--type-meta);
   line-height: 1.6;
 }
@@ -762,6 +777,7 @@ html[data-motion="reduced"] *::after {
 }
 .contact-content {
   min-width: 0;
+  background: #20252b;
   width: 100%;
   padding: clamp(20px, 3vw, 42px);
   margin-inline: auto;
