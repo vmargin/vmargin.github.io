@@ -29,6 +29,8 @@ The About bulb shares the header theme setting: light mode shows the black portr
 
 The shared metadata builder supplies page titles, descriptions, canonical URLs, social metadata, and structured data. Home/case-study modules load separately, while the same React components provide initial HTML through build-time prerendering. The build generates `sitemap.xml`, `robots.txt`, `404.html`, and portable `_headers` configuration. The current static-host configuration exposes only the output directory; recognition of `_headers` is unverified.
 
+GitHub Pages publishes the user site at `https://vmargin.github.io/` through the `Publish Valk` workflow. It builds the root-domain copy, identifies its browser title as Valk, and rewrites canonical and discovery URLs for that host.
+
 ## Verification
 
 ```powershell
@@ -41,6 +43,7 @@ npm.cmd run verify:browser
 npm.cmd run verify:latest
 npm.cmd run verify:portrait
 npm.cmd run verify:bulb
+npm.cmd run build:github-pages
 npm.cmd run format:check
 ```
 

@@ -5,12 +5,27 @@ type Project = (typeof portfolio.projects)[number];
 /** Build and browser routes consume the same content and metadata contract. */
 export function createMetadata(project?: Project) {
   const { site } = portfolio;
-  const title = project ? `${project.title} | ${site.displayName}` : site.title;
+  const siteName =
+    typeof document === "undefined"
+      ? site.displayName
+      : document.querySelector<HTMLMetaElement>(
+          'meta[name="portfolio-site-name"]',
+        )?.content || site.displayName;
+  const canonical =
+    typeof document === "undefined"
+      ? site.canonicalOrigin
+      : document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+          ?.href || site.canonicalOrigin;
+  const origin = new URL(canonical).origin;
+  const title = project
+    ? `${project.title} | ${siteName}`
+    : siteName === site.displayName
+      ? site.title
+      : `${siteName} | ${site.role}`;
   const description = project?.summary ?? site.description;
-  const url = site.canonicalOrigin + (project?.href ?? "/");
+  const url = origin + (project?.href ?? "/");
   const image =
-    site.canonicalOrigin +
-    (project?.cover ?? "/images/portraits/about-portrait.webp");
+    origin + (project?.cover ?? "/images/portraits/about-portrait.webp");
   const imageAlt =
     project?.gallery[0]?.alt ?? `Portrait of ${site.displayName}`;
   const structuredData = project
