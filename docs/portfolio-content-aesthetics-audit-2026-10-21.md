@@ -1,5 +1,9 @@
 # Portfolio content and aesthetics audit
 
+Latest follow-up: [individual content/visual finding checklist](latest-update-audit-2026-10-21.md) covers every actionable item below, including superseded wording, the implemented card plan, live-demo checks, and external/deferred work.
+
+Implementation follow-up: [local results and resolution checklist](implementation-results-2026-10-21.md). Historical observations below retain their original scope and dates. The confirmed inputs govern the implemented copy.
+
 Date: October 21, 2026. Live target: https://vm.marginvalkenburgh.chatgpt.site/. Local surfaces: `src/App.tsx`, `src/ProjectCaseStudy.tsx`, `src/data/portfolio.json` and related styles.
 
 ## Confirmed user answers for implementation
@@ -44,16 +48,16 @@ Playwright inspects home, CASH-G, ARCTIC and AssetHub at 1440px and 390px, in da
 
 The main ledger contains 195 action records, including grouped interactions; these are not claimed as 195 distinct controls or a literal total of all mouse clicks. Supplementary coverage records 44 observations for preview endings, backdrop dismissal, keyboard skip links and intercepted email actions. Repeated links to the same external destination are grouped in the external ledger, with their source pages and labels retained.
 
-| Surface | Click-through coverage |
-| --- | --- |
-| Home navigation | Project-card links, section actions, header/footer navigation, monogram, mobile menu open/close, all four mobile destinations, Escape dismissal and keyboard skip link |
-| Quick previews | All three projects in both themes and widths; top and lower content, Close, Escape, backdrop dismissal and full-case-study action |
-| Toolkit | All seven tabs, including All; all six filtered content groups in both themes and widths |
-| Contact | Copy success, visibly simulated clipboard-unavailable feedback, social destinations and mailto click intent; external email-app launch is prevented and no message is sent |
-| Preferences | Both theme buttons on all 16 page variants; motion pause/resume without system reduced-motion override |
-| Case studies | Complete introductions, CASH-G version cards, all galleries, architecture, ARCTIC/AssetHub role models, workflow, decisions, selected source, verification, limits, next/back/home/footer paths |
-| Gallery images | All nine distinct screenshot links are clicked in four desktop/mobile/theme configurations, producing 36 independently observed downloads; the nine original images are inspected |
-| Documents and external evidence | 23 unique HTTP/document destinations are actually clicked, including resume, certificate, coursework, GitHub profile/repositories/files/records, LinkedIn and hosted application entry pages |
+| Surface                         | Click-through coverage                                                                                                                                                                          |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Home navigation                 | Project-card links, section actions, header/footer navigation, monogram, mobile menu open/close, all four mobile destinations, Escape dismissal and keyboard skip link                          |
+| Quick previews                  | All three projects in both themes and widths; top and lower content, Close, Escape, backdrop dismissal and full-case-study action                                                               |
+| Toolkit                         | All seven tabs, including All; all six filtered content groups in both themes and widths                                                                                                        |
+| Contact                         | Copy success, visibly simulated clipboard-unavailable feedback, social destinations and mailto click intent; external email-app launch is prevented and no message is sent                      |
+| Preferences                     | Both theme buttons on all 16 page variants; motion pause/resume without system reduced-motion override                                                                                          |
+| Case studies                    | Complete introductions, CASH-G version cards, all galleries, architecture, ARCTIC/AssetHub role models, workflow, decisions, selected source, verification, limits, next/back/home/footer paths |
+| Gallery images                  | All nine distinct screenshot links are clicked in four desktop/mobile/theme configurations, producing 36 independently observed downloads; the nine original images are inspected               |
+| Documents and external evidence | 23 unique HTTP/document destinations are actually clicked, including resume, certificate, coursework, GitHub profile/repositories/files/records, LinkedIn and hosted application entry pages    |
 
 The main ledger's 26 initial automation failures require interpretation: eight are attempts to mouse-click keyboard-only skip links before focus, subsequently exercised through Tab and Enter; eighteen are attempts to read the title of a gallery popup that closes during image download, covering nine image destinations at two widths. They are not counted as 26 broken website links. The native skip destinations navigate, while screenshot viewing still has the expectation issue described below. No page JavaScript errors or unloaded/broken images are observed in the 16 settled page inventories.
 
@@ -212,11 +216,11 @@ Acceptance: A visitor can explain the project, the developer's role and one engi
 
 ## Per-project storytelling
 
-| Project | Lead with | Strongest existing material | Missing detail |
-| --- | --- | --- | --- |
-| CASH-G | Practicing account and transfer workflows | Sender debit, recipient credit and ledger entries recorded together; deliberate money representation | Precise Web v2 contribution; a real implementation tradeoff |
-| ARCTIC | Staff and managers coordinating a modeled four-branch service workflow | Terminal job states, branch scope and separately recorded refunds | One requirement translated into a rule; a clear cost/benefit explanation |
-| AssetHub | Knowing who holds equipment, where it is and its history | One open checkout constraint, transactionally recorded history and stale audit rejection | Specific before/after contribution in the 2026 rebuild |
+| Project  | Lead with                                                              | Strongest existing material                                                                          | Missing detail                                                           |
+| -------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| CASH-G   | Practicing account and transfer workflows                              | Sender debit, recipient credit and ledger entries recorded together; deliberate money representation | Precise Web v2 contribution; a real implementation tradeoff              |
+| ARCTIC   | Staff and managers coordinating a modeled four-branch service workflow | Terminal job states, branch scope and separately recorded refunds                                    | One requirement translated into a rule; a clear cost/benefit explanation |
+| AssetHub | Knowing who holds equipment, where it is and its history               | One open checkout constraint, transactionally recorded history and stale audit rejection             | Specific before/after contribution in the 2026 rebuild                   |
 
 Draft openings:
 
@@ -257,12 +261,12 @@ Coordinator recommendation: for a general web-application application, consider 
 
 Designer routes this review to Emil's design-engineering principles. Existing motion code uses one-time reveals, desktop-only parallax and reduced-motion gating. The site does not need more animation to express the work.
 
-| Current treatment | Proposed direction | Reason |
-| --- | --- | --- |
-| Hero text reveal, 0.85s with 0.075s stagger (`usePortfolioMotion.ts:31`) | Keep essential identity/actions available promptly; reserve slower movement for the photograph | A recruiter can start reading while decorative motion continues |
-| Most reveal sections animate over 0.75s (`usePortfolioMotion.ts:38`) | Use fewer reveal groups and evaluate shorter entrances | Reduce repeated waiting while browsing work |
-| About image uses a 1.1s clip reveal (`usePortfolioMotion.ts:64`) | Compare against a simpler static reveal before retaining it | Its purpose is atmospheric; it does not explain an application workflow |
-| Scroll smoothing and parallax | Keep restrained and honor the saved preference on every route | Reading and navigation should feel predictable |
+| Current treatment                                                        | Proposed direction                                                                             | Reason                                                                  |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Hero text reveal, 0.85s with 0.075s stagger (`usePortfolioMotion.ts:31`) | Keep essential identity/actions available promptly; reserve slower movement for the photograph | A recruiter can start reading while decorative motion continues         |
+| Most reveal sections animate over 0.75s (`usePortfolioMotion.ts:38`)     | Use fewer reveal groups and evaluate shorter entrances                                         | Reduce repeated waiting while browsing work                             |
+| About image uses a 1.1s clip reveal (`usePortfolioMotion.ts:64`)         | Compare against a simpler static reveal before retaining it                                    | Its purpose is atmospheric; it does not explain an application workflow |
+| Scroll smoothing and parallax                                            | Keep restrained and honor the saved preference on every route                                  | Reading and navigation should feel predictable                          |
 
 These are source-based motion recommendations. No frame-time measurement or slow-motion feel assessment is performed. Decorative first-visit motion is not automatically a defect because its duration exceeds a UI feedback budget. Full motion approval is withheld pending that review and the previously reproduced cross-route preference defect.
 
@@ -280,19 +284,19 @@ Fresh browser navigation covers home and all three case studies. Mutable injecti
 
 Assessment A independently scores the home browsing experience 28/32. The coordinator reduces User Control from 4 to 3 after incorporating the previously reproduced saved-motion defect on fresh case-study navigation. The resulting advisory score is 27/32. This is a rubric-based expert assessment, not a usability measurement, an accessibility certification or a hiring-success percentage.
 
-| Heuristic | Score | Reason |
-| --- | --- | --- |
-| Visibility of system status | 3/4 | Selected theme, active navigation and copy feedback communicate state |
-| Match with the real world | 3/4 | Hiring actions are familiar; project purpose competes with technical/provenance language |
-| User control and freedom | 3/4 | Preview dismissal works; saved motion preference is not applied on fresh case-study loads |
-| Consistency and standards | 3/4 | Coherent visual identity; contact labels and photographic states vary |
-| Error prevention | 3/4 | Explicit labels and limitations set expectations, with room to clarify hosted sign-in links |
-| Recognition rather than recall | 3/4 | Visible summaries help; version ownership and toolkit breadth require extra interpretation |
-| Flexibility and efficiency | n/a | Not scored for the primary portfolio-browsing task |
-| Aesthetic and minimalist design | 3/4 | Strong composition; some secondary sections receive disproportionate emphasis |
-| Error recovery | 3/4 | Clipboard source includes actionable failure feedback; this review does not induce failure |
-| Help and documentation | n/a | No separate help system is needed for basic portfolio browsing |
-| Total | 27/32 | Eight applicable heuristics |
+| Heuristic                       | Score | Reason                                                                                      |
+| ------------------------------- | ----- | ------------------------------------------------------------------------------------------- |
+| Visibility of system status     | 3/4   | Selected theme, active navigation and copy feedback communicate state                       |
+| Match with the real world       | 3/4   | Hiring actions are familiar; project purpose competes with technical/provenance language    |
+| User control and freedom        | 3/4   | Preview dismissal works; saved motion preference is not applied on fresh case-study loads   |
+| Consistency and standards       | 3/4   | Coherent visual identity; contact labels and photographic states vary                       |
+| Error prevention                | 3/4   | Explicit labels and limitations set expectations, with room to clarify hosted sign-in links |
+| Recognition rather than recall  | 3/4   | Visible summaries help; version ownership and toolkit breadth require extra interpretation  |
+| Flexibility and efficiency      | n/a   | Not scored for the primary portfolio-browsing task                                          |
+| Aesthetic and minimalist design | 3/4   | Strong composition; some secondary sections receive disproportionate emphasis               |
+| Error recovery                  | 3/4   | Clipboard source includes actionable failure feedback; this review does not induce failure  |
+| Help and documentation          | n/a   | No separate help system is needed for basic portfolio browsing                              |
+| Total                           | 27/32 | Eight applicable heuristics                                                                 |
 
 Cognitive load is moderate by the skill's checklist, concentrated in the toolkit's seven tabs and 31 entries. Counting choices alone does not prove confusion; the grouping is useful and these are optional browsing controls. The emotional progression moves from personal photographic introduction to software evidence, then a slower toolkit/training middle before contact.
 

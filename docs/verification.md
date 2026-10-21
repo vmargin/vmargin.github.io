@@ -1,5 +1,9 @@
 # Portfolio v6 · verification record
 
+Current: [latest user update and complete audit review](latest-update-audit-2026-10-21.md). Its browser artifacts are saved separately under `artifacts/portfolio-latest-update-2026-10-21/`; earlier runs below retain their dates.
+
+Latest: [October 21 implementation and verification results](implementation-results-2026-10-21.md). The October 9 entries below remain historical and do not describe the updated portraits, content, or delivery architecture.
+
 This record distinguishes evidence for the portfolio from older checks owned by its projects.
 
 ## October 9 visual and content update

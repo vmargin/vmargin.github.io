@@ -55,10 +55,12 @@ const logos: Record<string, string> = {
 export function Toolkit() {
   const [active, setActive] = useState("all");
   const groups = portfolio.stack;
+  const [expanded, setExpanded] = useState(false);
   return (
     <section
       className="toolkit section wrap"
       id="stack"
+      tabIndex={-1}
       aria-labelledby="toolkit-title"
     >
       <div className="toolkit-heading" data-reveal>
@@ -86,7 +88,7 @@ export function Toolkit() {
               {groups
                 .filter((group) => filter === "all" || group.id === filter)
                 .map((group) => {
-                  const Icon = categories[group.id];
+                  const Icon = categories[group.id] ?? CodeXml;
                   return (
                     <article className="toolkit-group" key={group.id}>
                       <div className="toolkit-group-heading">
@@ -95,7 +97,10 @@ export function Toolkit() {
                       </div>
                       <p>{group.context}</p>
                       <ul className="toolkit-items">
-                        {group.items.map((item) => (
+                        {(filter === "all" && !expanded
+                          ? group.items.slice(0, 3)
+                          : group.items
+                        ).map((item) => (
                           <li key={item}>
                             <span className="tech-mark" aria-hidden="true">
                               {logos[item] ? (
@@ -121,9 +126,18 @@ export function Toolkit() {
           </TabsContent>
         ))}
       </Tabs>
+      {active === "all" && (
+        <button
+          className="toolkit-expand text-link"
+          type="button"
+          aria-expanded={expanded}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? "Show core technologies" : "Show all technologies"}
+        </button>
+      )}
       <p className="toolkit-note">
-        Includes technologies used in AI-assisted projects. Each case study
-        explains my contribution and the implementation context.
+        Browse a category for the complete inventory.
       </p>
     </section>
   );

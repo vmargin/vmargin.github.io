@@ -1,5 +1,9 @@
 # Sauron portfolio audit
 
+Latest follow-up: [individual finding review and subsequent update](latest-update-audit-2026-10-21.md) records fresh local checks plus the live header/discovery limits. The original audit below is preserved.
+
+Implementation follow-up: [local results and resolution checklist](implementation-results-2026-10-21.md). The findings below remain the original dated audit; the follow-up distinguishes local fixes from unverified live-host behavior.
+
 Date: October 21, 2026, Asia/Manila. Target: https://vm.marginvalkenburgh.chatgpt.site/#home.
 
 ## Assessment
@@ -119,18 +123,18 @@ Recommendations below are editorial judgments, not reproduced defects:
 
 ## Checks and limits
 
-| Area | Result |
-| --- | --- |
-| Live homepage, dark, 1440/390/320px | No observed horizontal overflow, page errors, or broken images after scrolling to load lazy assets |
-| Home and three case studies, 390px, dark/light | Eight route/theme checks: no observed overflow or broken images; correct titles, canonical URLs, and h1 content |
-| Quick preview | Opens with focus on Close; Escape closes it and returns focus to its trigger |
-| Toolkit Languages filter | Selection updates successfully |
-| Mobile section selection | Reproduces F2 |
-| Stored motion pause across routes | Reproduces F3 |
-| Project routes | All three return 200 with project-specific metadata; unknown route returns 404 in agent inspection |
-| Dependency advisory audit | Boromir reports zero known vulnerabilities across 266 dependencies at audit time |
-| Public external URLs | Boromir reports 20 GitHub/application HEAD responses of 200; LinkedIn returns 405 and remains unverified |
-| Credential pattern review | Agent finds no candidates in 27 current tracked text files, excluding lockfile; history and binaries are outside scope |
+| Area                                           | Result                                                                                                                 |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Live homepage, dark, 1440/390/320px            | No observed horizontal overflow, page errors, or broken images after scrolling to load lazy assets                     |
+| Home and three case studies, 390px, dark/light | Eight route/theme checks: no observed overflow or broken images; correct titles, canonical URLs, and h1 content        |
+| Quick preview                                  | Opens with focus on Close; Escape closes it and returns focus to its trigger                                           |
+| Toolkit Languages filter                       | Selection updates successfully                                                                                         |
+| Mobile section selection                       | Reproduces F2                                                                                                          |
+| Stored motion pause across routes              | Reproduces F3                                                                                                          |
+| Project routes                                 | All three return 200 with project-specific metadata; unknown route returns 404 in agent inspection                     |
+| Dependency advisory audit                      | Boromir reports zero known vulnerabilities across 266 dependencies at audit time                                       |
+| Public external URLs                           | Boromir reports 20 GitHub/application HEAD responses of 200; LinkedIn returns 405 and remains unverified               |
+| Credential pattern review                      | Agent finds no candidates in 27 current tracked text files, excluding lockfile; history and binaries are outside scope |
 
 Browser evidence is in `artifacts/sauron-audit-2026-10-21/`: `browser-evidence.json`, `route-evidence.json`, `interaction-evidence.json`, screenshots, and the scripts used to gather them. This directory is ignored by Git. Lazy images are evaluated after scrolling; unloaded images on initial entry are not classified as broken.
 

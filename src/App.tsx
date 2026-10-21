@@ -13,28 +13,22 @@ import {
   Mail,
   MapPin,
   Menu,
-  Moon,
-  Pause,
-  Play,
-  Sun,
   X,
 } from "lucide-react";
 import portfolio from "./data/portfolio.json";
-import { ProjectCaseStudy } from "./ProjectCaseStudy";
-import { usePortfolioMotion } from "./usePortfolioMotion";
+import { useNativeMotion } from "./useNativeMotion";
 import { Toolkit } from "./components/Toolkit";
 import { Button } from "./components/ui/button";
-
+import { DotField } from "./components/DotField";
+import { AboutPortrait } from "./components/AboutPortrait";
+import {
+  ThemeToggle,
+  MotionControl,
+  useSitePreferences,
+} from "./components/SitePreferences";
 type Project = (typeof portfolio.projects)[number];
 const { site, about, projects, contact } = portfolio;
-type ColorTheme = "dark" | "light";
-const themeStorageKey = "v6-theme";
-const navItems = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
-];
+const navItems = site.navigation;
 const shortTitles: Record<string, string> = {
   "cash-g": "CASH-G",
   arctic: "ARCTIC",
@@ -63,14 +57,12 @@ function Action({
   secondary = false,
   icon = <ArrowRight size={17} />,
   className = "",
-  download = false,
 }: {
   href: string;
   children: ReactNode;
   secondary?: boolean;
   icon?: ReactNode;
   className?: string;
-  download?: boolean;
 }) {
   return (
     <Button
@@ -78,42 +70,15 @@ function Action({
       variant={secondary ? "outline" : "default"}
       className={`button ${secondary ? "button-outline" : "button-primary"} ${className}`}
     >
-      <a href={href} download={download || undefined}>
+      <a
+        href={href}
+        target={href.endsWith(".pdf") ? "_blank" : undefined}
+        rel={href.endsWith(".pdf") ? "noreferrer" : undefined}
+      >
         <span>{children}</span>
         {icon}
       </a>
     </Button>
-  );
-}
-
-function ThemeToggle({
-  theme,
-  onChange,
-}: {
-  theme: ColorTheme;
-  onChange: (theme: ColorTheme) => void;
-}) {
-  return (
-    <div className="theme-toggle" role="group" aria-label="Color theme">
-      <button
-        className="theme-toggle-option"
-        type="button"
-        aria-label="Light theme"
-        aria-pressed={theme === "light"}
-        onClick={() => onChange("light")}
-      >
-        <Sun size={16} aria-hidden="true" />
-      </button>
-      <button
-        className="theme-toggle-option"
-        type="button"
-        aria-label="Dark theme"
-        aria-pressed={theme === "dark"}
-        onClick={() => onChange("dark")}
-      >
-        <Moon size={16} aria-hidden="true" />
-      </button>
-    </div>
   );
 }
 
@@ -174,13 +139,18 @@ function ProjectDetails({
         </div>
       </div>
       <figure className="quick-preview-image">
-        <img src={project.cover} alt="" loading="lazy" />
-        <figcaption>{project.gallery[0].caption}</figcaption>
+        <img
+          src={project.cover}
+          alt={project.gallery[0]?.alt ?? ""}
+          width={project.gallery[0]?.width}
+          height={project.gallery[0]?.height}
+          loading="lazy"
+        />
+        <figcaption>{project.previewNote}</figcaption>
       </figure>
       <div className="dialog-body quick-preview-status">
         <Eyebrow>{project.statusText}</Eyebrow>
-        <p>{project.role}</p>
-        <p>{project.portfolioCheck}</p>
+        <p>{project.roleSummary}</p>
       </div>
       <div className="dialog-actions">
         <a className="button button-primary" href={project.href}>
@@ -201,44 +171,14 @@ function ProjectDetails({
   );
 }
 
-export default function App() {
-  const path = window.location.pathname.endsWith("/")
-    ? window.location.pathname.slice(0, -1) || "/"
-    : window.location.pathname;
-  const project = projects.find((candidate) => {
-    const projectPath = candidate.href.endsWith("/")
-      ? candidate.href.slice(0, -1)
-      : candidate.href;
-    return projectPath === path;
-  });
-  return project ? <ProjectCaseStudy project={project} /> : <PortfolioHome />;
-}
-
-function PortfolioHome() {
+export default function PortfolioHome() {
   const root = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [selected, setSelected] = useState<Project | null>(null);
-  const [theme, setTheme] = useState<ColorTheme>(() => {
-    try {
-      return localStorage.getItem(themeStorageKey) === "light"
-        ? "light"
-        : "dark";
-    } catch {
-      return "dark";
-    }
-  });
-  const [systemReduced, setSystemReduced] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
-  const [motionPaused, setMotionPaused] = useState(() => {
-    try {
-      return localStorage.getItem("v6-motion-paused") === "true";
-    } catch {
-      return false;
-    }
-  });
+  const preferences = useSitePreferences();
+  const { theme, setTheme, motionEnabled } = preferences;
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">(
     "idle",
   );
@@ -247,40 +187,11 @@ function PortfolioHome() {
   const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
-  const motionEnabled = !systemReduced && !motionPaused;
-  usePortfolioMotion(root, motionEnabled, !!selected);
+  useNativeMotion(root, motionEnabled && !selected);
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setSystemReduced(media.matches);
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, []);
-  useEffect(() => {
-    document.documentElement.dataset.motion = motionEnabled
-      ? "full"
-      : "reduced";
-    try {
-      localStorage.setItem("v6-motion-paused", String(motionPaused));
-    } catch {
-      /* The preference remains available for this visit. */
-    }
-  }, [motionEnabled, motionPaused]);
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "light" ? "#f5f3ef" : "#10161c");
-    try {
-      localStorage.setItem(themeStorageKey, theme);
-    } catch {
-      /* The selected theme remains active for this visit. */
-    }
-  }, [theme]);
-  useEffect(() => {
     const headerObserver = new IntersectionObserver(([entry]) =>
-      setScrolled(!entry.isIntersecting),
+      setScrolled(entry ? !entry.isIntersecting : false),
     );
     const sentinel = root.current?.querySelector(".header-sentinel");
     if (sentinel) headerObserver.observe(sentinel);
@@ -293,7 +204,9 @@ function PortfolioHome() {
       { rootMargin: "-15% 0px -65% 0px", threshold: 0 },
     );
     root.current
-      ?.querySelectorAll("#home, #projects, #about, #stack, #contact")
+      ?.querySelectorAll(
+        "#home, #projects, #about, #stack, #certifications, #contact",
+      )
       .forEach((section) => sections.observe(section));
     return () => {
       headerObserver.disconnect();
@@ -331,6 +244,7 @@ function PortfolioHome() {
 
   return (
     <div ref={root} className="portfolio">
+      <DotField enabled={motionEnabled && !selected} theme={theme} />
       <div className="header-sentinel" aria-hidden="true" />
       <a className="skip-link" href="#projects">
         Skip to projects
@@ -350,6 +264,8 @@ function PortfolioHome() {
             {navItems.map((item) => (
               <a
                 href={item.href}
+                target={item.href.endsWith(".pdf") ? "_blank" : undefined}
+                rel={item.href.endsWith(".pdf") ? "noreferrer" : undefined}
                 key={item.label}
                 aria-current={
                   activeSection === item.href.slice(1) ? "location" : undefined
@@ -361,10 +277,6 @@ function PortfolioHome() {
           </nav>
           <div className="header-actions">
             <ThemeToggle theme={theme} onChange={setTheme} />
-            <a className="header-cta" href="#contact">
-              Let’s Work Together
-              <ArrowRight size={16} />
-            </a>
             <button
               ref={menuTrigger}
               className="icon-button menu-toggle"
@@ -386,15 +298,22 @@ function PortfolioHome() {
           {navItems.map((item) => (
             <a
               href={item.href}
+              target={item.href.endsWith(".pdf") ? "_blank" : undefined}
+              rel={item.href.endsWith(".pdf") ? "noreferrer" : undefined}
               key={item.label}
               aria-current={
                 activeSection === item.href.slice(1) ? "location" : undefined
               }
               onClick={() => {
                 setMenuOpen(false);
-                requestAnimationFrame(() =>
-                  menuTrigger.current?.focus({ preventScroll: true }),
-                );
+                if (item.href.startsWith("#"))
+                  requestAnimationFrame(() => {
+                    const destination = document.querySelector<HTMLElement>(
+                      item.href,
+                    );
+                    destination?.setAttribute("tabindex", "-1");
+                    destination?.focus({ preventScroll: true });
+                  });
               }}
             >
               {item.label}
@@ -405,57 +324,46 @@ function PortfolioHome() {
       </header>
 
       <main>
-        <section className="hero" id="home" aria-labelledby="hero-title">
-          <img
-            className="hero-photo is-active"
-            src={
-              theme === "dark"
-                ? "/images/projects/hero-sunset.webp"
-                : "/images/projects/hero-sunrise.webp"
-            }
-            alt=""
-            fetchPriority="high"
-            aria-hidden="true"
-            width="1672"
-            height="941"
-          />
-          <div className="hero-scrim" aria-hidden="true" />
-          <div className="wrap hero-content">
-            <div className="hero-reveal">
-              <Eyebrow>Hello, I’m</Eyebrow>
+        <section
+          className="hero"
+          id="home"
+          aria-labelledby="hero-title"
+          tabIndex={-1}
+        >
+          <div className="wrap hero-layout">
+            <div className="hero-content">
+              <Eyebrow>Software Developer</Eyebrow>
+              <h1 id="hero-title">
+                <span className="hero-name-first">Valkenburgh</span>{" "}
+                <span className="hero-name-last">Margin</span>
+              </h1>
+              <p className="hero-role">{site.heroHeadline}</p>
+              <p className="hero-description">{site.heroDescription}</p>
+              <p className="hero-availability">
+                <span className="status-dot" aria-hidden="true" />
+                {site.availability}
+              </p>
+              <div className="button-row">
+                <Action href="#projects">View Projects</Action>
+              </div>
             </div>
-            <h1 id="hero-title" className="hero-reveal">
-              <span className="hero-name-first">Valkenburgh</span>{" "}
-              <span className="hero-name-last">Margin</span>
-            </h1>
-            <p className="hero-role hero-reveal">{site.role}</p>
-            <p className="hero-availability hero-reveal">
-              <span className="status-dot" aria-hidden="true" />
-              {site.availability}
-            </p>
-            <p className="hero-description hero-reveal">
-              Real desktop and web projects, with source code, decisions, and
-              verification you can review.
-            </p>
-            <div className="button-row hero-reveal">
-              <Action href="#projects">View Projects</Action>
-              <Action
-                href={resumeHref}
-                secondary
-                icon={<FileText size={17} />}
-                download={!!site.resumeUrl}
-              >
-                Download Résumé
-              </Action>
-            </div>
+            <figure className="hero-portrait">
+              <img
+                src="/images/portraits/hero-formal.webp"
+                alt="Valkenburgh Margin in formal attire"
+                width="850"
+                height="1275"
+                fetchPriority="high"
+              />
+            </figure>
           </div>
           <div className="hero-bottom wrap">
             <span className="location">
-              <MapPin size={16} />
+              <MapPin size={16} aria-hidden="true" />
               {site.location}
             </span>
             <a className="scroll-cue" href="#projects">
-              <span>Scroll to explore</span>
+              <span>Explore the work</span>
               <ArrowDown size={18} />
             </a>
           </div>
@@ -464,6 +372,7 @@ function PortfolioHome() {
         <section
           className="projects-section section wrap"
           id="projects"
+          tabIndex={-1}
           aria-labelledby="projects-title"
         >
           <div className="section-heading" data-reveal>
@@ -472,8 +381,8 @@ function PortfolioHome() {
                 Selected <em>projects.</em>
               </h2>
               <p>
-                Three application case studies with real screens, clear roles,
-                and dated project evidence.
+                Three applications, from Java fundamentals to full-stack
+                workflows.
               </p>
             </div>
             <a
@@ -491,6 +400,7 @@ function PortfolioHome() {
               <article
                 className={`project-card ${index === 0 ? "project-featured" : ""}`}
                 key={project.id}
+                aria-labelledby={`project-${project.id}-title`}
                 data-reveal
               >
                 <a className="project-open" href={project.href}>
@@ -499,6 +409,8 @@ function PortfolioHome() {
                       className="project-cover"
                       src={project.cover}
                       alt=""
+                      width={project.gallery[0]?.width}
+                      height={project.gallery[0]?.height}
                       loading="lazy"
                       decoding="async"
                     />
@@ -518,13 +430,16 @@ function PortfolioHome() {
                         {project.statusText}
                       </span>
                     </div>
-                    <h3>
+                    <h3 id={`project-${project.id}-title`}>
                       {shortTitles[project.id]}
                       <ArrowUpRight size={19} />
                     </h3>
                     <p>{project.summary}</p>
                     <p className="project-role-summary">
                       {project.roleSummary}
+                    </p>
+                    <p className="project-preview-label">
+                      {project.previewLabel}
                     </p>
                     <div className="tags">
                       {project.stack.slice(0, 4).map((tech) => (
@@ -537,28 +452,42 @@ function PortfolioHome() {
                     </span>
                   </div>
                 </a>
-                <button
-                  className="quick-preview-trigger"
-                  type="button"
-                  onClick={(event) => {
-                    projectTrigger.current = event.currentTarget;
-                    setSelected(project);
-                  }}
+                <div className="project-actions">
+                  <a
+                    className="project-demo-link"
+                    href={project.applicationUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-describedby={`project-${project.id}-title project-${project.id}-demo-note`}
+                  >
+                    Try Demo <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                  <button
+                    className="quick-preview-trigger"
+                    type="button"
+                    onClick={(event) => {
+                      projectTrigger.current = event.currentTarget;
+                      setSelected(project);
+                    }}
+                  >
+                    Quick preview <ArrowUpRight size={15} aria-hidden="true" />
+                  </button>
+                </div>
+                <p
+                  className="project-demo-note"
+                  id={`project-${project.id}-demo-note`}
                 >
-                  Quick preview <ArrowUpRight size={15} />
-                </button>
+                  {project.demoAccess}
+                </p>
               </article>
             ))}
           </div>
-          <p className="projects-footnote">
-            <span className="status-dot" />
-            Real projects. Public source. Decisions and verification.
-          </p>
         </section>
 
         <section
           className="about-section section wrap"
           id="about"
+          tabIndex={-1}
           aria-labelledby="about-title"
         >
           <div className="about-intro">
@@ -567,54 +496,48 @@ function PortfolioHome() {
               <p>{about.intro}</p>
               <p>{about.paragraphs[0]}</p>
               <p>{about.paragraphs[1]}</p>
-              <div className="button-row">
-                <Action
-                  href={resumeHref}
-                  icon={<FileText size={17} />}
-                  download={!!site.resumeUrl}
-                >
-                  {site.resumeUrl ? "Download Résumé" : "Request Résumé"}
-                </Action>
-                <Action href="#contact" secondary>
-                  Let’s Connect
-                </Action>
-              </div>
             </div>
-            <figure className="about-image">
-              <img
-                src="/images/antipolo-original.webp"
-                width="1200"
-                height="900"
-                alt="Valkenburgh looking toward the sky at a hilltop overlooking the city in Antipolo"
-                loading="lazy"
-              />
-              <figcaption>
-                <span>Room to think. Space to build.</span>
-                <span>
-                  Antipolo, PH
-                  <ArrowUpRight size={14} />
-                </span>
-              </figcaption>
-            </figure>
+            <AboutPortrait theme={theme} onThemeChange={setTheme} />
           </div>
         </section>
 
+        <section
+          className="ai-workflow section wrap"
+          aria-labelledby="ai-title"
+        >
+          <div>
+            <Eyebrow>Process & ownership</Eyebrow>
+            <h2 id="ai-title">{portfolio.aiWorkflow.title}</h2>
+          </div>
+          <div>
+            <p>{portfolio.aiWorkflow.summary}</p>
+            <p className="ai-tools">
+              <span>Across my workflow</span>
+              {portfolio.aiWorkflow.tools.join(" · ")}
+            </p>
+          </div>
+        </section>
         <Toolkit />
 
-        <section className="background-section section wrap" id="background">
+        <section
+          className="background-section section wrap"
+          id="certifications"
+          tabIndex={-1}
+          aria-labelledby="certifications-title"
+        >
           <div className="background-heading">
-            <Eyebrow>Education and training</Eyebrow>
-            <h2>Foundations for the work.</h2>
+            <Eyebrow>Learning & foundations</Eyebrow>
+            <h2 id="certifications-title">Certifications &amp; Training</h2>
             <p>
-              Formal study and completed training, with public coursework where
-              available.
+              Formal study and completed training, with the supplied course
+              completion document.
             </p>
           </div>
           <div className="background-grid">
             <article className="background-card education-card" data-reveal>
               <span className="background-date">
                 <GraduationCap size={20} aria-hidden="true" />
-                {about.education.year}
+                Graduated {about.education.year}
               </span>
               <h3>{about.education.qualification}</h3>
               <p>{about.education.institution}</p>
@@ -653,32 +576,43 @@ function PortfolioHome() {
           </div>
         </section>
         <section
-          className="contact-section"
+          className="contact-section wrap"
           id="contact"
+          tabIndex={-1}
           aria-labelledby="contact-title"
         >
-          <img
-            className="contact-photo"
-            src="/images/contact-cinematic.webp"
-            alt=""
-            width="1536"
-            height="1024"
-            loading="lazy"
-          />
-          <div className="contact-shade" />
-          <div className="wrap contact-content">
+          <figure className="contact-visual">
+            <img
+              className="contact-photo"
+              src={site.contactImage.src}
+              srcSet={site.contactImage.sources
+                .map((image) => `${image.src} ${image.width}w`)
+                .join(", ")}
+              sizes="(min-width: 1470px) 670px, (min-width: 1024px) 46vw, 92vw"
+              alt={site.contactImage.alt}
+              width={site.contactImage.width}
+              height={site.contactImage.height}
+              loading="lazy"
+            />
+            <figcaption>
+              <span>Beyond the screen</span>
+              <span>Valk</span>
+            </figcaption>
+          </figure>
+          <div className="contact-content">
             <div data-reveal>
               <h2 id="contact-title">{contact.heading}</h2>
               <p className="contact-description">{contact.text}</p>
               <div className="button-row">
-                <Action href={`mailto:${site.email}`}>Get in Touch</Action>
+                <Action href={`mailto:${site.email}`}>
+                  Email me about a role
+                </Action>
                 <Action
                   href={resumeHref}
                   secondary
                   icon={<FileText size={17} />}
-                  download={!!site.resumeUrl}
                 >
-                  {site.resumeUrl ? "Download Résumé" : "Request Résumé"}
+                  View Resume
                 </Action>
               </div>
             </div>
@@ -754,7 +688,12 @@ function PortfolioHome() {
           </a>
           <nav aria-label="Footer navigation">
             {navItems.map((item) => (
-              <a key={item.label} href={item.href}>
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.endsWith(".pdf") ? "_blank" : undefined}
+                rel={item.href.endsWith(".pdf") ? "noreferrer" : undefined}
+              >
                 {item.label}
               </a>
             ))}
@@ -783,26 +722,7 @@ function PortfolioHome() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Valkenburgh Margin</span>
-          <button
-            className="motion-control"
-            onClick={() => setMotionPaused(!motionPaused)}
-            aria-pressed={!motionEnabled}
-            disabled={systemReduced}
-            aria-label={
-              systemReduced
-                ? "Reduced motion follows your system preference"
-                : motionPaused
-                  ? "Motion paused. Enable animations"
-                  : "Motion on. Pause animations"
-            }
-          >
-            {motionEnabled ? <Pause size={12} /> : <Play size={12} />}
-            {systemReduced
-              ? "Reduced motion"
-              : motionPaused
-                ? "Motion paused"
-                : "Motion on"}
-          </button>
+          <MotionControl preferences={preferences} />
           <a href="#home">
             Back to Top
             <ArrowUp size={15} />

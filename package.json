@@ -9,6 +9,11 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/*.mjs\" \"docs/*.md\" README.md DESIGN.md index.html package.json tsconfig.json vite.config.ts",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/*.mjs\" \"docs/*.md\" README.md DESIGN.md index.html package.json tsconfig.json vite.config.ts",
     "typecheck": "tsc -b",
+    "verify:content": "node --test scripts/content-contract.test.mjs",
+    "verify:browser": "node scripts/verify-portfolio.mjs",
+    "verify:latest": "node scripts/verify-latest-updates.mjs",
+    "verify:portrait": "node scripts/verify-portrait-layout.mjs",
+    "verify:bulb": "node scripts/verify-bulb-interaction.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4176 --strictPort"
   },
   "dependencies": {
@@ -17,8 +22,6 @@
     "@tailwindcss/vite": "^4.3.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "gsap": "^3.14.2",
-    "lenis": "^1.3.17",
     "lucide-react": "^0.577.0",
     "radix-ui": "^1.7.0",
     "react": "^19.2.0",
@@ -30,9 +33,11 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.1.0",
+    "playwright": "^1.60.0",
     "prettier": "^3.9.9",
     "sharp": "^0.35.4",
     "typescript": "~5.9.3",
-    "vite": "^7.3.0"
+    "vite": "^7.3.0",
+    "zod": "^4.6.7"
   }
 }

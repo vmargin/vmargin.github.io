@@ -1,0 +1,11 @@
+# Portrait control and editorial contact blueprint
+
+This follow-up overrides the previous single-column closing photograph layout. The exact profile copy, three projects, credentials, contact destinations, and unchanged resume v4 remain authoritative. Existing local work and rollback commit `cf8757e` remain preserved.
+
+1. Retain the supplied white portrait and bulb artwork as durable originals. Generate metadata-free optimized assets. Keep the original black portrait and its existing derivative.
+2. Derive the About portrait and bulb appearance from the shared site preference: light mode uses the black portrait and white bulb; dark mode uses the white portrait and black bulb. Header theme changes, saved preferences, and the portrait button use one state. Keep server rendering deterministic.
+3. Place a native toggle button inside the top-left of the portrait frame. Give it a stable accessible name, pressed state, a 52px target, contrasting housing, and a visible keyboard focus ring. Enter and Space switch all three appearances together without moving focus. Preserve motion preferences.
+4. Place the supplied landscape beside the contact text at desktop widths, within the centered 1350px maximum. Use the complete natural-color photograph, an editorial caption, clear spacing, and a solid contact surface. Stack the photo above contact details below 1024px. Preserve the working email, copy, social, and PDF actions.
+5. Record failing Playwright checks before production changes. Verify the theme mapping, header synchronization, reload persistence, keyboard operation, focus contrast, reduced/paused motion, responsive split/stack geometry, image loading, contact actions, and absence of runtime errors. Re-run the existing portfolio regression checks after implementation and save evidence separately from earlier results.
+
+The provided bulb file contains a transparent ring of black light rays. Use that artwork directly, with a white rendering in light mode and black rendering in dark mode; do not substitute an unrelated icon. The named source assets are available. Separate About/lower-page reference screenshots are not available as workspace files, so the requested composition and supplied photographs guide the layout.

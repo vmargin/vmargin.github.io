@@ -1,116 +1,46 @@
-import { useEffect, useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  Github,
-  Moon,
-  Sun,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import portfolio from "./data/portfolio.json";
 import "./case-study.css";
+import "./case-study-updates.css";
+import { ProjectGallery } from "./components/ProjectGallery";
+import { DotField } from "./components/DotField";
+import {
+  MotionControl,
+  ThemeToggle,
+  useSitePreferences,
+} from "./components/SitePreferences";
 
 type Project = (typeof portfolio.projects)[number];
-type Theme = "dark" | "light";
 const { site, projects } = portfolio;
 
-function ThemeControl({
-  theme,
-  onChange,
+function GalleryReference({
+  decision,
 }: {
-  theme: Theme;
-  onChange: (theme: Theme) => void;
+  decision: Project["decisions"][number];
 }) {
+  if (!("galleryHref" in decision) || !("galleryLabel" in decision))
+    return null;
+  if (
+    typeof decision.galleryHref !== "string" ||
+    typeof decision.galleryLabel !== "string"
+  )
+    return null;
   return (
-    <div className="theme-toggle" role="group" aria-label="Color theme">
-      <button
-        className="theme-toggle-option"
-        type="button"
-        aria-label="Light theme"
-        aria-pressed={theme === "light"}
-        onClick={() => onChange("light")}
-      >
-        <Sun size={16} aria-hidden="true" />
-      </button>
-      <button
-        className="theme-toggle-option"
-        type="button"
-        aria-label="Dark theme"
-        aria-pressed={theme === "dark"}
-        onClick={() => onChange("dark")}
-      >
-        <Moon size={16} aria-hidden="true" />
-      </button>
-    </div>
+    <a className="decision-source" href={decision.galleryHref}>
+      {decision.galleryLabel} <ArrowRight size={14} aria-hidden="true" />
+    </a>
   );
 }
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
-  const [theme, setTheme] = useState<Theme>(() =>
-    document.documentElement.dataset.theme === "light" ? "light" : "dark",
-  );
+  const preferences = useSitePreferences();
+  const { theme, setTheme, motionEnabled } = preferences;
   const nextProject = projects.find(
     (candidate) => candidate.id === project.nextProjectId,
   );
-  const pageTitle = project.title + " | Valkenburgh Margin";
-  const pageDescription = project.summary;
-  const pageUrl = site.canonicalOrigin + project.href;
-  const imageUrl = site.canonicalOrigin + project.cover;
-
-  useEffect(() => {
-    document.title = pageTitle;
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "light" ? "#f5f3ef" : "#10161c");
-    try {
-      localStorage.setItem("v6-theme", theme);
-    } catch {
-      // The selected theme remains active for this visit.
-    }
-
-    const metadata = [
-      ['meta[name="description"]', "content", pageDescription],
-      ['meta[property="og:title"]', "content", pageTitle],
-      ['meta[property="og:description"]', "content", pageDescription],
-      ['meta[property="og:url"]', "content", pageUrl],
-      ['meta[property="og:image"]', "content", imageUrl],
-      ['meta[name="twitter:title"]', "content", pageTitle],
-      ['meta[name="twitter:description"]', "content", pageDescription],
-    ] as const;
-    for (const [selector, attribute, value] of metadata) {
-      document.querySelector(selector)?.setAttribute(attribute, value);
-    }
-    document
-      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
-      ?.setAttribute("href", pageUrl);
-    document
-      .querySelector('meta[property="og:image:alt"]')
-      ?.setAttribute("content", project.gallery[0].alt);
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: pageTitle,
-      description: pageDescription,
-      url: pageUrl,
-      image: imageUrl,
-      about: {
-        "@type": "CreativeWork",
-        name: project.title,
-        description: pageDescription,
-      },
-    };
-    const structuredDataScript = document.querySelector<HTMLScriptElement>(
-      "#portfolio-structured-data",
-    );
-    if (structuredDataScript) {
-      structuredDataScript.textContent = JSON.stringify(structuredData);
-    }
-  }, [imageUrl, pageDescription, pageTitle, pageUrl, project.gallery, theme]);
-
   return (
     <div className="case-study-page">
+      <DotField enabled={motionEnabled} theme={theme} />
       <a className="case-skip-link" href="#case-content">
         Skip to case study
       </a>
@@ -125,9 +55,12 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </a>
           <nav aria-label="Case study navigation">
             <a href="/#projects">All projects</a>
-            <a href="/#contact">Contact</a>
+            <a href="/#certifications">Certifications</a>
+            <a href={site.resumeUrl} target="_blank" rel="noreferrer">
+              Resume
+            </a>
           </nav>
-          <ThemeControl theme={theme} onChange={setTheme} />
+          <ThemeToggle theme={theme} onChange={setTheme} />
         </div>
       </header>
 
@@ -146,6 +79,23 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               </p>
               <h1 id="case-title">{project.title}</h1>
               <p className="case-summary">{project.overview}</p>
+              <p className="case-opening-decision">
+                <strong>{project.decisions[0]?.title}.</strong>{" "}
+                {project.decisions[0]?.body}{" "}
+                {project.decisions[0]?.evidenceUrl && (
+                  <a
+                    className="decision-source"
+                    href={project.decisions[0].evidenceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Related source <ArrowUpRight size={14} />
+                  </a>
+                )}
+                {project.decisions[0] && (
+                  <GalleryReference decision={project.decisions[0]} />
+                )}
+              </p>
               <div className="tags case-stack">
                 {project.stack.map((item) => (
                   <span key={item}>{item}</span>
@@ -174,6 +124,9 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
                   </a>
                 )}
               </div>
+              {project.applicationNote && (
+                <p className="case-access-note">{project.applicationNote}</p>
+              )}
             </div>
             <aside className="case-at-a-glance" aria-label="Project summary">
               <p className="eyebrow">At a glance</p>
@@ -196,17 +149,32 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             </aside>
           </section>
 
+          <section className="case-gallery" aria-labelledby="gallery-title">
+            <div className="case-section-heading">
+              <div>
+                <p className="eyebrow">Inside the application</p>
+                <h2 id="gallery-title">Inside {project.title}.</h2>
+              </div>
+              <p>
+                Captions identify the workflow and the screenshot's source or
+                demo context.
+              </p>
+            </div>
+            <ProjectGallery images={project.gallery} />
+          </section>
+
           {project.versions.length > 0 && (
             <section className="case-versions" aria-labelledby="versions-title">
               <div className="case-section-heading">
                 <div>
                   <p className="eyebrow">Version history</p>
-                  <h2 id="versions-title">Two distinct CASH-G applications.</h2>
+                  <h2 id="versions-title">
+                    {project.id === "cash-g"
+                      ? "Desktop original. Web adaptation."
+                      : "How the project evolved."}
+                  </h2>
                 </div>
-                <p>
-                  Keep the desktop learning project separate from its web
-                  evolution.
-                </p>
+                <p>Contribution and assistance by version.</p>
               </div>
               <div className="case-version-grid">
                 {project.versions.map((version) => (
@@ -225,47 +193,6 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               </div>
             </section>
           )}
-
-          <section className="case-gallery" aria-labelledby="gallery-title">
-            <div className="case-section-heading">
-              <div>
-                <p className="eyebrow">Inside the application</p>
-                <h2 id="gallery-title">Real screens. Specific workflows.</h2>
-              </div>
-              <p>
-                Captions identify the workflow and the screenshot's source or
-                demo context.
-              </p>
-            </div>
-            <div className="case-gallery-grid">
-              {project.gallery.map((image, index) => (
-                <figure
-                  className={
-                    "case-gallery-item" + (index === 0 ? " is-featured" : "")
-                  }
-                  key={image.src}
-                >
-                  <a
-                    href={image.src}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={"Open full-size screenshot: " + image.caption}
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      decoding="async"
-                    />
-                  </a>
-                  <figcaption>
-                    <span className="gallery-index">0{index + 1}</span>
-                    <span>{image.caption}</span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
 
           <section
             className="case-architecture"
@@ -343,11 +270,23 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               aria-labelledby="decisions-title"
             >
               <p className="eyebrow">Engineering choices</p>
-              <h2 id="decisions-title">Decisions that matter</h2>
-              {project.decisions.map((decision) => (
+              <h2 id="decisions-title">Further decisions</h2>
+              {project.decisions.slice(1).map((decision) => (
                 <article className="case-decision" key={decision.title}>
                   <h3>{decision.title}</h3>
                   <p>{decision.body}</p>
+                  <GalleryReference decision={decision} />
+                  {"evidenceUrl" in decision &&
+                    typeof decision.evidenceUrl === "string" && (
+                      <a
+                        className="decision-source"
+                        href={decision.evidenceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Related source <ArrowUpRight size={14} />
+                      </a>
+                    )}
                 </article>
               ))}
             </section>
@@ -386,7 +325,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               <h2 id="verification-title">Verification and limits</h2>
               <p>{project.verificationSummary}</p>
               <p>{project.portfolioCheck}</p>
-              {project.applicationNote && <p>{project.applicationNote}</p>}
+
               <ul>
                 {project.limitations.map((limitation) => (
                   <li key={limitation}>{limitation}</li>
@@ -411,7 +350,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             </a>
             {nextProject && (
               <a className="text-link" href={nextProject.href}>
-                Next case study: {nextProject.title}
+                Next: {nextProject.title}
                 <ArrowRight size={16} />
               </a>
             )}
@@ -422,7 +361,11 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
       <footer className="case-footer">
         <div className="wrap case-footer-inner">
           <a href={"mailto:" + site.email}>{site.email}</a>
-          <span>© {new Date().getFullYear()} Valkenburgh Margin</span>
+          <MotionControl preferences={preferences} />
+          <a href="/#certifications">Certifications &amp; Training</a>
+          <a href={site.resumeUrl} target="_blank" rel="noreferrer">
+            View Resume
+          </a>
           <a href="/">Portfolio home</a>
         </div>
       </footer>

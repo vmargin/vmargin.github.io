@@ -39,7 +39,7 @@
   background: transparent;
   box-shadow: none;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 .toolkit-tablist [role="tab"][data-state="active"] {
   border-color: var(--line);
@@ -79,7 +79,7 @@
 .toolkit-group > p {
   margin-top: 7px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.55;
 }
 .toolkit-items {
@@ -96,7 +96,7 @@
   gap: 9px;
   min-width: 0;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
@@ -123,7 +123,7 @@ html[data-theme="light"] .tech-mark img {
   max-width: 68ch;
   margin: 18px 0 0 auto;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.65;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -188,5 +188,36 @@ html[data-theme="light"] .tech-mark img {
   }
   .toolkit-items li {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .toolkit-grid {
+    gap: 0;
+    grid-template-columns: 1fr;
+  }
+  .toolkit-group {
+    padding: 16px 0;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
+  }
+  .toolkit-group > p {
+    display: none;
+  }
+  .toolkit-group h3,
+  .toolkit-items li {
+    font-size: 14px;
+  }
+  .toolkit-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin-top: 14px;
+  }
+  .toolkit-tablist [role="tab"] {
+    font-size: 13px;
+    padding-inline: 10px;
   }
 }

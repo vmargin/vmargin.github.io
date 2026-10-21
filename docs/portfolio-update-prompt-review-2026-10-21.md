@@ -1,5 +1,9 @@
 # Portfolio update prompt review and reviewed brief
 
+Latest follow-up: [the subsequent update checklist](latest-update-audit-2026-10-21.md) records current implementation and verifies this brief's applicable safeguards, with the latest user decisions taking precedence.
+
+Implementation follow-up: [local results and resolution checklist](implementation-results-2026-10-21.md). This review remains the historical brief; its confirmed scope is now implemented locally.
+
 Date: October 21, 2026. Scope: review the user's proposed update prompt and incorporate compatible requirements into the existing audit. Website implementation is a later task.
 
 ## Confirmed answers supersede the initial review
@@ -20,18 +24,18 @@ Applied skills: Prompt Auditor, Career Evidence Review, existing Taste/Designer/
 
 ## Initial input inspection before the user's answers
 
-| Input | Review result |
-| --- | --- |
-| `C:/Users/margi/Desktop/lockedIn/final resume v4.pdf` | Present; complete one-page PDF extracted and rendered. Lists CASH-G, ARCTIC and Multi-Tenant Asset Manager, not four projects. |
-| Formal hero PNG | Present, 1024 by 1536, with real alpha transparency; a light-background composite confirms usable cutout edges. |
-| About PNG | Present, 1122 by 1402, opaque RGB with a dark photographic background. Treat it as a photograph/card, not a transparent cutout. |
-| Commonly used identity | Current portfolio uses Valkenburgh Margin; v4 displays Valkenburgh M. Margin. No nickname, AKA or expanded middle name is established. |
-| Certifications | Current content states Java training and AWS Cloud Quest completion. No new credential documents accompany this request; the previous AWS document link is unavailable. Training completion does not by itself establish an awarded competency or exam certification. |
-| AI attribution | V4 names generic AI-assisted ARCTIC implementation. It does not name Claude or Codex. This session establishes Codex participation in the portfolio audit, not independent proof of its implementation role in every project. |
-| Fast learning/adaptability | V4 describes project exposure and a desire to learn under experienced leadership. It does not establish learning speed or a specific adaptation example. |
-| ARCTIC provenance | V4 still says Client Project and requirements from a four-branch company. The case study still calls the company a modeled scenario; the distinction remains unresolved. |
-| Changed live URLs | V4 lists `banking-app-v2.onrender.com` and `aircon-service-frontend.vercel.app`. Previous demo checks concern other listed destinations, including `aircon-service.vercel.app`. Do not transfer an old URL's result to a new URL without inspection. |
-| Additional learning entry | “Supervised Industry Learning (SIL) – Spring Valley” appears without dates, duties, completion status or a clear relationship to the preceding entry. Do not present it as employment or a certificate based only on placement. |
+| Input                                                 | Review result                                                                                                                                                                                                                                                         |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `C:/Users/margi/Desktop/lockedIn/final resume v4.pdf` | Present; complete one-page PDF extracted and rendered. Lists CASH-G, ARCTIC and Multi-Tenant Asset Manager, not four projects.                                                                                                                                        |
+| Formal hero PNG                                       | Present, 1024 by 1536, with real alpha transparency; a light-background composite confirms usable cutout edges.                                                                                                                                                       |
+| About PNG                                             | Present, 1122 by 1402, opaque RGB with a dark photographic background. Treat it as a photograph/card, not a transparent cutout.                                                                                                                                       |
+| Commonly used identity                                | Current portfolio uses Valkenburgh Margin; v4 displays Valkenburgh M. Margin. No nickname, AKA or expanded middle name is established.                                                                                                                                |
+| Certifications                                        | Current content states Java training and AWS Cloud Quest completion. No new credential documents accompany this request; the previous AWS document link is unavailable. Training completion does not by itself establish an awarded competency or exam certification. |
+| AI attribution                                        | V4 names generic AI-assisted ARCTIC implementation. It does not name Claude or Codex. This session establishes Codex participation in the portfolio audit, not independent proof of its implementation role in every project.                                         |
+| Fast learning/adaptability                            | V4 describes project exposure and a desire to learn under experienced leadership. It does not establish learning speed or a specific adaptation example.                                                                                                              |
+| ARCTIC provenance                                     | V4 still says Client Project and requirements from a four-branch company. The case study still calls the company a modeled scenario; the distinction remains unresolved.                                                                                              |
+| Changed live URLs                                     | V4 lists `banking-app-v2.onrender.com` and `aircon-service-frontend.vercel.app`. Previous demo checks concern other listed destinations, including `aircon-service.vercel.app`. Do not transfer an old URL's result to a new URL without inspection.                  |
+| Additional learning entry                             | “Supervised Industry Learning (SIL) – Spring Valley” appears without dates, duties, completion status or a clear relationship to the preceding entry. Do not present it as employment or a certificate based only on placement.                                       |
 
 The original inputs are retained as review copies under ignored `artifacts/portfolio-prompt-review-2026-10-21/inputs/` so temporary clipboard paths are not the only copies. These are audit inputs, not published website assets. No source PDF is edited.
 
@@ -39,38 +43,38 @@ Reference inspection: fresh Playwright captures and DOM/source inspection of `ht
 
 ## Initial compatibility review, superseded where the user answers below
 
-| Proposed requirement | Decision and safeguard |
-| --- | --- |
-| 1350px centered layout | Accept. Treat this as a maximum, retain responsive gutters and narrower reading measures within it. Avoid widening long paragraphs to the full container. |
-| White moving dots and white gradient | Accept as a restrained background treatment. Preserve light/dark readability, content surfaces and image contrast. White effects may be less visible on light surfaces; do not wash out the page to force visibility. |
-| Reduced motion | Strengthen. Use a static or absent effect under reduced motion, respect the existing pause control across all routes, and avoid perpetual updates while hidden or paused. |
-| Certifications navigation | Accept. Use a real section such as Certifications & Training, distinguish awarded credentials from course/training completion, and expose document links only when genuine files are available. Avoid a second duplicate training section. |
-| Resume viewing | Accept. Use the supplied PDF, remove forced-download behavior, verify deployed `application/pdf`/inline behavior, and use a viewer fallback if necessary. Link wording alone does not establish viewing. The currently deployed older resume responds with `application/pdf`; that does not verify the new asset or future CTA behavior. |
-| Formal hero and separate About image | Accept as the user's requested art-direction change. Keep identity recognition, readable copy and deliberate crops in both themes. Preserve alpha on the hero derivative. |
-| Full name and AKA | Use only established name forms. Do not expand M. or label the shorter public name a nickname without confirmation. Omit an unavailable AKA. |
-| Fast learner/adaptable writing | Conditional. Use an actual supported example if available; otherwise retain specific learning interests or request the smallest missing example. Do not infer speed from a long technology list. |
-| Four strongest projects | Conditional on evidence. Current JSON and supplied PDF document three. Do not split CASH-G versions or create filler to reach four. A fourth independently scoped project needs source/preview/contribution evidence; the portfolio itself is only a candidate if justified as distinct work. |
-| Claude/Codex explanation | Accept where tool and contribution attribution are supported. Do not automatically name both tools for every project. Keep generic AI attribution where exact tool use is unknown. |
-| Preserve existing identity | Apply to typography, palette, coherent surfaces, evidence-led presentation and established working routes. The new portrait and background instructions intentionally supersede the old hero-photo direction in their limited scope. |
-| Existing audit findings | Retain and address them explicitly. Cosmetic updates do not resolve source-caption inaccuracies, resume provenance, certificate availability, demo failures or screenshot-viewing behavior. |
+| Proposed requirement                 | Decision and safeguard                                                                                                                                                                                                                                                                                                                   |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1350px centered layout               | Accept. Treat this as a maximum, retain responsive gutters and narrower reading measures within it. Avoid widening long paragraphs to the full container.                                                                                                                                                                                |
+| White moving dots and white gradient | Accept as a restrained background treatment. Preserve light/dark readability, content surfaces and image contrast. White effects may be less visible on light surfaces; do not wash out the page to force visibility.                                                                                                                    |
+| Reduced motion                       | Strengthen. Use a static or absent effect under reduced motion, respect the existing pause control across all routes, and avoid perpetual updates while hidden or paused.                                                                                                                                                                |
+| Certifications navigation            | Accept. Use a real section such as Certifications & Training, distinguish awarded credentials from course/training completion, and expose document links only when genuine files are available. Avoid a second duplicate training section.                                                                                               |
+| Resume viewing                       | Accept. Use the supplied PDF, remove forced-download behavior, verify deployed `application/pdf`/inline behavior, and use a viewer fallback if necessary. Link wording alone does not establish viewing. The currently deployed older resume responds with `application/pdf`; that does not verify the new asset or future CTA behavior. |
+| Formal hero and separate About image | Accept as the user's requested art-direction change. Keep identity recognition, readable copy and deliberate crops in both themes. Preserve alpha on the hero derivative.                                                                                                                                                                |
+| Full name and AKA                    | Use only established name forms. Do not expand M. or label the shorter public name a nickname without confirmation. Omit an unavailable AKA.                                                                                                                                                                                             |
+| Fast learner/adaptable writing       | Conditional. Use an actual supported example if available; otherwise retain specific learning interests or request the smallest missing example. Do not infer speed from a long technology list.                                                                                                                                         |
+| Four strongest projects              | Conditional on evidence. Current JSON and supplied PDF document three. Do not split CASH-G versions or create filler to reach four. A fourth independently scoped project needs source/preview/contribution evidence; the portfolio itself is only a candidate if justified as distinct work.                                            |
+| Claude/Codex explanation             | Accept where tool and contribution attribution are supported. Do not automatically name both tools for every project. Keep generic AI attribution where exact tool use is unknown.                                                                                                                                                       |
+| Preserve existing identity           | Apply to typography, palette, coherent surfaces, evidence-led presentation and established working routes. The new portrait and background instructions intentionally supersede the old hero-photo direction in their limited scope.                                                                                                     |
+| Existing audit findings              | Retain and address them explicitly. Cosmetic updates do not resolve source-caption inaccuracies, resume provenance, certificate availability, demo failures or screenshot-viewing behavior.                                                                                                                                              |
 
 ## Prompt scorecard
 
 Task-adapted 1–5 review, not a guarantee of a successful implementation:
 
-| Dimension | Submitted | Reviewed brief |
-| --- | --- | --- |
-| Role clarity | 3 | 5 |
-| Objective precision | 4 | 5 |
-| Inputs and missing-data handling | 4 | 4 |
-| Output specification | 3 | 5 |
-| Constraints and edge cases | 4 | 5 |
-| Anti-pattern clearance | 3 | 4 |
-| Reuse within this workspace | 3 | 4 |
-| Structural consistency | 4 | 5 |
-| Completeness | 3 | 4 |
-| Appropriate identity/attribution | 5 | 4 |
-| Average | 3.6/5 | 4.5/5 |
+| Dimension                        | Submitted | Reviewed brief |
+| -------------------------------- | --------- | -------------- |
+| Role clarity                     | 3         | 5              |
+| Objective precision              | 4         | 5              |
+| Inputs and missing-data handling | 4         | 4              |
+| Output specification             | 3         | 5              |
+| Constraints and edge cases       | 4         | 5              |
+| Anti-pattern clearance           | 3         | 4              |
+| Reuse within this workspace      | 3         | 4              |
+| Structural consistency           | 4         | 5              |
+| Completeness                     | 3         | 4              |
+| Appropriate identity/attribution | 5         | 4              |
+| Average                          | 3.6/5     | 4.5/5          |
 
 Remaining limitations in the reviewed brief are factual inputs, not permission to invent them. It is a stronger execution contract, while publishing unsupported claims remains blocked on the relevant facts. AP-3 is addressed by acceptance checks; AP-18 by exact document references and a saved input manifest; AP-26 by explicit scope; AP-53 by requiring observed verification rather than assuming links or claims are valid.
 

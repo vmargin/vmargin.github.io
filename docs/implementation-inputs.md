@@ -1,5 +1,9 @@
 # Confirmed implementation inputs
 
+Latest portrait/layout override: use the supplied bulb artwork as a keyboard-accessible theme control at the About portrait's top-left. Light mode uses the existing black portrait and a white bulb; dark mode uses the supplied white portrait and a black bulb. All three change through the shared theme preference. Use the same supplied landscape in a responsive editorial split with the contact section, retaining a centered 1350px maximum. See [the follow-up blueprint](portrait-split-blueprint-2026-10-21.md) for this latest scope.
+
+Latest user overrides, October 21, 2026: use the exact hero/About copy and neutral dark palette from the subsequent request, show Based in Antipolo, Rizal, label navigation Resume, remove the hero resume action and SIL card, and use the supplied lower landscape. CASH-G now uses the temporary `https://banking-app-v2.onrender.com/`; AssetHub and ARCTIC retain their supplied destinations. See [the latest blueprint](latest-update-blueprint-2026-10-21.md) and [audit checklist](latest-update-audit-2026-10-21.md). The original answer register below remains historical where superseded; its contribution, credential, unchanged-resume, contact, and three-project boundaries still apply.
+
 Status: the user answers the implementation questionnaire. This is the authoritative answer register and supersedes earlier pending questions and conflicting suggestions. It records facts and decisions, not completed website changes. No further questionnaire is required for the supported scope.
 
 ## 1. Hiring focus
@@ -24,14 +28,14 @@ This resolves the earlier provenance question at the factual level, not the old 
 
 ## 5. Contribution, versions and AI
 
-| Project/version | Confirmed account |
-| --- | --- |
-| CASH-G Desktop v1 | Hand-coded. This does not establish that no auxiliary AI assistance ever occurred. |
-| CASH-G Web v2 | Web adaptation with AI-assisted redesign, development and deployment. Keep screenshots, links and claims distinct from desktop v1. |
-| ARCTIC | Client-origin requirements; AI-assisted development and deployment; complete as a portfolio project after the client work did not proceed further. |
-| AssetHub original | Initially hand-coded multi-tenant asset manager. |
-| AssetHub v2 | AI-assisted frontend redesign and deployment. |
-| AssetHub v3 | AI-assisted redesign, development and deployment. The user researched possible features online before deciding what to add. |
+| Project/version   | Confirmed account                                                                                                                                  |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CASH-G Desktop v1 | Hand-coded. This does not establish that no auxiliary AI assistance ever occurred.                                                                 |
+| CASH-G Web v2     | Web adaptation with AI-assisted redesign, development and deployment. Keep screenshots, links and claims distinct from desktop v1.                 |
+| ARCTIC            | Client-origin requirements; AI-assisted development and deployment; complete as a portfolio project after the client work did not proceed further. |
+| AssetHub original | Initially hand-coded multi-tenant asset manager.                                                                                                   |
+| AssetHub v2       | AI-assisted frontend redesign and deployment.                                                                                                      |
+| AssetHub v3       | AI-assisted redesign, development and deployment. The user researched possible features online before deciding what to add.                        |
 
 The user's role includes quality-checking for missing features, expected outputs and behavior. Projects are complete for their current scope and may be improved later. Do not imply new test execution, guaranteed correctness, measured business impact or unaided implementation of AI-assisted versions.
 
@@ -67,11 +71,11 @@ Use this concrete, positive learning narrative: strengthening fundamentals, taki
 
 ## 9. Intended final URLs
 
-| Project | Intended final public URL |
-| --- | --- |
-| AssetHub | https://erlassethub.vercel.app |
-| ARCTIC | https://arcticaircon.vercel.app |
-| CASH-G web adaptation | https://cashg.onrender.com |
+| Project               | Intended final public URL       |
+| --------------------- | ------------------------------- |
+| AssetHub              | https://erlassethub.vercel.app  |
+| ARCTIC                | https://arcticaircon.vercel.app |
+| CASH-G web adaptation | https://cashg.onrender.com      |
 
 The user says links are being updated and demos should work while the Supabase project is not paused. Inspect these intended URLs during implementation and record dated behavior. Do not diagnose failures as Supabase pauses without evidence or transfer old-URL errors to these addresses. Keep case studies and genuine screenshots available when a demo is temporarily unavailable. Existing source repositories remain starting points; inspect rather than requesting duplicate repository details.
 
