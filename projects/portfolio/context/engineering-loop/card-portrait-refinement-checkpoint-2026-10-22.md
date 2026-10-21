@@ -22,7 +22,15 @@
 - The sampled face region's mean RGB channels differ by less than one level from the prior WebP; the sweater sample decreases by about 11 levels. No global section dimming or portrait-wide brightness filter is applied.
 - Confirm the black portrait has no Git diff and resume v4 matches its existing object `7aeadb27afaad6c54bf2806a17789b680ff0a2df`. Portfolio JSON facts remain unchanged.
 
+## Publication and final verification
+
+- Commit only the eight relevant files as `d3a609d991f78c500a42ff2657b4c30ec314ec42` before changing repository visibility or publishing.
+- Confirm `vmargin/vmargin.github.io` is public again. Restore Pages with the workflow build type, enable `publish-pages.yml`, and push the verified source commit. GitHub Pages reports public access and enforced HTTPS.
+- Actions run https://github.com/vmargin/vmargin.github.io/actions/runs/39688259230 succeeds and deploys https://vmargin.github.io/. The earlier plan restriction no longer applies with public repository visibility.
+- Verify all four direct public routes return HTTP 200, with the expected Valk titles and canonical URLs, no broken images, and no application errors. The four focused browser checks also pass against the published site, including card rows/type/padding at five widths, retained copy, portrait/theme mapping, real crossfade, keyboard activation, preference persistence, reduced motion, and background grading.
+- Confirm both served portrait WebPs and the unchanged resume match local files exactly by SHA-256. Published evidence is under `artifacts/card-portrait-refinement-2026-10-22/published/` and `published-verification.json`.
+- Preserve the pre-existing task-tracker change, untracked October 21 publication checkpoint, `.codex/`, `.impeccable/`, and ignored artifacts. The original ChatGPT-hosted Site is not republished by this Pages-specific request.
+
 ## Next action
 
-- Commit only relevant files, restore the existing repository to public visibility, enable its Pages configuration/workflow, and push the verified portfolio commit.
-- Verify the successful Actions deployment and the public routes with Playwright before reporting the live URL. Preserve the pre-existing task-tracker change, untracked October 21 publication checkpoint, `.codex/`, `.impeccable/`, and ignored artifacts.
+- No implementation or Pages publication work remains for this request. Record this completed checkpoint without triggering another identical deployment.
