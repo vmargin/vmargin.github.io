@@ -16,7 +16,7 @@ const about = [
 const urls = {
   "ERL AssetHub": "https://erlassethub.vercel.app/",
   ARCTIC: "https://arcticaircon.vercel.app/",
-  "CASH-G": "https://banking-app-v2.onrender.com/",
+  "CASH-G": "https://cashg.onrender.com/",
 };
 await mkdir(evidence, { recursive: true });
 const browser = await chromium.launch({ headless: true, channel: "chromium" });
@@ -40,6 +40,9 @@ try {
         "Think deeply. Build deliberately.",
       );
       await expect(page.locator(".hero-description")).toHaveText(description);
+      await expect(
+        page.getByRole("link", { name: "Contact Me", exact: true }),
+      ).toHaveAttribute("href", "#contact");
       await expect(page.locator(".hero .location")).toHaveText(
         "Based in Antipolo, Rizal, Philippines.",
       );

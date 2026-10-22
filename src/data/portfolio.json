@@ -504,7 +504,7 @@
       "statusText": "Desktop v1 + Web v2 · Public source",
       "href": "/projects/cash-g/",
       "sourceUrl": "https://github.com/vmargin/banking-app",
-      "applicationUrl": "https://banking-app-v2.onrender.com/",
+      "applicationUrl": "https://cashg.onrender.com/",
       "cover": "/images/projects/cash-g-web-v2-dashboard.webp",
       "gallery": [
         {
@@ -611,14 +611,14 @@
       "verificationSummary": "The desktop README reports 32 tests with no failures, including six database tests skipped when the database is unavailable. Web v2 has a separate published H2 demo and verification record. These are author-published project records; their suites are not rerun for this portfolio update.",
       "verificationUrl": "https://github.com/vmargin/banking-app#status",
       "portfolioCheck": "Web v2 captures come from the local H2 demo on October 8, 2026. They show a synthetic transfer workflow; they do not establish desktop UI behavior or database atomicity.",
-      "applicationNote": "Opens Web v2 at its temporary URL. On October 21, 2026, the publicly listed practice credentials returned ‘Unable to sign in.’ Screenshots and source remain available; the backend cause is unverified.",
+      "applicationNote": "Opens the public synthetic Web v2 demo. Select Try the demo on the sign-in page to enter the sample account.",
       "limitations": [
         "CASH-G is a learning simulator, not a bank or payment service; use synthetic information only.",
         "No authentic desktop v1 application screenshot was available for this update."
       ],
       "nextProjectId": "assethub",
       "previewNote": "Pictured: Web v2, local H2 practice demo with synthetic accounts.",
-      "demoAccess": "Temporary URL · Demo sign-in did not succeed",
+      "demoAccess": "Public synthetic demo · sign in with the sample account",
       "cardFeatures": "Account registration and sign-in, cash-in, transfers, and transaction history. Web v2 adds requests, fictional billers, savings goals, display-only cards, activity, and statement export."
     }
   ],

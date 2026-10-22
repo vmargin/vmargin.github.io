@@ -337,6 +337,9 @@ export default function PortfolioHome() {
               <p className="hero-description">{site.heroDescription}</p>
               <div className="button-row">
                 <Action href="#projects">View Projects</Action>
+                <Action href="#contact" secondary>
+                  Contact Me
+                </Action>
               </div>
             </div>
             <figure className="hero-portrait">
