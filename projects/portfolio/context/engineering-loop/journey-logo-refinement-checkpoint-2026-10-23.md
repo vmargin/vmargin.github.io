@@ -18,4 +18,7 @@
 
 ## Publication
 
-The verified refinement is ready for the ongoing authorized GitHub Pages publication. Append the deployment receipt and public verification after completion.
+- Push implementation commit `c83feb84af7296f8ff260a80c0a89356860c035c` to the existing portfolio main branch. [Pages workflow run 39833356493](https://github.com/vmargin/vmargin.github.io/actions/runs/39833356493) succeeds and publishes [the portfolio](https://vmargin.github.io/).
+- All three focused groups pass against the public site, including the two-column desktop arrangement, mobile order, all eight loaded logos at the inherited responsive sizes, keyboard behavior and both themes at five widths.
+- All eight served SVGs return HTTP 200 and match their local source files exactly by SHA-256. Keep public screenshots, acceptance results and hashes under `artifacts/portfolio-journey-logos-2026-10-23/published/`; retain the workflow receipt as `deployment.json`.
+- Record this verified receipt in a documentation-only follow-up with CI skipped. The requested refinement and publication are complete; no additional deployment is needed.
