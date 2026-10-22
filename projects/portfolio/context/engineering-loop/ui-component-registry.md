@@ -17,3 +17,13 @@ Latest user update: all active component surfaces use the neutral palette in `de
 | Contact surfaces      | `src/App.tsx`, `src/portfolio-updates.css`  | Desktop 1.1:1 photo/contact panels, full uncropped photo with 8px radius, 12px caption, dark backing in both themes, stacked mobile layout, explicit clipboard feedback                                    |
 
 Token values are recorded in `design-tokens.md`. `styles.css` supplies the established shared foundation; `portfolio-updates.css` supplies the current portrait composition and reading roles. Case-study CSS and its companion stylesheet own the reading pages and gallery viewer.
+
+## Motion contracts: October 22, 2026
+
+`src/portfolioMotion.ts` owns native, bounded effects, and `src/useNativeMotion.ts` owns preference-gated loading and React cleanup. No visible content or base styling changes.
+
+- Portrait hero: Name-line reveal, supporting copy, and the formal portrait form one sequence finishing within 640ms on desktop. The offscreen mobile portrait waits for first viewport entry. Names retain their existing text nodes and accessible heading. Late enhancement skips the entrance. Played state survives preview and pause lifecycle changes.
+- Toolkit: The existing shadcn/Radix tabs keep their full keyboard behavior, inventory, expansion control, and labels. Pointer/touch category changes enter over 180ms; keyboard changes cancel the prior panel effect and update immediately. Resuming motion does not replay the current panel.
+- Quick preview: The native dialog keeps immediate focus, Escape, close, and return-focus behavior. Pointer/touch opening enters over 200ms, with a 160ms backdrop fade. Keyboard opening remains immediate. Dismissal never waits for animation.
+- Contact: The existing `data-stagger` group reveals its existing blocks once, over 280ms with capped 45ms offsets. No new element or text is introduced.
+- Shared lifecycle: Pause, system reduced motion, hiding, and teardown cancel effects to the existing settled state. Browser APIs remain inside effects and the dynamically imported motion module. All content remains readable when JavaScript is disabled.

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Braces,
   CodeXml,
@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import portfolio from "../data/portfolio.json";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
+import { useNativeEntry } from "../useNativeMotion";
 import "./Toolkit.css";
 
 const categories: Record<string, LucideIcon> = {
@@ -52,12 +53,25 @@ const logos: Record<string, string> = {
   Vercel: "vercel.svg",
 };
 
-export function Toolkit() {
-  const [active, setActive] = useState("all");
+export function Toolkit({ motionEnabled }: { motionEnabled: boolean }) {
+  const root = useRef<HTMLElement>(null);
+  const pointerInput = useRef(false);
+  const [{ active, pointer }, setSelection] = useState({
+    active: "all",
+    pointer: false,
+  });
   const groups = portfolio.stack;
   const [expanded, setExpanded] = useState(false);
+  useNativeEntry(root, motionEnabled && pointer, "toolkit", active);
   return (
     <section
+      ref={root}
+      onPointerDownCapture={() => {
+        pointerInput.current = true;
+      }}
+      onKeyDownCapture={() => {
+        pointerInput.current = false;
+      }}
       className="toolkit section wrap"
       id="stack"
       tabIndex={-1}
@@ -70,7 +84,13 @@ export function Toolkit() {
           portfolio.
         </p>
       </div>
-      <Tabs value={active} onValueChange={setActive} className="toolkit-tabs">
+      <Tabs
+        value={active}
+        onValueChange={(value) =>
+          setSelection({ active: value, pointer: pointerInput.current })
+        }
+        className="toolkit-tabs"
+      >
         <TabsList
           className="toolkit-tablist"
           aria-label="Browse technologies by category"

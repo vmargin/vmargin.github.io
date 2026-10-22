@@ -15,7 +15,7 @@ import {
   X,
 } from "lucide-react";
 import portfolio from "./data/portfolio.json";
-import { useNativeMotion } from "./useNativeMotion";
+import { useNativeEntry, useNativeMotion } from "./useNativeMotion";
 import { Toolkit } from "./components/Toolkit";
 import { Button } from "./components/ui/button";
 import { DotField } from "./components/DotField";
@@ -84,9 +84,11 @@ function Action({
 function ProjectDetails({
   project,
   onClose,
+  animate,
 }: {
   project: Project;
   onClose: () => void;
+  animate: boolean;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -103,6 +105,7 @@ function ProjectDetails({
     dialog.current?.scrollTo({ top: 0 });
     dialog.current?.querySelector<HTMLButtonElement>(".dialog-close")?.focus();
   }, [project.id]);
+  useNativeEntry(dialog, animate, "preview");
   return (
     <dialog
       ref={dialog}
@@ -176,6 +179,7 @@ export default function PortfolioHome() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [selected, setSelected] = useState<Project | null>(null);
+  const [previewFromPointer, setPreviewFromPointer] = useState(false);
   const preferences = useSitePreferences();
   const { theme, setTheme, motionEnabled } = preferences;
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">(
@@ -466,6 +470,7 @@ export default function PortfolioHome() {
                     type="button"
                     onClick={(event) => {
                       projectTrigger.current = event.currentTarget;
+                      setPreviewFromPointer(event.detail > 0);
                       setSelected(project);
                     }}
                   >
@@ -516,7 +521,7 @@ export default function PortfolioHome() {
             </p>
           </div>
         </section>
-        <Toolkit />
+        <Toolkit motionEnabled={motionEnabled && !selected} />
 
         <section
           className="background-section section wrap"
@@ -742,7 +747,13 @@ export default function PortfolioHome() {
           </a>
         </div>
       </footer>
-      {selected && <ProjectDetails project={selected} onClose={closeProject} />}
+      {selected && (
+        <ProjectDetails
+          project={selected}
+          onClose={closeProject}
+          animate={motionEnabled && previewFromPointer}
+        />
+      )}
     </div>
   );
 }

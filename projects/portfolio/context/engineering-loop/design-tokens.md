@@ -35,3 +35,18 @@ Component radii: shared 18px, toolkit cards 16px on desktop, native image dialog
 | Clipboard             | Neutral contact text and focus outline                                                                                    | Explicit copied or actionable failure status                  | Actual clipboard promise; no persistent loading placeholder                             |
 
 Latest card refinement: all three education/training cards use the Java card's 24px padding (20px at the smallest breakpoint), shared date/title/provider/detail type styles, and five corresponding subgrid rows. Education retains its degree metadata, description and four coursework items. Dates align at the top when they wrap. The warm muted portrait backdrop is #D8D0C4; skin tones remain natural and the section stays unchanged.
+
+## Motion refinement: October 22, 2026
+
+All existing colors, type, spacing, radii, assets, and settled positions remain unchanged. The native Web Animations API uses the existing `--ease: cubic-bezier(0.23, 1, 0.32, 1)` for the new effects. No new dependency or CSS override is needed.
+
+| Surface                 | Implemented motion values                                                                                                                                                                                                                      |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hero name lines         | 520ms each, 50ms line offset, opacity 0.65 to 1, translateY 12px to zero. Temporary clip insets move from `-35% -15% 18% -15%` to `-35% -15% -35% -15%`, preserving serif overhang and descenders. The effect releases its mask on completion. |
+| Hero supporting content | 360ms, opacity 0.7 to 1, translateY 6px to zero. Sibling offsets use 40ms steps capped at 160ms.                                                                                                                                               |
+| Hero portrait           | 560ms, opacity 0.8 to 1, translateY 10px to zero. Visible desktop entry starts at 80ms; an offscreen mobile portrait starts at first viewport entry.                                                                                           |
+| Toolkit category panel  | 180ms, opacity 0.75 to 1, translateY 4px to zero; pointer/touch selection only. Keyboard selection remains immediate.                                                                                                                          |
+| Quick preview           | 200ms, opacity 0.7 to 1, scale 0.985 to 1. Existing backdrop opacity enters over 160ms. Keyboard opening and every dismissal remain immediate.                                                                                                 |
+| Contact blocks          | 280ms, opacity 0.65 to 1, translateY 8px to zero, 45ms sibling offsets capped at 135ms.                                                                                                                                                        |
+
+Every effect releases temporary styles after completion and cancels on saved pause, system reduced motion, document hiding, or teardown. Played hero/scroll entrances do not restart when a preview closes or motion resumes. Hero enhancement skips already-read content when initialization arrives more than 900ms after first contentful paint; default content stays visible throughout. Existing 360ms section entrances retain their previous easing and now preserve played state across observer restarts.
