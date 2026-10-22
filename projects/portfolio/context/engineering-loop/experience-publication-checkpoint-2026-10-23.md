@@ -35,4 +35,13 @@
 
 ## Publication
 
-The implementation is ready for the authorized push and existing GitHub Pages workflow. Record the resulting commit, deployment receipt and public verification below after completion.
+- Push implementation commit `2943ee1c7cf61a8883a00770730ac085694e024a` to the existing public `vmargin/vmargin.github.io` main branch.
+- Start the existing workflow with `workflow_dispatch` because the initial push does not enqueue a run. [GitHub Actions run 39822314393](https://github.com/vmargin/vmargin.github.io/actions/runs/39822314393) succeeds for the implementation commit and publishes [the existing portfolio](https://vmargin.github.io/).
+- All three focused experience groups pass again against the public site, including two themes, five widths, four experience entries, shared navigation, legacy anchor, AI toolkit/keyboard navigation and the larger hero identity.
+- All four public routes return HTTP 200 with the expected Valk titles, correct GitHub Pages canonical URLs, loaded images and no application errors. Served resume and AWS PDF SHA-256 hashes match the unchanged local originals.
+- Public evidence and screenshots are in `artifacts/portfolio-experience-publication-2026-10-23/published/`; the workflow receipt is `deployment.json`. The public route/image/hash receipt is `published/live-routes.json`.
+- Refresh `DESIGN.md` and this checkpoint in a documentation-only follow-up with CI skipped. No further application deployment is required.
+
+## Next action
+
+The requested implementation and GitHub Pages publication are complete and verified. Preserve the unrelated working-tree changes. Future work starts from user feedback rather than another identical deployment.
