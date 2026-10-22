@@ -138,7 +138,7 @@ Advisory Taste settings: `DESIGN_VARIANCE=6`, `MOTION_INTENSITY=3`, `VISUAL_DENS
 
 - Sauron Gandalf reviews positioning and copy; Aragorn reviews project storytelling; Legolas reviews aesthetic consistency.
 - Additional global skills: `designer` routes to Emil design engineering; `taste` routes to `design-taste-frontend`; `impecable` routes to `impeccable` and its critique playbook. Project UI/UX principles and design-tokens supply supporting criteria.
-- The global Designer, Taste and Impeccable wrappers are found under `C:/Users/margi/.codex/skills/`; their source skills are under `C:/Users/margi/.agents/skills/`.
+- The global Designer, Taste and Impeccable wrappers are found under `[user-home]/.codex/skills/`; their source skills are under `[user-home]/.agents/skills/`.
 - UI/UX Pro Max is not found in the searched project, global agent/Codex skill directories, or Codex plugin skill paths. It is not claimed as used.
 - Fresh live Chromium captures cover home hero, project section, toolkit and contact at 1440px and 390px in dark and light themes. All three case-study openings are visually inspected at desktop size. Existing 320px screenshots supplement the review.
 - Computed typography and section heights are recorded in `artifacts/sauron-audit-2026-10-21/editorial-evidence.json`. Viewport screenshots avoid relying only on scaled full-page images.

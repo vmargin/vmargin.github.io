@@ -6,7 +6,7 @@ Latest continuation: the subsequent palette/copy/landscape/card/demo update is i
 
 Execution follow-up, October 21, 2026: the authorized local implementation is complete. See [implementation results](implementation-results-2026-10-21.md) and `projects/portfolio/context/engineering-loop/task-tracker.md` for current verification and external limits. Local rollback baseline is `cf8757e`; no push or deployment occurs. The original handoff below records the starting state.
 
-October 21, 2026. Resume in the same workspace: `C:/Users/margi/Desktop/lockedIn/portfolio v6`.
+October 21, 2026. Resume in the same workspace: `[workspace]/portfolio v6`.
 
 Latest state: the user answers the full questionnaire. `docs/implementation-inputs.md` is now the authoritative confirmed decision register, not an unanswered questionnaire. Implement three projects, Valkenburgh Margin / Valk, the confirmed client-origin ARCTIC account, supplied AWS completion certificate, training/SIL entries and intended final URLs. No repeat questionnaire is needed. Resume v4 stays unchanged and hosting stays on the current domain.
 
@@ -61,14 +61,14 @@ Use these existing review copies if temporary originals are unavailable:
 - `artifacts/portfolio-prompt-review-2026-10-21/inputs/final-resume-v4.pdf`
 - `artifacts/portfolio-prompt-review-2026-10-21/inputs/hero-formal-original.png`: 1024x1536, real partial alpha transparency. Do not mistake image-viewer black for an opaque background or flatten it onto black.
 - `artifacts/portfolio-prompt-review-2026-10-21/inputs/about-portrait-original.png`: 1122x1402, opaque dark photographic background.
-- `artifacts/portfolio-prompt-review-2026-10-21/inputs/aws-cloud-quest-completion-original.pdf`: genuine supplied completion certificate, inspected by extraction/rendering, dated September 5, 2026. Original: `C:/Users/margi/Desktop/BRIT/AWS CLOUD PRACTICTIONER CERT.pdf`.
+- `artifacts/portfolio-prompt-review-2026-10-21/inputs/aws-cloud-quest-completion-original.pdf`: genuine supplied completion certificate, inspected by extraction/rendering, dated September 5, 2026. Original: `[user-home]/Desktop/BRIT/AWS CLOUD PRACTICTIONER CERT.pdf`.
 
-Original PDF: `C:/Users/margi/Desktop/lockedIn/final resume v4.pdf`.
+Original PDF: `[workspace]/final resume v4.pdf`.
 
 Original images:
 
-- `C:/Users/margi/AppData/Local/Temp/codex-clipboard-16215820-f5f1-4d02-a61c-681b32a08850.png`
-- `C:/Users/margi/AppData/Local/Temp/codex-clipboard-9319cb98-2719-40b3-9dab-83a9eaa72ee2.png`
+- `[user-home]/AppData/Local/Temp/codex-clipboard-16215820-f5f1-4d02-a61c-681b32a08850.png`
+- `[user-home]/AppData/Local/Temp/codex-clipboard-9319cb98-2719-40b3-9dab-83a9eaa72ee2.png`
 
 Copy input originals to appropriate durable project assets during implementation; publish optimized derivatives and a stable PDF URL. Do not expose local paths or link production content into ignored artifacts.
 
@@ -98,13 +98,13 @@ No further personal-facts questionnaire blocks the supported scope. Source check
 
 ## Skills, tooling and verification
 
-Use GPT-6.1 Sol in the next session as requested. The later cancellation supersedes the earlier delegation proposal: do not automatically launch subagents or restore model-routing rules. Relevant installed skills remain usable. Sauron skills are in `.agents/skills/`. Global `designer`, `taste`, `impecable` wrappers are in `C:/Users/margi/.codex/skills/`; source skills in `C:/Users/margi/.agents/skills/`. Career Evidence Review and Prompt Auditor are available. UI/UX Pro Max was not found in the searched locations; do not claim it was used. Read applicable skills once and avoid mixing conflicting aesthetic presets.
+Use GPT-6.1 Sol in the next session as requested. The later cancellation supersedes the earlier delegation proposal: do not automatically launch subagents or restore model-routing rules. Relevant installed skills remain usable. Sauron skills are in `.agents/skills/`. Global `designer`, `taste`, `impecable` wrappers are in `[user-home]/.codex/skills/`; source skills in `[user-home]/.agents/skills/`. Career Evidence Review and Prompt Auditor are available. UI/UX Pro Max was not found in the searched locations; do not claim it was used. Read applicable skills once and avoid mixing conflicting aesthetic presets.
 
 Playwright used successfully through Node:
 
-- Module: `C:/Users/margi/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/node_modules/playwright`
-- Chromium: `C:/Users/margi/AppData/Local/ms-playwright/chromium-1243/chrome-win64/chrome.exe`
-- Working Python: `C:/Users/margi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe`; use `-X utf8`. Installed pypdf/pypdfium2 extract/render PDFs. `python` Store alias and `py.exe` pointing to missing Python312 failed; avoid repeating those attempts.
+- Module: `[user-home]/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/node_modules/playwright`
+- Chromium: `[user-home]/AppData/Local/ms-playwright/chromium-1243/chrome-win64/chrome.exe`
+- Working Python: `[user-home]/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe`; use `-X utf8`. Installed pypdf/pypdfium2 extract/render PDFs. `python` Store alias and `py.exe` pointing to missing Python312 failed; avoid repeating those attempts.
 - Native browser tools were unavailable previously. Discover capabilities again as needed. Headless screenshots are valid inspection evidence, not a user-visible browser overlay.
 
 Run available `npm.cmd run build`, `npm.cmd run typecheck`, `npm.cmd run format:check` as appropriate to implementation. No `npm test` script exists. Honor current higher-priority testing instructions; do not invent a test command or claim old results are fresh. Root AGENTS.md requires TDD before production changes; reconcile it with the active runtime's test rules and the absent test setup before editing.

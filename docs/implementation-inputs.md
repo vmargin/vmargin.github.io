@@ -49,7 +49,7 @@ AssetHub version dates and exact gallery-version mapping are not supplied. Inspe
 
 **AWS Cloud Quest: Cloud Practitioner:** course completion only, not the AWS Certified Cloud Practitioner exam credential. User-provided file:
 
-`C:/Users/margi/Desktop/BRIT/AWS CLOUD PRACTICTIONER CERT.pdf`
+`[user-home]/Desktop/BRIT/AWS CLOUD PRACTICTIONER CERT.pdf`
 
 The actual PDF is extracted and rendered. It says “Completion Certificate,” “AWS Cloud Quest: Cloud Practitioner,” “Completed: September 05, 2026,” and “Valkenburgh Margin.” This confirms the document's displayed details, not independent issuer verification or an exam credential.
 

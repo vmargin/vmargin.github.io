@@ -40,12 +40,12 @@
   },
   "currentApplicationPair": {
     "dark": {
-      "source": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_47 PM.png",
+      "source": "[user-home]/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_47 PM.png",
       "applicationAsset": "public/images/hero-full-sunset-v2.png",
       "sha256": "4FB63B34EDA51CE87D50688C92B2DEDC6B8A6D569FF76130F4596CE5E454EF5E"
     },
     "light": {
-      "source": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_33 PM.png",
+      "source": "[user-home]/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_33 PM.png",
       "applicationAsset": "public/images/hero-full-sunrise-v2.png",
       "sha256": "41DBBC8119F7EF0BD74F39A5D72C33F8F2CDA4E09F0258B78C64135799F91FEF"
     },

@@ -5,7 +5,7 @@
     "sourceImages": [
       {
         "theme": "dark sunset",
-        "attachment": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_47 PM.png",
+        "attachment": "[user-home]/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_47 PM.png",
         "applicationAsset": "public/images/hero-full-sunset-v2.png",
         "dimensions": [1672, 941],
         "bytes": 1980600,
@@ -13,7 +13,7 @@
       },
       {
         "theme": "light sunrise",
-        "attachment": "C:/Users/margi/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_33 PM.png",
+        "attachment": "[user-home]/Desktop/BRIT/ChatGPT Image Oct 2, 2026, 03_07_33 PM.png",
         "applicationAsset": "public/images/hero-full-sunrise-v2.png",
         "dimensions": [1672, 941],
         "bytes": 2115895,
