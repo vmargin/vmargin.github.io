@@ -5,6 +5,9 @@ import sharp from "sharp";
 import { expect } from "playwright/test";
 
 const data = JSON.parse(await readFile("src/data/portfolio.json", "utf8"));
+const canonicalOrigin =
+  process.env.PORTFOLIO_CANONICAL_ORIGIN || data.site.canonicalOrigin;
+const siteName = process.env.PORTFOLIO_SITE_NAME || data.site.displayName;
 const routes = ["/", ...data.projects.map((item) => item.href)];
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
@@ -79,14 +82,14 @@ export async function verifyJourneys({ browser, base, evidence, check }) {
           );
           assert.equal(
             await page.locator('link[rel="canonical"]').getAttribute("href"),
-            data.site.canonicalOrigin + route,
+            canonicalOrigin + route,
           );
           const project = data.projects.find((item) => item.href === route);
           assert.equal(
             await page.title(),
             project
-              ? `${project.title} | ${data.site.displayName}`
-              : data.site.title,
+              ? `${project.title} | ${siteName}`
+              : data.site.title.replace(data.site.displayName, siteName),
           );
           assert.equal(
             await page
@@ -193,12 +196,12 @@ export async function verifyJourneys({ browser, base, evidence, check }) {
           .click();
         await page
           .locator("#mobile-navigation")
-          .getByRole("link", { name: "Certifications", exact: true })
+          .getByRole("link", { name: "Experience", exact: true })
           .click();
         await page.waitForTimeout(80);
         assert.equal(
           await page.evaluate(() => document.activeElement.id),
-          "certifications",
+          "experience",
         );
       }
       await page.screenshot({
@@ -244,7 +247,10 @@ export async function verifyJourneys({ browser, base, evidence, check }) {
             await page
               .locator('.toolkit-panel[data-state="active"] .toolkit-items li')
               .count(),
-            18,
+            data.stack.reduce(
+              (count, group) => count + Math.min(group.items.length, 3),
+              0,
+            ),
           );
           for (const group of data.stack) {
             await page
@@ -607,7 +613,7 @@ export async function verifyJourneys({ browser, base, evidence, check }) {
       ]);
       const certificateViewing = await verifyPdfPopup(certificate);
       documents.push({
-        route: "/#certifications",
+        route: "/#experience",
         label: "AWS completion",
         ...certificateViewing,
       });
@@ -688,9 +694,10 @@ export async function verifyJourneys({ browser, base, evidence, check }) {
       const sitemap = await fetch(base + "/sitemap.xml");
       assert.equal(sitemap.status, 200);
       assert.equal((await sitemap.text()).match(/<loc>/g).length, 4);
-      assert.match(
-        await (await fetch(base + "/robots.txt")).text(),
-        /Sitemap: https:\/\/vm.marginvalkenburgh.chatgpt.site\/sitemap.xml/,
+      assert.ok(
+        (await (await fetch(base + "/robots.txt")).text()).includes(
+          `Sitemap: ${canonicalOrigin}/sitemap.xml`,
+        ),
       );
       assert.match(
         await readFile("dist/_headers", "utf8"),
@@ -736,7 +743,7 @@ export async function verifyJourneys({ browser, base, evidence, check }) {
         "Projects",
         "About",
         "Stack",
-        "Certifications",
+        "Experience",
         "Contact",
       ]) {
         await page

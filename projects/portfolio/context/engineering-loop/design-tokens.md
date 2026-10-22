@@ -50,3 +50,19 @@ All existing colors, type, spacing, radii, assets, and settled positions remain 
 | Contact blocks          | 280ms, opacity 0.65 to 1, translateY 8px to zero, 45ms sibling offsets capped at 135ms.                                                                                                                                                        |
 
 Every effect releases temporary styles after completion and cancels on saved pause, system reduced motion, document hiding, or teardown. Played hero/scroll entrances do not restart when a preview closes or motion resumes. Hero enhancement skips already-read content when initialization arrives more than 900ms after first contentful paint; default content stays visible throughout. Existing 360ms section entrances retain their previous easing and now preserve played state across observer restarts.
+
+## October 23, 2026: hero, project cards, and learning journey
+
+- Hero role: Manrope, 500 weight, `clamp(32px, 3.5vw, 52px)`, 1.2 line height; mobile `clamp(32px, 6vw, 44px)`. Greeting uses 18px to 22px; motto uses italic Cormorant Garamond, 24px to 32px. Body remains 16px, availability 14px.
+- Shared project cards: existing `--card-surface`, `--line`, 18px radius, 24px to 40px copy padding (20px at narrow widths), 16px description, 14px feature/contribution copy, 12px technology tags with 6px radius. All cards use the same visual hierarchy and retain authentic captures.
+- Education and Training: existing palette; 20px column headings, 18px to 22px entry headings, 14px dates/providers/descriptions, 9px neutral accent markers, 26px entry inset, 32px separation, and existing coursework tags. No new global colors or theme behavior.
+
+These entries supersede earlier hero name-heading and boxed education-card styling for this update only.
+
+## October 23, 2026: Experience publication follow-up
+
+- Greeting h1: Cormorant Garamond, 500 weight, `clamp(56px, 6.5vw, 96px)`, 1.2 line height, primary text color. Below 768px use `clamp(48px, 12vw, 72px)`. The role uses Manrope at 22px to 30px beneath the identity; motto remains italic serif.
+- Experience journey: three columns at desktop widths starting at 1024px, stacked below 1024px. Retain the 20px column titles, 18px to 22px entry titles, 14px dates/body, 9px markers and 26px entry inset. Separate neighboring desktop columns with the existing line token and 20px to 28px inset.
+- AI tools: reuse the existing toolkit surface, 16px radius, 22px padding, 14px labels, native Radix tab focus behavior and shared category icon. No new palette or dependencies.
+
+This follow-up supersedes the smaller greeting and two-column journey from the earlier October 23 snapshot.

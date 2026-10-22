@@ -35,6 +35,7 @@ const project = z.object({
   period: text,
   featured: z.boolean(),
   summary: text,
+  cardFeatures: text,
   roleSummary: text,
   stack: z.array(text).min(1),
   statusText: text,
@@ -81,7 +82,6 @@ const project = z.object({
   portfolioCheck: text,
   applicationNote: text.nullable(),
   previewNote: text,
-  previewLabel: text,
   demoAccess: text,
   limitations: z.array(text),
   nextProjectId: projectId,
@@ -93,6 +93,7 @@ const schema = z.object({
     role: text,
     location: text,
     heroHeadline: text,
+    heroGreeting: text,
     heroDescription: text,
     availability: text,
     title: text,
@@ -129,6 +130,20 @@ const schema = z.object({
     bulb: image,
     intro: text,
     paragraphs: z.array(text).min(2),
+    experience: z
+      .array(
+        z.object({
+          id: text,
+          title: text,
+          period: text,
+          context: text,
+          detail: text,
+          links: z
+            .array(z.object({ label: text, href: z.union([https, local]) }))
+            .min(1),
+        }),
+      )
+      .length(4),
     education: z.object({
       qualification: text,
       institution: text,
@@ -159,18 +174,14 @@ const schema = z.object({
           "data",
           "testing",
           "delivery",
+          "ai",
         ]),
         title: text,
         context: text,
         items: z.array(text).min(1),
       }),
     )
-    .length(6),
-  aiWorkflow: z.object({
-    title: text,
-    summary: text,
-    tools: z.array(text).min(1),
-  }),
+    .length(7),
   contact: z.object({ heading: text, text: text }).passthrough(),
 });
 

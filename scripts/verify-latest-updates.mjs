@@ -7,14 +7,14 @@ const base = process.env.PORTFOLIO_URL || "http://127.0.0.1:4176";
 const evidence = "artifacts/portfolio-latest-update-2026-10-21";
 const phase = process.argv.includes("--baseline") ? "baseline" : "final";
 const description =
-  "I'm a Computer Engineering graduate who builds software with a systems-first mindset—turning complex workflows into simple, reliable solutions without compromising quality or efficiency.";
+  "I build practical software solutions and refine development workflows through engineering fundamentals and structured AI assistance.";
 const about = [
-  "I'm Valkenburgh Margin, also known as Valk, a Computer Engineering graduate from the Polytechnic University of the Philippines. I've completed Java programming training, with experience building Java applications, PERN-stack personal projects, and client websites.",
-  "I'm a builder who thinks in systems. I care not just about what I build, but how I build it—planning thoughtfully, simplifying complexity, and finding efficient ways to deliver quality results.",
-  "I approach AI the same way. Beyond prompting, I continuously refine my AI development environment through custom skills, automations, and structured workflows. My goal is to make development faster and more effective without compromising quality. I review and verify the results rather than relying on AI output alone.",
+  "I'm Valkenburgh Margin, also known as Valk, a Computer Engineering graduate from the Polytechnic University of the Philippines. I've completed Java programming training and have experience building Java applications, PERN-stack projects, and client websites.",
+  "I'm a builder who thinks in systems. I enjoy understanding problems, simplifying complex workflows, and finding efficient ways to build software without compromising quality.",
+  "I bring the same mindset to AI-assisted development. Beyond prompting, I build custom skills, automations, and structured workflows to improve how I work. I stay involved in planning, technical decisions, and reviewing results while continuously strengthening my skills as a software developer.",
 ];
 const urls = {
-  AssetHub: "https://erlassethub.vercel.app/",
+  "ERL AssetHub": "https://erlassethub.vercel.app/",
   ARCTIC: "https://arcticaircon.vercel.app/",
   "CASH-G": "https://banking-app-v2.onrender.com/",
 };
@@ -58,15 +58,15 @@ try {
     const paragraphs = await page.locator(".about-copy > p").allTextContents();
     assert.deepEqual(paragraphs, about);
     assert.doesNotMatch(
-      await page.locator("#certifications").innerText(),
+      await page.locator("#experience").innerText(),
       /Supervised Internship|Spring Valley|\bSIL\b/,
     );
     assert.match(
-      await page.locator("#certifications").innerText(),
+      await page.locator("#experience").innerText(),
       /Java Programming NC III Training/,
     );
     assert.match(
-      await page.locator("#certifications").innerText(),
+      await page.locator("#experience").innerText(),
       /AWS Cloud Quest/,
     );
     await page.close();
@@ -128,7 +128,7 @@ try {
       await page.goto(base);
       assert.deepEqual(
         await page.locator(".project-card h3").allTextContents(),
-        ["AssetHub", "ARCTIC", "CASH-G"],
+        ["ERL AssetHub", "ARCTIC", "CASH-G"],
       );
       for (const [title, url] of Object.entries(urls)) {
         const card = page.locator(".project-card").filter({

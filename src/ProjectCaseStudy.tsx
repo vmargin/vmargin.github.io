@@ -55,7 +55,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </a>
           <nav aria-label="Case study navigation">
             <a href="/#projects">All projects</a>
-            <a href="/#certifications">Certifications</a>
+            <a href="/#experience">Experience</a>
             <a href={site.resumeUrl} target="_blank" rel="noreferrer">
               Resume
             </a>
@@ -362,7 +362,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
         <div className="wrap case-footer-inner">
           <a href={"mailto:" + site.email}>{site.email}</a>
           <MotionControl preferences={preferences} />
-          <a href="/#certifications">Certifications &amp; Training</a>
+          <a href="/#experience">Experience &amp; Education</a>
           <a href={site.resumeUrl} target="_blank" rel="noreferrer">
             View Resume
           </a>

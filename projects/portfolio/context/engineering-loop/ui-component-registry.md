@@ -27,3 +27,18 @@ Token values are recorded in `design-tokens.md`. `styles.css` supplies the estab
 - Quick preview: The native dialog keeps immediate focus, Escape, close, and return-focus behavior. Pointer/touch opening enters over 200ms, with a 160ms backdrop fade. Keyboard opening remains immediate. Dismissal never waits for animation.
 - Contact: The existing `data-stagger` group reveals its existing blocks once, over 280ms with capped 45ms offsets. No new element or text is introduced.
 - Shared lifecycle: Pause, system reduced motion, hiding, and teardown cancel effects to the existing settled state. Browser APIs remain inside effects and the dynamically imported motion module. All content remains readable when JavaScript is disabled.
+
+## October 23, 2026: latest content and layout
+
+- Hero (`src/App.tsx`, `src/portfolio-updates.css`): availability, greeting, role h1, italic motto, exact description, existing project CTA and portrait. Native entrance targets the new heading/greeting and keeps existing preference/cancellation behavior.
+- Project cards (`src/App.tsx`, `src/styles.css`, `src/portfolio-updates.css`): one shared hierarchy for ERL AssetHub, ARCTIC and CASH-G. Category/status, title, description/features, contribution, complete verified tags, study action, authentic image, demo/preview controls and access note. Remove numbers and card capture labels. Stack copy and capture below 768px; keep tags/status readable on mobile.
+- Education and Training (`src/App.tsx`, `src/portfolio-updates.css`): two timeline columns for Education and Training, stacked below 768px. Three verified entries retain degree/coursework, Java pending-certificate wording, genuine AWS completion link and course/exam distinction. Preserve the existing section anchor.
+
+The dated blueprint and content-layout checkpoint contain evidence and verification details. Earlier component descriptions remain historical where superseded.
+
+## October 23, 2026: Experience publication follow-up
+
+- Hero: the greeting becomes the single primary h1, with prominent serif identity. The role follows as supporting text. Motion targets the updated identity and role without changing timing, preferences or cancellation.
+- Experience: home and case-study navigation use Experience and `#experience`. Preserve the old `#certifications` anchor. Education, Experience and Training form three desktop timeline columns and stack below 1024px. The four project entries are separate from the three featured cards and link to genuine source or case-study routes.
+- Toolkit: add AI tools as the seventh category using the eight confirmed general workflow tools. Remove the standalone AI section. Complete project technology lists retain only supported per-project tool attribution.
+- Metadata: preserve the configured site title while applying the existing GitHub Pages display alias so initial HTML and hydration agree.

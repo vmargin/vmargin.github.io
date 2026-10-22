@@ -51,6 +51,12 @@ for (const [name, mutate] of [
     },
   ],
   [
+    "unsafe project experience link",
+    (data) => {
+      data.about.experience[0].links[0].href = "javascript:alert(1)";
+    },
+  ],
+  [
     "unknown category",
     (data) => {
       data.stack[0].id = "unmapped";

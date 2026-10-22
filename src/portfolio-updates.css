@@ -14,9 +14,9 @@
 .hero-role {
   text-wrap: balance;
 }
-.project-copy > .project-preview-label {
-  margin-top: 14px;
-  font-size: var(--type-label);
+.project-copy > .project-features {
+  margin-top: 12px;
+  font-size: var(--type-meta);
   color: var(--text-secondary);
 }
 .project-actions {
@@ -109,6 +109,7 @@ html[data-theme="light"] .ambient-background {
   min-height: 660px;
 }
 .hero-content {
+  min-width: 0;
   width: auto;
   padding: 45px 0 105px;
   position: relative;
@@ -120,17 +121,33 @@ html[data-theme="light"] .ambient-background {
   letter-spacing: 0.16em;
 }
 .hero h1 {
-  font-size: clamp(76px, 8vw, 122px);
-  margin: 24px 0;
-  max-width: none;
+  font-family: var(--serif);
+  font-size: clamp(56px, 6.5vw, 96px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  margin: 16px 0;
+  max-width: 100%;
+  text-wrap: balance;
 }
-.hero-name-last {
-  font-size: 1.1em;
+.hero-greeting {
+  color: var(--paper);
+}
+.hero-position {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--paper);
+  margin: 16px 0;
+  max-width: 28ch;
+  text-wrap: balance;
 }
 .hero-role {
-  font-size: clamp(20px, 2.2vw, 28px);
-  font-weight: 500;
-  color: var(--paper);
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
   line-height: 1.4;
   margin: 24px 0 16px;
 }
@@ -144,7 +161,7 @@ html[data-theme="light"] .ambient-background {
 .hero-availability {
   color: var(--text-secondary);
   font-size: var(--type-meta);
-  margin-bottom: 24px;
+  margin: 0 0 28px;
 }
 .hero .button {
   font-size: var(--type-meta);
@@ -353,20 +370,97 @@ html[data-theme="light"] .project-cover {
   font-weight: 600;
   margin-bottom: 6px;
 }
-.background-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
 .background-date {
   font-family: inherit;
   font-size: var(--type-meta);
   line-height: 1.6;
 }
-.background-card h3 {
-  font-size: clamp(30px, 3vw, 42px);
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 44px);
 }
-.background-card > p {
-  font-size: var(--type-body);
-  line-height: 1.6;
+.journey-column {
+  min-width: 0;
+}
+.journey-column + .journey-column {
+  padding-left: clamp(20px, 2vw, 28px);
+  border-left: 1px solid var(--line);
+}
+.background-section {
+  position: relative;
+}
+.background-heading {
+  max-width: none;
+}
+.section-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  scroll-margin-top: 120px;
+}
+.project-experience .background-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+.education-coursework li {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.journey-column > h3 {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 18px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.journey-timeline {
+  margin-left: 5px;
+  border-left: 1px solid var(--line);
+}
+.journey-entry {
+  position: relative;
+  padding: 0 0 32px 26px;
+}
+.journey-entry:last-child {
+  padding-bottom: 4px;
+}
+.journey-entry::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--ink);
+}
+.journey-entry .background-date {
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.journey-entry > h4 {
+  font-family: inherit;
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.journey-entry > p {
+  color: var(--text-secondary);
+  font-size: var(--type-meta);
+  line-height: 1.7;
+}
+.education-coursework h5 {
+  font-family: inherit;
+  font-size: var(--type-meta);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 20px 0 0;
 }
 .background-detail {
   display: block;
@@ -392,11 +486,6 @@ html[data-theme="light"] .project-cover {
 }
 .contact-content > .contact-links {
   margin-top: 24px;
-}
-@media (min-width: 1024px) {
-  .background-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 .contact-content .contact-description,
 .contact-section .contact-block > p,
@@ -513,6 +602,13 @@ html[data-motion="reduced"] *::after {
 }
 
 @media (max-width: 1023px) {
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+  .journey-column + .journey-column {
+    padding-left: 0;
+    border-left: 0;
+  }
   .desktop-nav {
     display: none;
   }
@@ -539,14 +635,18 @@ html[data-motion="reduced"] *::after {
     grid-template-columns: 1.1fr 0.9fr;
     gap: 0;
   }
-  .hero h1 {
-    font-size: clamp(64px, 9vw, 90px);
-  }
   .hero-portrait img {
     max-height: 600px;
   }
 }
 @media (max-width: 767px) {
+  .project-open {
+    grid-template-columns: 1fr;
+  }
+  .project-image-wrap {
+    padding: 20px;
+    aspect-ratio: auto;
+  }
   .hero {
     padding-top: 110px;
     min-height: 0;
@@ -561,8 +661,8 @@ html[data-motion="reduced"] *::after {
     width: 100%;
   }
   .hero h1 {
-    font-size: clamp(64px, 14vw, 96px);
-    margin: 20px 0;
+    font-size: clamp(48px, 12vw, 72px);
+    margin: 16px 0;
   }
   .hero-role {
     font-size: 23px;
@@ -600,16 +700,8 @@ html[data-motion="reduced"] *::after {
     padding-block: 8px 28px;
     margin-top: -12px;
   }
-  .project-number,
-  .project-status-label {
-    display: none;
-  }
-  .project-copy,
-  .project-featured .project-copy {
+  .project-copy {
     padding: 24px;
-  }
-  .project-copy .tags {
-    display: none;
   }
   .project-copy h3 {
     font-size: 44px;
@@ -626,7 +718,7 @@ html[data-motion="reduced"] *::after {
     max-width: 400px;
     margin: 0 auto;
   }
-  .background-grid {
+  .journey-grid {
     grid-template-columns: 1fr;
   }
   .background-card {
@@ -693,9 +785,6 @@ html[data-motion="reduced"] *::after {
     left: 16px;
     right: 16px;
   }
-  .hero h1 {
-    font-size: 60px;
-  }
   .hero .button-row {
     display: grid;
     grid-template-columns: 1fr;
@@ -706,8 +795,7 @@ html[data-motion="reduced"] *::after {
   .hero-portrait img {
     max-height: 410px;
   }
-  .project-copy,
-  .project-featured .project-copy {
+  .project-copy {
     padding: 20px;
   }
   .about-copy p {

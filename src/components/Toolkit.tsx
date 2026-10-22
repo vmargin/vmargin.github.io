@@ -6,6 +6,7 @@ import {
   Layers,
   Server,
   Workflow,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import portfolio from "../data/portfolio.json";
@@ -20,6 +21,7 @@ const categories: Record<string, LucideIcon> = {
   data: Database,
   testing: CodeXml,
   delivery: Workflow,
+  ai: Sparkles,
 };
 const logos: Record<string, string> = {
   Java: "java.svg",

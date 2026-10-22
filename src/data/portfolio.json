@@ -2,9 +2,9 @@
   "site": {
     "displayName": "Valkenburgh Margin",
     "brandMark": "VM",
-    "role": "Software Developer",
+    "role": "Software & Full-Stack Developer",
     "location": "Based in Antipolo, Rizal, Philippines.",
-    "availability": "Open to software developer roles",
+    "availability": "Open to Software Developer and Full-Stack Developer Roles",
     "title": "Valkenburgh Margin | Software Developer",
     "description": "Valkenburgh Margin (Valk), a software developer in the Philippines building desktop and full-stack web applications for practical workflows.",
     "canonicalOrigin": "https://vm.marginvalkenburgh.chatgpt.site",
@@ -27,8 +27,8 @@
         "href": "#stack"
       },
       {
-        "label": "Certifications",
-        "href": "#certifications"
+        "label": "Experience",
+        "href": "#experience"
       },
       {
         "label": "Contact",
@@ -40,7 +40,7 @@
       }
     ],
     "heroHeadline": "Think deeply. Build deliberately.",
-    "heroDescription": "I'm a Computer Engineering graduate who builds software with a systems-first mindset—turning complex workflows into simple, reliable solutions without compromising quality or efficiency.",
+    "heroDescription": "I build practical software solutions and refine development workflows through engineering fundamentals and structured AI assistance.",
     "contactImage": {
       "src": "/images/contact-landscape-1800.webp",
       "width": 1800,
@@ -68,10 +68,11 @@
           "height": 2025
         }
       ]
-    }
+    },
+    "heroGreeting": "Hi, I’m Valk."
   },
   "about": {
-    "title": "About",
+    "title": "About Me",
     "portraits": {
       "black": {
         "src": "/images/portraits/about-portrait.webp",
@@ -91,10 +92,10 @@
       "width": 96,
       "height": 96
     },
-    "intro": "I'm Valkenburgh Margin, also known as Valk, a Computer Engineering graduate from the Polytechnic University of the Philippines. I've completed Java programming training, with experience building Java applications, PERN-stack personal projects, and client websites.",
+    "intro": "I'm Valkenburgh Margin, also known as Valk, a Computer Engineering graduate from the Polytechnic University of the Philippines. I've completed Java programming training and have experience building Java applications, PERN-stack projects, and client websites.",
     "paragraphs": [
-      "I'm a builder who thinks in systems. I care not just about what I build, but how I build it—planning thoughtfully, simplifying complexity, and finding efficient ways to deliver quality results.",
-      "I approach AI the same way. Beyond prompting, I continuously refine my AI development environment through custom skills, automations, and structured workflows. My goal is to make development faster and more effective without compromising quality. I review and verify the results rather than relying on AI output alone."
+      "I'm a builder who thinks in systems. I enjoy understanding problems, simplifying complex workflows, and finding efficient ways to build software without compromising quality.",
+      "I bring the same mindset to AI-assisted development. Beyond prompting, I build custom skills, automations, and structured workflows to improve how I work. I stay involved in planning, technical decisions, and reviewing results while continuously strengthening my skills as a software developer."
     ],
     "education": {
       "qualification": "BS Computer Engineering",
@@ -113,8 +114,8 @@
         "id": "java-training",
         "title": "Java Programming NC III Training",
         "provider": "TESDA · Center for International Industries Competence Corp. (CIICC)",
-        "statusText": "July 6 – August 24, 2026 · Training completed",
-        "detail": "Programming fundamentals, core Java concepts, and object-oriented programming. Completion certificate awaits issuance.",
+        "statusText": "July 6 – August 24, 2026",
+        "detail": "Completed training in programming fundamentals, core Java concepts, and object-oriented programming. Completion certificate awaits issuance.",
         "credentialUrl": null,
         "relatedLink": {
           "label": "Java coursework",
@@ -126,27 +127,89 @@
         "title": "AWS Cloud Quest: Cloud Practitioner",
         "provider": "AWS Training & Certification",
         "statusText": "Completed September 5, 2026",
-        "detail": "AWS Cloud Quest course completion, not the AWS Certified Cloud Practitioner exam credential. The supplied completion document records September 5, 2026.",
+        "detail": "Completed the AWS Cloud Quest learning course, not the AWS Certified Cloud Practitioner exam. View the original course completion document below.",
         "credentialUrl": "/documents/aws-cloud-quest-completion.pdf",
         "relatedLink": null
+      }
+    ],
+    "experience": [
+      {
+        "id": "task-manager",
+        "title": "Task Manager",
+        "period": "2026",
+        "context": "Personal full-stack project",
+        "detail": "Built a React and Express learning application with JWT sign-in, personal task lists, task creation and deletion, and PostgreSQL persistence.",
+        "links": [
+          {
+            "label": "Client source",
+            "href": "https://github.com/vmargin/task-manager-client"
+          },
+          {
+            "label": "API source",
+            "href": "https://github.com/vmargin/task-manager-api"
+          }
+        ]
+      },
+      {
+        "id": "multi-tenant-asset-manager",
+        "title": "Multi-Tenant Asset Manager",
+        "period": "Original · v2 · v3",
+        "context": "ERL AssetHub · Personal project",
+        "detail": "Hand-coded the original asset manager, then expanded equipment lifecycle workflows through AI-assisted redesign and development, informed by user research.",
+        "links": [
+          {
+            "label": "ERL AssetHub case study",
+            "href": "/projects/assethub/"
+          }
+        ]
+      },
+      {
+        "id": "arctic",
+        "title": "ARCTIC",
+        "period": "2026",
+        "context": "Client-origin project · Portfolio implementation",
+        "detail": "Defined requirements, workflows, and data decisions for branch-aware service requests, work orders, inventory, and billing, with AI-assisted development.",
+        "links": [
+          {
+            "label": "ARCTIC case study",
+            "href": "/projects/arctic/"
+          }
+        ]
+      },
+      {
+        "id": "banking-app",
+        "title": "Banking App",
+        "period": "2026",
+        "context": "CASH-G · Desktop v1 and Web v2",
+        "detail": "Hand-coded the Java Swing and JDBC banking simulator, then adapted it to Spring Boot and Thymeleaf with AI-assisted redesign, development, and deployment.",
+        "links": [
+          {
+            "label": "CASH-G case study",
+            "href": "/projects/cash-g/"
+          }
+        ]
       }
     ]
   },
   "projects": [
     {
       "id": "assethub",
-      "title": "AssetHub",
-      "type": "Equipment lifecycle workspace",
+      "title": "ERL AssetHub",
+      "type": "Full Stack Application",
       "period": "Original · v2 · v3",
       "featured": true,
-      "summary": "A multi-tenant equipment workspace for checkout, returns, location transfers, maintenance, audits, and retained lifecycle history.",
+      "summary": "A multi-tenant equipment management system for tracking assets, checkout, returns, location transfers, maintenance, audits, and lifecycle history.",
       "roleSummary": "Hand-coded original; AI-assisted interface redesign and later development, informed by user research.",
       "stack": [
         "JavaScript",
         "React",
+        "Node.js",
         "Express",
         "Prisma",
-        "PostgreSQL"
+        "PostgreSQL",
+        "Vite",
+        "Vercel",
+        "Codex"
       ],
       "statusText": "Public source · Published verification",
       "href": "/projects/assethub/",
@@ -282,13 +345,13 @@
       ],
       "nextProjectId": "arctic",
       "previewNote": "Pictured: a published equipment-register capture with synthetic workspace data.",
-      "previewLabel": "Equipment register · Synthetic workspace",
-      "demoAccess": "Public synthetic demo via sign-in"
+      "demoAccess": "Public synthetic demo via sign-in",
+      "cardFeatures": "Role-based workspaces, CSV import and export, printable QR labels, and asset retirement with retained history."
     },
     {
       "id": "arctic",
       "title": "ARCTIC",
-      "type": "Service-operations workspace",
+      "type": "Client Project",
       "period": "2026",
       "featured": true,
       "summary": "A client-origin service workspace connecting requests, dispatch, work orders, inventory, and billing across branches.",
@@ -418,13 +481,13 @@
       ],
       "nextProjectId": "cash-g",
       "previewNote": "Pictured: local seeded dashboard with synthetic service records.",
-      "previewLabel": "Service dashboard · Synthetic records",
-      "demoAccess": "Public synthetic demo via sign-in"
+      "demoAccess": "Public synthetic demo via sign-in",
+      "cardFeatures": "Technician scheduling, inspection records, invoicing, collections, receipts, and branch reporting."
     },
     {
       "id": "cash-g",
       "title": "CASH-G",
-      "type": "Educational banking application",
+      "type": "Java Full-Stack Application",
       "period": "2026",
       "featured": true,
       "summary": "A banking simulator for practicing account and transfer workflows, with a Java desktop original and a separate web adaptation.",
@@ -555,8 +618,8 @@
       ],
       "nextProjectId": "assethub",
       "previewNote": "Pictured: Web v2, local H2 practice demo with synthetic accounts.",
-      "previewLabel": "Web v2 · Synthetic banking practice",
-      "demoAccess": "Temporary URL · Demo sign-in did not succeed"
+      "demoAccess": "Temporary URL · Demo sign-in did not succeed",
+      "cardFeatures": "Account registration and sign-in, cash-in, transfers, and transaction history. Web v2 adds requests, fictional billers, savings goals, display-only cards, activity, and statement export."
     }
   ],
   "stack": [
@@ -632,6 +695,21 @@
         "Docker",
         "Vercel"
       ]
+    },
+    {
+      "id": "ai",
+      "title": "AI tools",
+      "context": "Tools used across my workflow for planning, development, and review. Tool use varies by project.",
+      "items": [
+        "Claude",
+        "Codex",
+        "OpenCode",
+        "Hermes Agent",
+        "OpenClaw Agent",
+        "Cline",
+        "Cursor",
+        "Anti Gravity"
+      ]
     }
   ],
   "contact": {
@@ -650,20 +728,6 @@
         "label": "LinkedIn",
         "href": "https://www.linkedin.com/in/vmargin/"
       }
-    ]
-  },
-  "aiWorkflow": {
-    "title": "How I work with AI",
-    "summary": "These are tools used across my workflow. Individual case studies distinguish hand-coded work from AI-assisted versions.",
-    "tools": [
-      "Claude",
-      "Codex",
-      "OpenCode",
-      "Hermes Agent",
-      "OpenClaw Agent",
-      "Cline",
-      "Cursor",
-      "Anti Gravity"
     ]
   }
 }

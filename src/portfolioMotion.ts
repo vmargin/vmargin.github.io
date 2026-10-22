@@ -126,30 +126,28 @@ export function startMotion(scope: HTMLElement, allowEntrance: boolean) {
   if (hero && !seen.has(hero)) {
     seen.add(hero);
     if (allowEntrance && !location.hash && scrollY < 80) {
-      scope
-        .querySelectorAll(".hero-name-first, .hero-name-last")
-        .forEach((line, index) => {
-          // Generous negative insets preserve the serif overhang and descenders.
-          session.play(
-            line,
-            [
-              {
-                opacity: 0.65,
-                transform: "translateY(12px)",
-                clipPath: "inset(-35% -15% 18% -15%)",
-              },
-              {
-                opacity: 1,
-                transform: "none",
-                clipPath: "inset(-35% -15% -35% -15%)",
-              },
-            ],
-            { duration: 520, delay: index * 50 },
-          );
-        });
+      scope.querySelectorAll(".hero-greeting").forEach((line, index) => {
+        // Generous negative insets preserve the serif overhang and descenders.
+        session.play(
+          line,
+          [
+            {
+              opacity: 0.65,
+              transform: "translateY(12px)",
+              clipPath: "inset(-35% -15% 18% -15%)",
+            },
+            {
+              opacity: 1,
+              transform: "none",
+              clipPath: "inset(-35% -15% -35% -15%)",
+            },
+          ],
+          { duration: 520, delay: index * 50 },
+        );
+      });
       scope
         .querySelectorAll(
-          ".hero-content > .eyebrow, .hero-role, .hero-description, .hero-availability, .hero-content > .button-row",
+          ".hero-availability, .hero-position, .hero-role, .hero-description, .hero-content > .button-row",
         )
         .forEach((element, index) => {
           session.play(

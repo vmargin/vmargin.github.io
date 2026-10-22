@@ -31,13 +31,13 @@ try {
   await check("Confirmed portfolio content and credentials", async () => {
     const page = await browser.newPage();
     await page.goto(base);
-    await page.locator("#certifications").waitFor({ timeout: 4000 });
+    await page.locator("#experience").waitFor({ timeout: 4000 });
     assert.match(
       await page.locator("#about").innerText(),
       /also known as Valk/,
     );
     assert.doesNotMatch(
-      await page.locator("#certifications").innerText(),
+      await page.locator("#experience").innerText(),
       /Spring Valley|Supervised Internship|\bSIL\b/,
     );
     assert.equal(await page.locator(".project-card").count(), 3);

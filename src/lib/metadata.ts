@@ -19,9 +19,7 @@ export function createMetadata(project?: Project) {
   const origin = new URL(canonical).origin;
   const title = project
     ? `${project.title} | ${siteName}`
-    : siteName === site.displayName
-      ? site.title
-      : `${siteName} | ${site.role}`;
+    : site.title.replace(site.displayName, siteName);
   const description = project?.summary ?? site.description;
   const url = origin + (project?.href ?? "/");
   const image =

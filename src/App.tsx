@@ -28,16 +28,6 @@ import {
 type Project = (typeof portfolio.projects)[number];
 const { site, about, projects, contact } = portfolio;
 const navItems = site.navigation;
-const shortTitles: Record<string, string> = {
-  "cash-g": "CASH-G",
-  arctic: "ARCTIC",
-  assethub: "AssetHub",
-};
-const projectTypes: Record<string, string> = {
-  "cash-g": "Java · Desktop and Web",
-  arctic: "Service operations",
-  assethub: "Equipment lifecycle",
-};
 const resumeHref =
   site.resumeUrl ??
   `mailto:${site.email}?subject=${encodeURIComponent("Résumé request")}`;
@@ -208,7 +198,7 @@ export default function PortfolioHome() {
     );
     root.current
       ?.querySelectorAll(
-        "#home, #projects, #about, #stack, #certifications, #contact",
+        "#home, #projects, #about, #stack, #experience, #contact",
       )
       .forEach((section) => sections.observe(section));
     return () => {
@@ -335,17 +325,16 @@ export default function PortfolioHome() {
         >
           <div className="wrap hero-layout">
             <div className="hero-content">
-              <Eyebrow>Software Developer</Eyebrow>
-              <h1 id="hero-title">
-                <span className="hero-name-first">Valkenburgh</span>{" "}
-                <span className="hero-name-last">Margin</span>
-              </h1>
-              <p className="hero-role">{site.heroHeadline}</p>
-              <p className="hero-description">{site.heroDescription}</p>
               <p className="hero-availability">
                 <span className="status-dot" aria-hidden="true" />
                 {site.availability}
               </p>
+              <h1 id="hero-title" className="hero-greeting">
+                {site.heroGreeting}
+              </h1>
+              <p className="hero-position">{site.role}</p>
+              <p className="hero-role">{site.heroHeadline}</p>
+              <p className="hero-description">{site.heroDescription}</p>
               <div className="button-row">
                 <Action href="#projects">View Projects</Action>
               </div>
@@ -399,9 +388,9 @@ export default function PortfolioHome() {
             </a>
           </div>
           <div className="project-grid">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <article
-                className={`project-card ${index === 0 ? "project-featured" : ""}`}
+                className="project-card"
                 key={project.id}
                 aria-labelledby={`project-${project.id}-title`}
                 data-reveal
@@ -422,30 +411,25 @@ export default function PortfolioHome() {
                     </span>
                   </div>
                   <div className="project-copy">
-                    <span className="project-number" aria-hidden="true">
-                      0{index + 1}
-                    </span>
                     <div className="project-meta">
-                      <span className="project-type">
-                        {projectTypes[project.id]}
-                      </span>
+                      <span className="project-type">{project.type}</span>
                       <span className="project-status-label">
                         {project.statusText}
                       </span>
                     </div>
                     <h3 id={`project-${project.id}-title`}>
-                      {shortTitles[project.id]}
+                      {project.title}
                       <ArrowUpRight size={19} />
                     </h3>
                     <p>{project.summary}</p>
+                    {project.cardFeatures && (
+                      <p className="project-features">{project.cardFeatures}</p>
+                    )}
                     <p className="project-role-summary">
                       {project.roleSummary}
                     </p>
-                    <p className="project-preview-label">
-                      {project.previewLabel}
-                    </p>
                     <div className="tags">
-                      {project.stack.slice(0, 4).map((tech) => (
+                      {project.stack.map((tech) => (
                         <span key={tech}>{tech}</span>
                       ))}
                     </div>
@@ -496,7 +480,7 @@ export default function PortfolioHome() {
         >
           <div className="about-intro">
             <div className="about-copy" data-reveal>
-              <h2 id="about-title">About</h2>
+              <h2 id="about-title">{about.title}</h2>
               <p>{about.intro}</p>
               <p>{about.paragraphs[0]}</p>
               <p>{about.paragraphs[1]}</p>
@@ -505,92 +489,122 @@ export default function PortfolioHome() {
           </div>
         </section>
 
-        <section
-          className="ai-workflow section wrap"
-          aria-labelledby="ai-title"
-        >
-          <div>
-            <Eyebrow>Process & ownership</Eyebrow>
-            <h2 id="ai-title">{portfolio.aiWorkflow.title}</h2>
-          </div>
-          <div>
-            <p>{portfolio.aiWorkflow.summary}</p>
-            <p className="ai-tools">
-              <span>Across my workflow</span>
-              {portfolio.aiWorkflow.tools.join(" · ")}
-            </p>
-          </div>
-        </section>
         <Toolkit motionEnabled={motionEnabled && !selected} />
 
         <section
           className="background-section section wrap"
-          id="certifications"
+          id="experience"
           tabIndex={-1}
-          aria-labelledby="certifications-title"
+          aria-labelledby="experience-title"
         >
+          <span
+            id="certifications"
+            className="section-anchor"
+            aria-hidden="true"
+          />
           <div className="background-heading">
             <Eyebrow>Learning & foundations</Eyebrow>
-            <h2 id="certifications-title">Certifications &amp; Training</h2>
+            <h2 id="experience-title">Experience &amp; Education</h2>
             <p>
-              Formal study and completed training, with the supplied course
-              completion document.
+              Engineering foundations, project experience, and continued
+              learning.
             </p>
           </div>
-          <div className="background-grid">
-            <article className="background-card education-card" data-reveal>
-              <span className="background-date">
-                Graduated {about.education.year}
-              </span>
-              <h3>{about.education.qualification}</h3>
-              <p>
-                {about.education.institution}
-                <span className="education-qualification">
-                  Bachelor’s degree
-                </span>
-              </p>
-              <div className="background-detail">
-                <p>{about.education.description}</p>
+          <div className="journey-grid">
+            <div className="journey-column">
+              <h3>Education</h3>
+              <div className="journey-timeline">
+                <article className="journey-entry education-card" data-reveal>
+                  <span className="background-date">
+                    Graduated {about.education.year}
+                  </span>
+                  <h4>{about.education.qualification}</h4>
+                  <p>{about.education.institution}</p>
+                  <div className="background-detail">
+                    <p>{about.education.description}</p>
+                  </div>
+                  <div className="background-footer education-coursework">
+                    <h5>Relevant coursework</h5>
+                    <ul>
+                      {about.education.coursework.map((course) => (
+                        <li key={course}>{course}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
               </div>
-              <div className="background-footer education-coursework">
-                <h4>Relevant coursework</h4>
-                <ul>
-                  {about.education.coursework.map((course) => (
-                    <li key={course}>{course}</li>
-                  ))}
-                </ul>
+            </div>
+            <div className="journey-column project-experience">
+              <h3>Experience</h3>
+              <div className="journey-timeline">
+                {about.experience.map((item) => (
+                  <article className="journey-entry" key={item.id} data-reveal>
+                    <span className="background-date">{item.period}</span>
+                    <h4>{item.title}</h4>
+                    <p>{item.context}</p>
+                    <div className="background-detail">
+                      <p>{item.detail}</p>
+                    </div>
+                    <div className="background-footer">
+                      {item.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target={
+                            link.href.startsWith("https:")
+                              ? "_blank"
+                              : undefined
+                          }
+                          rel={
+                            link.href.startsWith("https:")
+                              ? "noreferrer"
+                              : undefined
+                          }
+                        >
+                          {link.label}
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                        </a>
+                      ))}
+                    </div>
+                  </article>
+                ))}
               </div>
-            </article>
-            {about.training.map((item) => (
-              <article className="background-card" key={item.id} data-reveal>
-                <span className="background-date">{item.statusText}</span>
-                <h3>{item.title}</h3>
-                <p>{item.provider}</p>
-                <div className="background-detail">
-                  <p>{item.detail}</p>
-                </div>
-                <div className="background-footer">
-                  {item.relatedLink && (
-                    <a
-                      href={item.relatedLink.href}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {item.relatedLink.label} <ArrowUpRight size={14} />
-                    </a>
-                  )}
-                  {item.credentialUrl && (
-                    <a
-                      href={item.credentialUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View course completion <ArrowUpRight size={14} />
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
+            </div>
+            <div className="journey-column">
+              <h3>Training</h3>
+              <div className="journey-timeline">
+                {about.training.map((item) => (
+                  <article className="journey-entry" key={item.id} data-reveal>
+                    <span className="background-date">{item.statusText}</span>
+                    <h4>{item.title}</h4>
+                    <p>{item.provider}</p>
+                    <div className="background-detail">
+                      <p>{item.detail}</p>
+                    </div>
+                    <div className="background-footer">
+                      {item.relatedLink && (
+                        <a
+                          href={item.relatedLink.href}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {item.relatedLink.label} <ArrowUpRight size={14} />
+                        </a>
+                      )}
+                      {item.credentialUrl && (
+                        <a
+                          href={item.credentialUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View course completion <ArrowUpRight size={14} />
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
         <section
