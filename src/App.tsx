@@ -511,27 +511,68 @@ export default function PortfolioHome() {
             </p>
           </div>
           <div className="journey-grid">
-            <div className="journey-column">
-              <h3>Education</h3>
-              <div className="journey-timeline">
-                <article className="journey-entry education-card" data-reveal>
-                  <span className="background-date">
-                    Graduated {about.education.year}
-                  </span>
-                  <h4>{about.education.qualification}</h4>
-                  <p>{about.education.institution}</p>
-                  <div className="background-detail">
-                    <p>{about.education.description}</p>
-                  </div>
-                  <div className="background-footer education-coursework">
-                    <h5>Relevant coursework</h5>
-                    <ul>
-                      {about.education.coursework.map((course) => (
-                        <li key={course}>{course}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
+            <div className="journey-foundations">
+              <div className="journey-column">
+                <h3>Education</h3>
+                <div className="journey-timeline">
+                  <article className="journey-entry education-card" data-reveal>
+                    <span className="background-date">
+                      Graduated {about.education.year}
+                    </span>
+                    <h4>{about.education.qualification}</h4>
+                    <p>{about.education.institution}</p>
+                    <div className="background-detail">
+                      <p>{about.education.description}</p>
+                    </div>
+                    <div className="background-footer education-coursework">
+                      <h5>Relevant coursework</h5>
+                      <ul>
+                        {about.education.coursework.map((course) => (
+                          <li key={course}>{course}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div className="journey-column">
+                <h3>Training</h3>
+                <div className="journey-timeline">
+                  {about.training.map((item) => (
+                    <article
+                      className="journey-entry"
+                      key={item.id}
+                      data-reveal
+                    >
+                      <span className="background-date">{item.statusText}</span>
+                      <h4>{item.title}</h4>
+                      <p>{item.provider}</p>
+                      <div className="background-detail">
+                        <p>{item.detail}</p>
+                      </div>
+                      <div className="background-footer">
+                        {item.relatedLink && (
+                          <a
+                            href={item.relatedLink.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {item.relatedLink.label} <ArrowUpRight size={14} />
+                          </a>
+                        )}
+                        {item.credentialUrl && (
+                          <a
+                            href={item.credentialUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            View course completion <ArrowUpRight size={14} />
+                          </a>
+                        )}
+                      </div>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="journey-column project-experience">
@@ -565,41 +606,6 @@ export default function PortfolioHome() {
                           <ArrowUpRight size={14} aria-hidden="true" />
                         </a>
                       ))}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-            <div className="journey-column">
-              <h3>Training</h3>
-              <div className="journey-timeline">
-                {about.training.map((item) => (
-                  <article className="journey-entry" key={item.id} data-reveal>
-                    <span className="background-date">{item.statusText}</span>
-                    <h4>{item.title}</h4>
-                    <p>{item.provider}</p>
-                    <div className="background-detail">
-                      <p>{item.detail}</p>
-                    </div>
-                    <div className="background-footer">
-                      {item.relatedLink && (
-                        <a
-                          href={item.relatedLink.href}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {item.relatedLink.label} <ArrowUpRight size={14} />
-                        </a>
-                      )}
-                      {item.credentialUrl && (
-                        <a
-                          href={item.credentialUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          View course completion <ArrowUpRight size={14} />
-                        </a>
-                      )}
                     </div>
                   </article>
                 ))}

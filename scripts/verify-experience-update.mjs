@@ -6,7 +6,7 @@ import { expect } from "playwright/test";
 const base = process.env.PORTFOLIO_URL || "http://127.0.0.1:4176";
 const output =
   process.env.PORTFOLIO_EVIDENCE ||
-  "artifacts/portfolio-experience-publication-2026-10-23";
+  "artifacts/portfolio-journey-logos-2026-10-23";
 const phase = process.argv.includes("--baseline") ? "baseline" : "final";
 const data = JSON.parse(await readFile("src/data/portfolio.json", "utf8"));
 const browser = await chromium.launch({ headless: true });
@@ -23,7 +23,7 @@ async function check(name, run) {
 }
 try {
   await check(
-    "Experience navigation opens the three-column project journey",
+    "Experience navigation opens Education and Training beside project experience",
     async () => {
       const page = await browser.newPage({
         reducedMotion: "reduce",
@@ -37,8 +37,8 @@ try {
       await expect(page.locator("#experience")).toBeInViewport();
       await expect(page.locator(".journey-column > h3")).toHaveText([
         "Education",
-        "Experience",
         "Training",
+        "Experience",
       ]);
       await expect(page.locator(".project-experience h4")).toHaveText([
         "Task Manager",
@@ -104,6 +104,36 @@ try {
         "Cursor",
         "Anti Gravity",
       ]);
+      const images = page.locator(
+        ".toolkit-panel[data-state='active'] .toolkit-items img",
+      );
+      assert.equal(await images.count(), 8);
+      for (const logo of await images.all()) {
+        await expect(logo).toBeVisible();
+        await expect(logo).toHaveAttribute(
+          "src",
+          /^\/images\/stack\/[a-z-]+\.svg$/,
+        );
+        await expect
+          .poll(() =>
+            logo.evaluate(
+              (element) => element.complete && element.naturalWidth > 0,
+            ),
+          )
+          .toBe(true);
+      }
+      assert.equal(
+        new Set(
+          await images.evaluateAll((elements) =>
+            elements.map((element) => element.getAttribute("src")),
+          ),
+        ).size,
+        8,
+      );
+      await page.locator("#stack").screenshot({
+        path: `${output}/ai-tool-logos.png`,
+        style: ".site-header, .skip-link { visibility: hidden !important; }",
+      });
       await tab.focus();
       await page.keyboard.press("ArrowLeft");
       await expect(
@@ -163,7 +193,10 @@ try {
             );
           if (width >= 1024)
             assert.ok(
-              columns[0].x < columns[1].x && columns[1].x < columns[2].x,
+              Math.abs(columns[0].x - columns[1].x) < 1 &&
+                columns[1].y > columns[0].y &&
+                columns[2].x > columns[0].x &&
+                Math.abs(columns[2].y - columns[0].y) < 1,
             );
           else
             assert.ok(
@@ -185,6 +218,33 @@ try {
               .click();
             await expect(page.locator("#experience")).toBeFocused();
           }
+          await page
+            .getByRole("tab", { name: "AI tools", exact: true })
+            .click();
+          await page.locator("#stack").scrollIntoViewIfNeeded();
+          const logos = page.locator(
+            ".toolkit-panel[data-state='active'] .toolkit-items img",
+          );
+          assert.equal(await logos.count(), 8);
+          await expect
+            .poll(() =>
+              logos.evaluateAll((elements) =>
+                elements.every(
+                  (element) =>
+                    element.complete &&
+                    element.naturalWidth > 0 &&
+                    getComputedStyle(element).width ===
+                      (innerWidth <= 539 ? "20px" : "22px"),
+                ),
+              ),
+            )
+            .toBe(true);
+          assert.ok(
+            await page.evaluate(
+              () => document.documentElement.scrollWidth <= innerWidth,
+            ),
+            `${theme} ${width}px AI tools overflow`,
+          );
           if ([1440, 390].includes(width)) {
             for (const section of [".hero", "#experience", "#stack"]) {
               await page.locator(section).scrollIntoViewIfNeeded();

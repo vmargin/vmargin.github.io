@@ -66,3 +66,8 @@ These entries supersede earlier hero name-heading and boxed education-card styli
 - AI tools: reuse the existing toolkit surface, 16px radius, 22px padding, 14px labels, native Radix tab focus behavior and shared category icon. No new palette or dependencies.
 
 This follow-up supersedes the smaller greeting and two-column journey from the earlier October 23 snapshot.
+
+## October 23, 2026: two-column journey and AI logos
+
+- Journey: reuse the existing palette, 20px column headings, 18px to 22px entry titles, 14px body/dates, 9px markers and 26px timeline inset. Education and Training share the left column with 32px to 56px vertical separation; Experience occupies the right column, separated by the existing line token. Stack all sections below 1024px.
+- AI logos: local brand SVGs use the existing 22px desktop and 20px mobile glyph sizes, 3px padding, 4px radius and #f4f5f7 backing. Retain their original colors in both themes. No new global tokens or dependencies.

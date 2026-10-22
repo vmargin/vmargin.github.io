@@ -42,3 +42,9 @@ The dated blueprint and content-layout checkpoint contain evidence and verificat
 - Experience: home and case-study navigation use Experience and `#experience`. Preserve the old `#certifications` anchor. Education, Experience and Training form three desktop timeline columns and stack below 1024px. The four project entries are separate from the three featured cards and link to genuine source or case-study routes.
 - Toolkit: add AI tools as the seventh category using the eight confirmed general workflow tools. Remove the standalone AI section. Complete project technology lists retain only supported per-project tool attribution.
 - Metadata: preserve the configured site title while applying the existing GitHub Pages display alias so initial HTML and hydration agree.
+
+## October 23, 2026: two-column journey and AI logos
+
+- `src/App.tsx` groups Education and Training inside `journey-foundations`; the sibling project-experience column remains on the right. DOM/mobile order is Education, Training, Experience. Existing content, timeline markers, links and preferences remain intact.
+- `Toolkit.tsx` maps all eight AI tool names to local brand SVGs under `public/images/stack/`. Glyph sizing and backing inherit the established toolkit CSS; labels supply accessible names. Pinned Lobe Icons URLs and the MIT notice are retained in `LOBE-ICONS-NOTICE.txt`.
+- The focused experience checks cover two-column geometry, mobile order and all eight actual loaded logos in both themes at five widths. Earlier three-column descriptions are superseded.

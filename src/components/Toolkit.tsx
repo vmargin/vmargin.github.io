@@ -53,6 +53,14 @@ const logos: Record<string, string> = {
   GitHub: "github.svg",
   Docker: "docker.svg",
   Vercel: "vercel.svg",
+  Claude: "claude.svg",
+  Codex: "codex.svg",
+  OpenCode: "opencode.svg",
+  "Hermes Agent": "hermes-agent.svg",
+  "OpenClaw Agent": "openclaw.svg",
+  Cline: "cline.svg",
+  Cursor: "cursor.svg",
+  "Anti Gravity": "antigravity.svg",
 };
 
 export function Toolkit({ motionEnabled }: { motionEnabled: boolean }) {

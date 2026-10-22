@@ -125,8 +125,8 @@ try {
           );
           await expect(page.locator(".journey-column > h3")).toHaveText([
             "Education",
-            "Experience",
             "Training",
+            "Experience",
           ]);
           assert.equal(await page.locator(".journey-entry").count(), 7);
           const journey = await page.locator("#experience").innerText();
