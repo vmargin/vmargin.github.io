@@ -329,20 +329,10 @@ export default function PortfolioHome() {
                 <span className="status-dot" aria-hidden="true" />
                 {site.availability}
               </p>
-              <h1 id="hero-title" className="hero-greeting">
-                {site.heroGreeting}
+              <p className="hero-greeting">{site.heroGreeting}</p>
+              <h1 id="hero-title" className="hero-position">
+                {site.role}
               </h1>
-              <p className="hero-position">
-                {site.role.split(/(Full-Stack)/g).map((part, index) =>
-                  part === "Full-Stack" ? (
-                    <span className="hero-nowrap" key={index}>
-                      {part}
-                    </span>
-                  ) : (
-                    part
-                  ),
-                )}
-              </p>
               <p className="hero-role">{site.heroHeadline}</p>
               <p className="hero-description">{site.heroDescription}</p>
               <div className="button-row">
