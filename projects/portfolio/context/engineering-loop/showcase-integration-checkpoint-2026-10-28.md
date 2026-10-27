@@ -32,3 +32,12 @@ Sources are the completed films with music, rather than raw footage or effects-o
 Use project-specific placement so each film appears alongside its context. Preserve existing screenshots, case studies, demo links and quick previews. Reuse the portfolio's theme, typography, dimensions and native controls.
 
 The user now explicitly requests a commit followed by GitHub Pages publication. The Pages production build passes, including all four prerendered routes and the canonical URL preparation for `https://vmargin.github.io/`. Commit only the showcase integration, push to the existing main branch, and verify the existing Publish Valk workflow and live video playback. Preserve unrelated existing changes in the task tracker, motion checkpoint, `.codex/`, `.impeccable/`, and temporary folders.
+
+## Verified GitHub Pages publication
+
+- Commit `862ceace85593018a154232d9cbf1bd412b35692` contains the showcase integration. Push it to `origin/main` before deployment. The existing [Publish Valk run 40580945042](https://github.com/vmargin/vmargin.github.io/actions/runs/40580945042) completes successfully for this exact commit.
+- The updated portfolio is live at `https://vmargin.github.io/`. Home and all three case-study routes return HTTP 200 with correct GitHub Pages canonical URLs and showcase markup. Every poster returns HTTP 200. Every MP4 supports HTTP 206 byte ranges and the sampled bytes match its committed local file.
+- Live browser checks confirm all three videos play in dialogs and case studies, native keyboard/focus/close behavior works, no MP4 downloads before the watch action, and both themes fit 320, 390, 768 and 1440px widths. The initial public run passes seven of nine groups; AssetHub's case-study start and the injected media-error check hit timing limits. Separate focused rechecks pass: AssetHub plays within three seconds with no page/request errors, and recovery shows the expected retry/direct-open actions and resumes playback after retry when navigation waits for initial loading to settle.
+- Deployment, live assets, browser results, screenshots, and the two focused rechecks are saved under `artifacts/portfolio-showcases-2026-10-28/published/`. Record these receipts in a documentation-only follow-up with CI skipped; no application rebuild is required.
+
+The requested commit and publication are complete. Preserve the unrelated existing workspace changes. Future work starts from user feedback.
