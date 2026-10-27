@@ -77,6 +77,12 @@ function routeStyles(entry, seen = new Set()) {
 
 for (const image of [
   ...data.projects.flatMap((project) => project.gallery),
+  ...data.projects.map((project) => ({
+    ...project.showcase,
+    src: project.showcase.poster,
+    width: 1280,
+    height: 720,
+  })),
   data.site.contactImage,
   ...data.site.contactImage.sources,
   ...Object.values(data.about.portraits),
@@ -92,6 +98,7 @@ for (const image of [
 for (const file of [
   data.site.resumeUrl,
   data.site.portraitUrl,
+  ...data.projects.map((project) => project.showcase.src),
   ...data.about.training.flatMap((item) =>
     item.credentialUrl ? [item.credentialUrl] : [],
   ),

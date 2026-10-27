@@ -43,6 +43,16 @@ const project = z.object({
   sourceUrl: https,
   applicationUrl: https,
   cover: local,
+  showcase: z.object({
+    src: local.refine(
+      (value) => value.startsWith("/videos/") && value.endsWith(".mp4"),
+    ),
+    poster: local,
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+    durationSeconds: z.number().positive(),
+    description: text,
+  }),
   gallery: z.array(gallery).min(1),
   overview: text,
   architecture: z.object({

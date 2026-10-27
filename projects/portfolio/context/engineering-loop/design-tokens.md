@@ -71,3 +71,10 @@ This follow-up supersedes the smaller greeting and two-column journey from the e
 
 - Journey: reuse the existing palette, 20px column headings, 18px to 22px entry titles, 14px body/dates, 9px markers and 26px timeline inset. Education and Training share the left column with 32px to 56px vertical separation; Experience occupies the right column, separated by the existing line token. Stack all sections below 1024px.
 - AI logos: local brand SVGs use the existing 22px desktop and 20px mobile glyph sizes, 3px padding, 4px radius and #f4f5f7 backing. Retain their original colors in both themes. No new global tokens or dependencies.
+
+## October 28, 2026: project showcase films
+
+- Player surface: reuse `--surface`, `--line`, and the shared `--radius` of 18px. Poster action uses `--photo-text` and `--photo-backing` in both themes, with a 56px circular play target (44px below 768px), 16px gap, and 16px to 36px padding.
+- Card watch action: 44px minimum height, 10px by 16px padding, 10px gap, pill radius, `--header-surface` backing, and `--paper` foreground. Duration uses `--text-secondary` and tabular numerals. Preserve the shared visible focus outline.
+- Captions: shared 14px body and 12px metadata tokens, 8px gap, 16px top padding. Dialog reuses `--dialog-surface`, 22px radius, 16px by 24px header padding, and 16px horizontal padding below 768px.
+- These components introduce no global palette, font, or motion tokens. The only automatic media playback follows an explicit watch action.

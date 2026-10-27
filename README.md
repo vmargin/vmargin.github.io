@@ -12,6 +12,7 @@ A static React and TypeScript portfolio for Valkenburgh Margin, presenting junio
 
 - Direct, reloadable case-study pages for CASH-G Web, ARCTIC, and AssetHub.
 - Real application screenshots with capture context and evidence limits.
+- Three project showcase films with card-level watch actions and players before each case-study gallery. Lightweight posters load first; video and sound start only after a watch action.
 - Workflow and architecture views, contribution boundaries, source links, and project decisions.
 - About, technologies, education/training, contact links, and unchanged supplied résumé/completion PDFs.
 - Persistent light/dark appearance, motion preferences, keyboard-accessible navigation, and screenshot dialogs.
@@ -54,6 +55,7 @@ npm run verify:browser
 npm run verify:latest
 npm run verify:portrait
 npm run verify:bulb
+npm run verify:showcases
 ```
 
 `PORTFOLIO_URL` and `CHROMIUM_PATH` can override the preview address and browser executable. Historical results are in [verification](docs/verification.md) and [the October 21 audit](docs/latest-update-audit-2026-10-21.md). Some raw browser artifacts are intentionally ignored and are not distributed with the source.

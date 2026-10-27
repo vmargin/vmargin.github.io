@@ -4,6 +4,7 @@ import "./case-study.css";
 import "./case-study-updates.css";
 import { ProjectGallery } from "./components/ProjectGallery";
 import { DotField } from "./components/DotField";
+import { ProjectShowcase } from "./components/ProjectShowcase";
 import {
   MotionControl,
   ThemeToggle,
@@ -147,6 +148,24 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
                 <ArrowUpRight size={15} />
               </a>
             </aside>
+          </section>
+
+          <section
+            className="case-showcase"
+            aria-labelledby="showcase-title"
+            id="showcase"
+          >
+            <div className="case-section-heading">
+              <div>
+                <p className="eyebrow">See it in action</p>
+                <h2 id="showcase-title">Watch the showcase.</h2>
+              </div>
+              <p>
+                A short film of {project.title}, captured from the working
+                application.
+              </p>
+            </div>
+            <ProjectShowcase project={project} />
           </section>
 
           <section className="case-gallery" aria-labelledby="gallery-title">

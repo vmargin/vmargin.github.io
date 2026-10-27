@@ -346,7 +346,15 @@
       "nextProjectId": "arctic",
       "previewNote": "Pictured: a published equipment-register capture with synthetic workspace data.",
       "demoAccess": "Public synthetic demo via sign-in",
-      "cardFeatures": "Role-based workspaces, CSV import and export, printable QR labels, and asset retirement with retained history."
+      "cardFeatures": "Role-based workspaces, CSV import and export, printable QR labels, and asset retirement with retained history.",
+      "showcase": {
+        "src": "/videos/assethub-showcase.mp4",
+        "poster": "/images/projects/assethub-showcase.webp",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 43.2,
+        "description": "Equipment search, checkout and custody history, maintenance, audits, and switching between workspaces."
+      }
     },
     {
       "id": "arctic",
@@ -482,7 +490,15 @@
       "nextProjectId": "cash-g",
       "previewNote": "Pictured: local seeded dashboard with synthetic service records.",
       "demoAccess": "Public synthetic demo via sign-in",
-      "cardFeatures": "Technician scheduling, inspection records, invoicing, collections, receipts, and branch reporting."
+      "cardFeatures": "Technician scheduling, inspection records, invoicing, collections, receipts, and branch reporting.",
+      "showcase": {
+        "src": "/videos/arctic-showcase.mp4",
+        "poster": "/images/projects/arctic-showcase.webp",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 36,
+        "description": "From booking to payment: find a service job, assign a technician, create an invoice, and review collected and outstanding amounts."
+      }
     },
     {
       "id": "cash-g",
@@ -619,7 +635,15 @@
       "nextProjectId": "assethub",
       "previewNote": "Pictured: Web v2, local H2 practice demo with synthetic accounts.",
       "demoAccess": "Public synthetic demo · sign in with the sample account",
-      "cardFeatures": "Account registration and sign-in, cash-in, transfers, and transaction history. Web v2 adds requests, fictional billers, savings goals, display-only cards, activity, and statement export."
+      "cardFeatures": "Account registration and sign-in, cash-in, transfers, and transaction history. Web v2 adds requests, fictional billers, savings goals, display-only cards, activity, and statement export.",
+      "showcase": {
+        "src": "/videos/cash-g-showcase.mp4",
+        "poster": "/images/projects/cash-g-showcase.webp",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 40.811,
+        "description": "An educational banking simulator: review a practice transfer, see its receipt, contribute to a savings goal, and explore spending insights."
+      }
     }
   ],
   "stack": [

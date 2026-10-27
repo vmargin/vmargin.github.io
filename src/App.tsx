@@ -12,6 +12,7 @@ import {
   Mail,
   MapPin,
   Menu,
+  Play,
   X,
 } from "lucide-react";
 import portfolio from "./data/portfolio.json";
@@ -20,6 +21,7 @@ import { Toolkit } from "./components/Toolkit";
 import { Button } from "./components/ui/button";
 import { DotField } from "./components/DotField";
 import { AboutPortrait } from "./components/AboutPortrait";
+import { ShowcaseDialog, showcaseDuration } from "./components/ProjectShowcase";
 import {
   ThemeToggle,
   MotionControl,
@@ -169,6 +171,7 @@ export default function PortfolioHome() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [selected, setSelected] = useState<Project | null>(null);
+  const [showcaseProject, setShowcaseProject] = useState<Project | null>(null);
   const [previewFromPointer, setPreviewFromPointer] = useState(false);
   const preferences = useSitePreferences();
   const { theme, setTheme, motionEnabled } = preferences;
@@ -180,7 +183,7 @@ export default function PortfolioHome() {
   const copyTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
-  useNativeMotion(root, motionEnabled && !selected);
+  useNativeMotion(root, motionEnabled && !selected && !showcaseProject);
 
   useEffect(() => {
     const headerObserver = new IntersectionObserver(([entry]) =>
@@ -237,7 +240,10 @@ export default function PortfolioHome() {
 
   return (
     <div ref={root} className="portfolio">
-      <DotField enabled={motionEnabled && !selected} theme={theme} />
+      <DotField
+        enabled={motionEnabled && !selected && !showcaseProject}
+        theme={theme}
+      />
       <div className="header-sentinel" aria-hidden="true" />
       <a className="skip-link" href="#projects">
         Skip to projects
@@ -398,22 +404,40 @@ export default function PortfolioHome() {
                 aria-labelledby={`project-${project.id}-title`}
                 data-reveal
               >
-                <a className="project-open" href={project.href}>
+                <div className="project-open">
                   <div className="project-image-wrap">
-                    <img
-                      className="project-cover"
-                      src={project.cover}
-                      alt=""
-                      width={project.gallery[0]?.width}
-                      height={project.gallery[0]?.height}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="project-open-icon" aria-hidden="true">
-                      <ArrowUpRight size={20} />
-                    </span>
+                    <a
+                      className="project-image-link"
+                      href={project.href}
+                      aria-label={`Read the ${project.title} case study`}
+                    >
+                      <img
+                        className="project-cover"
+                        src={project.cover}
+                        alt=""
+                        width={project.gallery[0]?.width}
+                        height={project.gallery[0]?.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span className="project-open-icon" aria-hidden="true">
+                        <ArrowUpRight size={20} />
+                      </span>
+                    </a>
+                    <button
+                      className="project-watch"
+                      type="button"
+                      aria-label={`Watch ${project.title} showcase`}
+                      onClick={() => setShowcaseProject(project)}
+                    >
+                      <Play size={16} aria-hidden="true" fill="currentColor" />
+                      Watch showcase
+                      <span className="showcase-duration">
+                        {showcaseDuration(project.showcase.durationSeconds)}
+                      </span>
+                    </button>
                   </div>
-                  <div className="project-copy">
+                  <a className="project-copy" href={project.href}>
                     <div className="project-meta">
                       <span className="project-type">{project.type}</span>
                       <span className="project-status-label">
@@ -440,8 +464,8 @@ export default function PortfolioHome() {
                       Read the case study
                       <ArrowRight size={15} />
                     </span>
-                  </div>
-                </a>
+                  </a>
+                </div>
                 <div className="project-actions">
                   <a
                     className="project-demo-link"
@@ -492,7 +516,9 @@ export default function PortfolioHome() {
           </div>
         </section>
 
-        <Toolkit motionEnabled={motionEnabled && !selected} />
+        <Toolkit
+          motionEnabled={motionEnabled && !selected && !showcaseProject}
+        />
 
         <section
           className="background-section section wrap"
@@ -775,6 +801,12 @@ export default function PortfolioHome() {
           project={selected}
           onClose={closeProject}
           animate={motionEnabled && previewFromPointer}
+        />
+      )}
+      {showcaseProject && (
+        <ShowcaseDialog
+          project={showcaseProject}
+          onClose={() => setShowcaseProject(null)}
         />
       )}
     </div>
